@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Male_Fashion" />
+    <meta name="keywords" content="Male_Fashion" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ config('app.name', 'Male-Fashion') }} | Shop</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.webp') }}">
+
+    <link rel="stylesheet" href="{{ asset('eshop/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('eshop/css/template.css') }}" />
+    <link rel="stylesheet" href="{{ asset('eshop/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('eshop/css/fontawesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('eshop/css/elegant-icons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('eshop/css/magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('eshop/css/nice-select.css') }}" />
+    <link rel="stylesheet" href="{{ asset('eshop/css/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('eshop/css/slicknav.min.css') }}" />
+
+</head>
+
+<body>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="offcanvas-menu-overlay"></div>
+
+    <!-- HEADER OFFCANVAS -->
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__option">
+            <div class="offcanvas__links">
+                <a href="#">Sign in</a>
+            </div>
+            <div class="offcanvas__links">
+                <a href="#">Sign up</a>
+            </div>
+        </div>
+
+        <!-- if authenticate -->
+        <div class="offcanvas__nav__option">
+            <a href="#" class="search-switch"><i class="fa fa-search text-dark"></i></a>
+            <a href="#"><i class="icon_cart_alt text-dark font-weight-bold"></i>
+                <span class="badge rounded-pill bg-warning text-dark">0</span></a>
+            <div class="price">$0.00</div>
+            <span class="dropdown ml-3">
+                <span id="dLabel" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <img src="" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
+                </span>
+                <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
+                    <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="">Log out</a></li>
+                </ul>
+            </span>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__text">
+            <p>Free shipping, 30-day return or refund guarantee.</p>
+        </div>
+    </div>
+
+    <header class="header">
+        <!-- HEADER -->
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="header__top__left">
+                            <p>Free shipping, 30-day return or refund guarantee.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="header__top__right">
+                            <div class="header__top__links">
+                                <a href="#" data-toggle="modal" data-target="#signinmodal">Sign in</a>
+                            </div>
+                            <div class="header__top__links">
+                                <a href="{{ route('register') }}">Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="/"><img src="{{asset('img/logo-light.webp')}}" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="./about.html">About Us</a></li>
+                            <li><a href="./contact.html">Contacts</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__nav__option">
+                        <a href="#" class="search-switch"><i class="fa fa-search text-dark"></i></a>
+
+                        <!-- if authenticate -->
+                        <a href="#"><i class="icon_cart_alt text-dark font-weight-bold"></i>
+                            <span class="badge rounded-pill bg-warning text-dark">0</span></a>
+                        <div class="price mr-2">$0.00</div>
+                        <span class="dropdown">
+                            <span id="dLabel" type="button" data-toggle="dropdown" aria-expanded="false">
+                                <img src="" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
+                            </span>
+                            <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
+                                <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="">Log out</a></li>
+                            </ul>
+                        </span>
+                        <!-- <div class="dropdown">
+                            <div class="user" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="" alt="" width="42" height="42" id="profile" class="rounded-circle bg-dark">
+                            </div>
+
+                            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                                <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="src/controllers/logout.php">Log out</a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Modal Signin-->
+    <div class="modal fade" id="signinmodal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Sign In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="checkout__input">
+                            <p>Username<span>*</span></p>
+                            <input type="text" class="checkout__input__add" />
+                        </div>
+                        <div class="checkout__input">
+                            <p>Password<span>*</span></p>
+                            <input type="password" />
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <input type="submit" class="btn btn-secondary" value="Sign In" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p>
+                        Belum punya akun? lakukan registrasi di
+                        <a href="" class="text-danger">sini</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR SEARCH -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here....." />
+            </form>
+        </div>
+    </div>
+
+    <!--  CONTENT  -->
+    <section class="content">
+        @yield('content')
+    </section>
+
+
+    <!--  FOOTER  -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="img/logo-dark.webp" alt="" /></a>
+                        </div>
+                        <p>
+                            The customer is at the heart of our unique business model, which
+                            includes design.
+                        </p>
+                        <a href="#"><img src="img/payment.webp" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Clothing Store</a></li>
+                            <li><a href="#">Trending Shoes</a></li>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Sale</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Delivary</a></li>
+                            <li><a href="#">Return & Exchanges</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>NewLetter</h6>
+                        <div class="footer__newslatter">
+                            <p>
+                                Be the first to know about new arrivals, look books, sales &
+                                promos!
+                            </p>
+                            <form action="#">
+                                <input type="text" placeholder="Your email" />
+                                <button type="submit">
+                                    <span class="icon_mail_alt"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <p>
+                            Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            2020 All rights reserved | This template is made with
+                            <i class="fa fa-heart-o" aria-hidden="true"></i> by
+                            <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="{{ asset('eshop/js/popper.min.js') }}"></script>
+    <script src="{{ asset('eshop/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('eshop/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('eshop/js/jquery.nice-select.min.js') }}"></script>
+
+    <script src="{{ asset('eshop/js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('eshop/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('eshop/js/jquery.countdown.min.js') }}"></script>
+
+    <script src="{{ asset('eshop/js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('eshop/js/mixitup.min.js') }}"></script>
+    <script src="{{ asset('eshop/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('eshop/js/main.js') }}"></script>
+
+    <section class="script">
+        @yield('script')
+    </section>
+</body>
+
+</html>

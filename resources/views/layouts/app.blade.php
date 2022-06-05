@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Male_Fashion" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="keywords" content="Male_Fashion" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -78,12 +79,16 @@
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
+                            @auth
+
+                            @else
                             <div class="header__top__links">
                                 <a href="#" data-toggle="modal" data-target="#signinmodal">Sign in</a>
                             </div>
                             <div class="header__top__links">
-                                <a href="{{ route('register') }}">Sign up</a>
+                                <a href="">Sign up</a>
                             </div>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -112,35 +117,31 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><i class="fa fa-search text-dark"></i></a>
 
-                        <!-- if authenticate -->
-                        <a href="#"><i class="icon_cart_alt text-dark font-weight-bold"></i>
+                        @auth
+                        <a href="/cart"><i class="icon_cart_alt text-dark font-weight-bold"></i>
                             <span class="badge rounded-pill bg-warning text-dark">0</span></a>
                         <div class="price mr-2">$0.00</div>
                         <span class="dropdown">
                             <span id="dLabel" type="button" data-toggle="dropdown" aria-expanded="false">
-                                <img src="" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
+                                <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
                             </span>
                             <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
                                 <li><a class="dropdown-item" href="#">Account Settings</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="">Log out</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Sign out
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
                             </ul>
                         </span>
-                        <!-- <div class="dropdown">
-                            <div class="user" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="" alt="" width="42" height="42" id="profile" class="rounded-circle bg-dark">
-                            </div>
-
-                            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                                <li><a class="dropdown-item" href="#">Account Settings</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="src/controllers/logout.php">Log out</a></li>
-                            </ul>
-                        </div> -->
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -159,19 +160,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <div class="login-form">
+                        <div id="signinresponse">
+                        </div>
                         <div class="checkout__input">
                             <p>Username<span>*</span></p>
-                            <input type="text" class="checkout__input__add" />
+                            <input type="text" id="username" class="checkout__input__add" autofocus required />
                         </div>
                         <div class="checkout__input">
                             <p>Password<span>*</span></p>
-                            <input type="password" />
+                            <input type="password" id="password" required value="" />
                         </div>
                         <div class="d-flex justify-content-end">
-                            <input type="submit" class="btn btn-secondary" value="Sign In" />
+                            <input type="submit" class="btn btn-secondary" id="signinbtn" value="Sign In" />
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <p>
@@ -181,6 +184,9 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="fixed-top" id="signinsuccess" style="display: none;  margin:80px;">
     </div>
 
     <!-- NAVBAR SEARCH -->
@@ -287,6 +293,71 @@
     <script src="{{ asset('eshop/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('eshop/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('eshop/js/main.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $(document).on('click', '#signinbtn', function(e) {
+                e.preventDefault();
+
+                var data = {
+                    'username': $('#username').val(),
+                    'password': $('#password').val(),
+                }
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "/signin",
+                    data: data,
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.status == 400) {
+                            // gagal
+                            $('#signinresponse').html("");
+                            $('#signinresponse').html("<div class='alert alert-danger' role='alert'></div>");
+                            $('.alert').text(response.message);
+                            window.setTimeout(function() {
+                                $(".alert").fadeTo(500, 0).slideUp(500, function() {
+                                    $(this).remove();
+                                });
+                            }, 4000);
+
+                            $('#username').focus();
+                            $('#password').val("");
+                        } else {
+                            // berhasil
+                            window.location.replace("/");
+                            $('#signinresponse').html("");
+                            $('#signinsuccess').show();
+                            $('#signinmodal').modal('hide');
+                            $('#signinsuccess').html("<div class='alert alert-success' role='alert' id='fixedtopalert'>Sign in Successfully.</div>");
+                            window.setTimeout(function() {
+                                $("#fixedtopalert").fadeTo(500, 0).slideUp(500, function() {
+                                    $(this).remove();
+                                    $('#signinsuccess').remove();
+                                });
+                            }, 4000);
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+
+    @if(!empty(Session::get('error_code')) && Session::get('error_code') == 5)
+    <script>
+        $(function() {
+            $('#signinmodal').modal('show');
+        });
+    </script>
+    @endif
 
     <section class="script">
         @yield('script')

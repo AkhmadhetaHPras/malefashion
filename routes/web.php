@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
+// guest
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 Route::get('/about', function () {
     return view('about');
 });
@@ -14,22 +16,23 @@ Route::get('/shop', function () {
 Route::get('/shop/detail', function () {
     return view('shop-detail');
 });
-Route::get('/cart', function () {
-    return view('shop-cart');
-});
-Route::get('/checkout', function () {
-    return view('checkout');
-});
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::post('/signin', [LoginController::class, 'authenticate'])->name('signin');
 
 
-// guest
+// authenticate
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/cart', function () {
+        return view('shop-cart');
+    });
+    Route::get('/checkout', function () {
+        return view('checkout');
+    });
+});
 
 // admin
 
-// admin + customer
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// customer

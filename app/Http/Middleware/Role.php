@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Authenticate
+class Role
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,13 @@ class Authenticate
      */
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (!$request->expectsJson()) {
-            return $next($request);
+        if (!isset($request->user()->role)) {
+            return redirect('/')->with('error_code', 5);
+        } else {
+            if (in_array($request->user()->role, $roles)) {
+                return $next($request);
+            }
+            return redirect('unauthorized');
         }
-        return redirect('/')->with('error_code', 5);
     }
 }

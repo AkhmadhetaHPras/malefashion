@@ -8,7 +8,7 @@
     <meta name="keywords" content="Male_Fashion" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ config('app.name', 'Male-Fashion') }} | Shop</title>
+    <title>{{ $title }} </title>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.webp') }}">
 
     <link rel="stylesheet" href="{{ asset('eshop/css/style.css') }}" />
@@ -33,6 +33,9 @@
 
     <!-- HEADER OFFCANVAS -->
     <div class="offcanvas-menu-wrapper">
+        @auth
+
+        @else
         <div class="offcanvas__option">
             <div class="offcanvas__links">
                 <a href="#">Sign in</a>
@@ -41,26 +44,45 @@
                 <a href="#">Sign up</a>
             </div>
         </div>
+        @endauth
+
 
         <!-- if authenticate -->
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><i class="fa fa-search text-dark"></i></a>
+            @auth
             <a href="#"><i class="icon_cart_alt text-dark font-weight-bold"></i>
                 <span class="badge rounded-pill bg-warning text-dark">0</span></a>
             <div class="price">$0.00</div>
             <span class="dropdown ml-3">
                 <span id="dLabel" type="button" data-toggle="dropdown" aria-expanded="false">
-                    <img src="" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
+                    <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
                 </span>
                 <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
                     <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                    <li><a class="dropdown-item" href="#">My Orders</a></li>
+                    @if(auth()->user()->role=='Admin')
+                    <li><a class="dropdown-item" href="#">Open Dashboard Admin</a></li>
+                    @endif
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="">Log out</a></li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Sign out
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </span>
+            @endauth
         </div>
+
+
+
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
             <p>Free shipping, 30-day return or refund guarantee.</p>
@@ -106,10 +128,10 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
-                            <li><a href="./about.html">About Us</a></li>
-                            <li><a href="./contact.html">Contacts</a></li>
+                            <li class="{{ $title == 'Home' ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="{{ $title == 'Shop' ? 'active' : '' }}"><a href="{{ route('shop') }}">Shop</a></li>
+                            <li class="{{ $title == 'About' ? 'active' : '' }}"><a href="{{ route('about') }}">About Us</a></li>
+                            <li class="{{ $title == 'Contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -127,6 +149,10 @@
                             </span>
                             <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
                                 <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                                <li><a class="dropdown-item" href="#">My Orders</a></li>
+                                @if(auth()->user()->role=='Admin')
+                                <li><a class="dropdown-item" href="#">Open Dashboard Admin</a></li>
+                                @endif
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

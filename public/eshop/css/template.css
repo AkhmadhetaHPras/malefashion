@@ -110,6 +110,16 @@ ol {
   display: inline-block;
   padding: 14px 30px;
 }
+.site-btn-outline {
+  font-size: 14px;
+  color: #111;
+  background: #fff;
+  font-weight: 700;
+  border: solid 4px #111;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 14px 30px;
+}
 #preloder {
   position: fixed;
   width: 100%;
@@ -664,7 +674,7 @@ ol {
   margin-bottom: 0;
 }
 .instagram {
-  padding-bottom: 0;
+  padding-bottom: 55px;
 }
 .instagram__pic__item {
   width: 33.33%;
@@ -2145,7 +2155,6 @@ ol {
 .checkout__order .order__title {
   color: #111;
   font-weight: 700;
-  text-transform: uppercase;
   border-bottom: 1px solid #d7d7d7;
   padding-bottom: 25px;
   margin-bottom: 30px;
@@ -2622,6 +2631,12 @@ ol {
 .contact__form button {
   letter-spacing: 4px;
   padding: 14px 35px;
+}
+a.productlink__order {
+  color: #111;
+}
+a.productlink__order:hover {
+  color: #b7b7b7;
 }
 @media only screen and (min-width: 1200px) {
   .container {

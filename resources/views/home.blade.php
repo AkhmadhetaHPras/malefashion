@@ -315,7 +315,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="categories__hot__deal">
-                    <img src="img/xproduct-sale.png.pagespeed.ic.n2J8U5DKGJ.webp" alt="" />
+                    <img src="img/sale.png" alt="" />
                     <div class="hot__deal__sticker">
                         <span>Sale Of</span>
                         <h5>$29.99</h5>

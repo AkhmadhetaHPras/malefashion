@@ -59,7 +59,7 @@
                     <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
                 </span>
                 <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
-                    <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="#">My Orders</a></li>
                     @if(auth()->user()->role=='Admin')
                     <li><a class="dropdown-item" href="#">Open Dashboard Admin</a></li>
@@ -148,7 +148,7 @@
                                 <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
                             </span>
                             <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
-                                <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">My Orders</a></li>
                                 @if(auth()->user()->role=='Admin')
                                 <li><a class="dropdown-item" href="#">Open Dashboard Admin</a></li>
@@ -198,14 +198,14 @@
                             <input type="password" id="password" required value="" />
                         </div>
                         <div class="d-flex justify-content-end">
-                            <input type="submit" class="btn btn-secondary" id="signinbtn" value="Sign In" />
+                            <input type="submit" class="site-btn" id="signinbtn" value="Sign In" />
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <p>
-                        Belum punya akun? lakukan registrasi di
-                        <a href="" class="text-danger">sini</a>
+                        No account? Create one
+                        <a href="" class="text-danger">here</a>
                     </p>
                 </div>
             </div>

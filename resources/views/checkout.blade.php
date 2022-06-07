@@ -103,7 +103,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
-                            <h4 class="order__title">Your order</h4>
+                            <h4 class="order__title">YOUR ORDER</h4>
                             <div class="checkout__order__products">
                                 Product <span>Total</span>
                             </div>

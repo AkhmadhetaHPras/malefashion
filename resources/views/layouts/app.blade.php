@@ -38,10 +38,10 @@
         @else
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a href="#">Sign in</a>
+                <a href="#" data-toggle="modal" data-target="#signinmodal">Sign in</a>
             </div>
             <div class="offcanvas__links">
-                <a href="#">Sign up</a>
+                <a href="{{ route('signup') }}">Sign up</a>
             </div>
         </div>
         @endauth
@@ -51,7 +51,7 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><i class="fa fa-search text-dark"></i></a>
             @auth
-            <a href="#"><i class="icon_cart_alt text-dark font-weight-bold"></i>
+            <a href="{{ route('cart') }}"><i class="icon_cart_alt text-dark font-weight-bold"></i>
                 <span class="badge rounded-pill bg-warning text-dark">0</span></a>
             <div class="price">$0.00</div>
             <span class="dropdown ml-3">
@@ -59,8 +59,8 @@
                     <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
                 </span>
                 <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">My Orders</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('myorders') }}">My Orders</a></li>
                     @if(auth()->user()->role=='Admin')
                     <li><a class="dropdown-item" href="#">Open Dashboard Admin</a></li>
                     @endif
@@ -108,7 +108,7 @@
                                 <a href="#" data-toggle="modal" data-target="#signinmodal">Sign in</a>
                             </div>
                             <div class="header__top__links">
-                                <a href="">Sign up</a>
+                                <a href="{{ route('signup') }}">Sign up</a>
                             </div>
                             @endauth
                         </div>
@@ -140,7 +140,7 @@
                         <a href="#" class="search-switch"><i class="fa fa-search text-dark"></i></a>
 
                         @auth
-                        <a href="/cart"><i class="icon_cart_alt text-dark font-weight-bold"></i>
+                        <a href="{{ route('cart') }}"><i class="icon_cart_alt text-dark font-weight-bold"></i>
                             <span class="badge rounded-pill bg-warning text-dark">0</span></a>
                         <div class="price mr-2">$0.00</div>
                         <span class="dropdown">
@@ -148,8 +148,8 @@
                                 <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
                             </span>
                             <ul class="dropdown-menu text-small" aria-labelledby="dLabel">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">My Orders</a></li>
+                                <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('myorders') }}">My Orders</a></li>
                                 @if(auth()->user()->role=='Admin')
                                 <li><a class="dropdown-item" href="#">Open Dashboard Admin</a></li>
                                 @endif

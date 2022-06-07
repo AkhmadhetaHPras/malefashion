@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 // guest
@@ -26,9 +27,8 @@ Route::get('/contact', function () {
 
 Route::post('/signin', [LoginController::class, 'authenticate'])->name('signin');
 
-Route::get('/signup', function () {
-    return view('register');
-})->name('signup');
+Route::get('/signup', [RegisterController::class, 'index'])->name('signup');
+Route::post('/signup', [RegisterController::class, 'register'])->name('signup.register');
 
 
 // AUTHENTICATED
@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
 
     Route::get('/cart', function () {
         return view('shop-cart', ['title' => 'Shop']);
-    });
+    })->name('cart');
 
     Route::get('/checkout', function () {
         return view('checkout', ['title' => 'Shop']);

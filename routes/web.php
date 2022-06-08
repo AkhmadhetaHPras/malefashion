@@ -5,6 +5,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/dashboard', function () {
+    return view('admin.dashboard',['title' => 'Dashboard']);
+})->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
+
 // guest
 Route::get('/', function () {
     return view('home', ['title' => 'Home']);
@@ -68,3 +76,4 @@ Route::get('/unauthorized', function () {
 Route::fallback(function () {
     return view('404', ['title' => '404']);
 });
+

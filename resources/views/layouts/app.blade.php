@@ -11,15 +11,15 @@
     <title>{{ $title }} </title>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.webp') }}">
 
-    <link rel="stylesheet" href="{{ asset('eshop/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('eshop/css/template.css') }}" />
-    <link rel="stylesheet" href="{{ asset('eshop/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('eshop/css/fontawesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('eshop/css/elegant-icons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('eshop/css/magnific-popup.css') }}" />
-    <link rel="stylesheet" href="{{ asset('eshop/css/nice-select.css') }}" />
-    <link rel="stylesheet" href="{{ asset('eshop/css/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('eshop/css/slicknav.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/template.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" />
 
 </head>
 
@@ -62,7 +62,7 @@
                     <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
                     <li><a class="dropdown-item" href="{{ route('myorders') }}">My Orders</a></li>
                     @if(auth()->user()->role=='Admin')
-                    <li><a class="dropdown-item" href="#">Open Dashboard Admin</a></li>
+                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Open Dashboard Admin</a></li>
                     @endif
                     <li>
                         <hr class="dropdown-divider">
@@ -151,7 +151,7 @@
                                 <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ route('myorders') }}">My Orders</a></li>
                                 @if(auth()->user()->role=='Admin')
-                                <li><a class="dropdown-item" href="#">Open Dashboard Admin</a></li>
+                                <li><a class="dropdown-item" href="{{ route('dashboard') }}">Open Dashboard Admin</a></li>
                                 @endif
                                 <li>
                                     <hr class="dropdown-divider">
@@ -306,19 +306,19 @@
     </footer>
 
 
-    <script src="{{ asset('eshop/js/popper.min.js') }}"></script>
-    <script src="{{ asset('eshop/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('eshop/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('eshop/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
 
-    <script src="{{ asset('eshop/js/jquery.nicescroll.min.js') }}"></script>
-    <script src="{{ asset('eshop/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('eshop/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
 
-    <script src="{{ asset('eshop/js/jquery.slicknav.js') }}"></script>
-    <script src="{{ asset('eshop/js/mixitup.min.js') }}"></script>
-    <script src="{{ asset('eshop/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('eshop/js/main.js') }}"></script>
+    <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('js/mixitup.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
     <script>
         $(document).ready(function() {

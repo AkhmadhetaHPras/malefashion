@@ -4,13 +4,39 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
+// Dashboard Admin Routes
 Route::get('/dashboard', function () {
     return view('admin.dashboard',['title' => 'Dashboard']);
 })->name('dashboard');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
+Route::get('/analitycs-profit', function () {
+    return view('admin.an-profit',['title' => 'Analytics-Profit']);
+})->name('analytics-profit');
+
+Route::get('/analitycs-sales', function () {
+    return view('admin.an-sales',['title' => 'Analytics-Sales']);
+})->name('analytics-sales');
+
+Route::get('/analitycs-statistics', function () {
+    return view('admin.an-statistics',['title' => 'Analytics-Statistics']);
+})->name('analytics-statistics');
+
+Route::get('/orders-add', function () {
+    return view('admin.app-order-add',['title' => 'Orders-Add']);
+})->name('orders-add');
+
+Route::get('/orders-listall', function () {
+    return view('admin.app-order-list',['title' => 'Orders-ListAll']);
+})->name('orders-listall');
+
+Route::get('/orders-view', function () {
+    return view('admin.app-order-view',['title' => 'Orders-View']);
+})->name('orders-view');
+
+Route::get('/orders-edit', function () {
+    return view('admin.app-order-edit',['title' => 'Orders-Edit']);
+})->name('orders-edit');
+
 
 // guest
 Route::get('/', function () {

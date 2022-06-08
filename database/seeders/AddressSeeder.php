@@ -22,7 +22,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '15 Mawar Street',
                 'postal_code' => '65132',
                 'city' => 'Malang',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
             [
                 'user_id' => '2',
@@ -31,7 +31,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '1 Ngadiluwih Street',
                 'postal_code' => '66191',
                 'city' => 'Blitar',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
             [
                 'user_id' => '3',
@@ -40,7 +40,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '20 Mawar Street',
                 'postal_code' => '64181',
                 'city' => 'Kediri',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
             [
                 'user_id' => '4',
@@ -49,7 +49,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '8 Melati Street',
                 'postal_code' => '66194',
                 'city' => 'Blitar',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
             [
                 'user_id' => '5',
@@ -58,7 +58,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '13 Sangar Street',
                 'postal_code' => '62280',
                 'city' => 'Lamongan',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
             [
                 'user_id' => '6',
@@ -67,7 +67,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '17 Gathot Subroto Street',
                 'postal_code' => '60222',
                 'city' => 'Surabaya',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
             [
                 'user_id' => '7',
@@ -76,7 +76,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '5A Warujayeng Street',
                 'postal_code' => '40281',
                 'city' => 'Bandung',
-                'province' => 'Jawa Barat',
+                'province' => 'West Java',
             ],
             [
                 'user_id' => '8',
@@ -94,7 +94,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '22 Setono Street',
                 'postal_code' => '61263',
                 'city' => 'Sidoarjo',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
             [
                 'user_id' => '9',
@@ -103,7 +103,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '12 Setono Street',
                 'postal_code' => '61263',
                 'city' => 'Sidoarjo',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
             [
                 'user_id' => '10',
@@ -112,7 +112,7 @@ class AddressSeeder extends Seeder
                 'street_address' => '11C Imam Bonjol Street',
                 'postal_code' => '66183',
                 'city' => 'Blitar',
-                'province' => 'Jawa Timur',
+                'province' => 'East Java',
             ],
         ];
 

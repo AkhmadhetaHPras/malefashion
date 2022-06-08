@@ -21,28 +21,37 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-3 mb-3">
-                <img src="img/instagram/instagram-3.jpg" alt="" />
+                <img id="pdimage" src="img/instagram/instagram-3.jpg" alt="" />
             </div>
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="profile__detail">
-                            <p style="font-size: 32px;"><b>Akhmadheta Hafid Prasetyawan</b> <span><i class="fa fa-female ml-5"></i></span></p>
+                            <p style="font-size: 32px;">
+                                <b id="pdname">{{ $profile->name }}</b>
+                                <span><i class="fa {{$profile->gender == 'Male'? 'fa-male' : 'fa-female'}} ml-5" id="pdgender"></i></span>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="profile__detail">
-                            <p class="text-dark">akhmadheta097@gmail.com | <span class="text-secondary">085803056443</span></p>
-                            <p><span style="font-size: 20px;">16/07/2001</span></p>
+                            <p class="text-dark">
+                                <span id="pdemail">{{ $profile->email }}</span> | <span class="text-secondary" id="pdtelp">{{ $profile->telp }}</span>
+                            </p>
+                            <p><span id="pdbirth" style="font-size: 20px;">{{ $profile->birth }}</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="profile__detail">
-                            <p>Jl. Merdeka No. 12, Blitar, East Java</p>
+                            <p>
+                                <span id="pdaddress">{{ $profile->address->first()->street_address }}</span>,
+                                <span id="pdcity">{{ $profile->address->first()->city }}</span>,
+                                <span id="pdprovince">{{ $profile->address->first()->province }}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -71,16 +80,18 @@
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbodyaddress">
+                        @foreach($profile->address as $p)
                         <tr>
-                            <th scope="row">Mark</th>
-                            <td>091279381723</td>
-                            <td>Jl Merdeka No. 12</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                            <th scope="row">{{ $p->name }}</th>
+                            <td>{{ $p->telp }}</td>
+                            <td>{{ $p->street_address }}</td>
+                            <td>{{ $p->postal_code }}</td>
+                            <td>{{ $p->city }}</td>
+                            <td>{{ $p->province }}</td>
                             <td><i class="fa fa-edit mr-3"></i><i class="fa fa-trash"></i></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -93,7 +104,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Add Addreess</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Add Address</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -227,4 +238,56 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+
+
+        function fetchprofile() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: "/profile-fetch",
+                dataType: "json",
+                success: function(response) {
+                    // console.log(response.profile);
+                    $('#pdname').text(response.profile.name);
+                    if (response.profile.gender === 'Male') {
+                        $('#pdgender').addClass('fa-male');
+                    } else {
+                        $('#pdgender').addClass('fa-female');
+                    }
+                    $('#pdemail').text(response.profile.email);
+                    $('#pdtelp').text(response.profile.telp);
+                    $('#pdbirth').text(response.profile.birth);
+                    $('#pdaddress').text(response.profile.address[0].street_address);
+                    $('#pdcity').text(response.profile.address[0].city);
+                    $('#pdprovince').text(response.profile.address[0].province);
+
+                    $('#tbodyaddress').html("");
+                    $.each(response.profile.address, function(key, item) {
+                        $('#tbodyaddress').append(
+                            "<tr>" +
+                            "<th scope='row'>" + item.name + "</th>" +
+                            "<td>" + item.telp + "</td>" +
+                            "<td>" + item.street_address + "</td>" +
+                            "<td>" + item.postal_code + "</td>" +
+                            "<td>" + item.city + "</td>" +
+                            "<td>" + item.province + "</td>" +
+                            "<td><i class='fa fa-edit mr-3'></i><i class='fa fa-trash'></i></td>" +
+                            "<tr>"
+                        );
+                    });
+
+                }
+            });
+        }
+    });
+</script>
 @endsection

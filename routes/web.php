@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,9 +34,8 @@ Route::post('/signup', [RegisterController::class, 'register'])->name('signup.re
 
 // AUTHENTICATED
 Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
-    Route::get('/profile', function () {
-        return view('profile', ['title' => 'Profile']);
-    })->name('profile');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile-fetch', [ProfileController::class, 'fetch'])->name('profile.fetch');
 
     Route::get('/myorders', function () {
         return view('myorders', ['title' => 'MyOrders']);

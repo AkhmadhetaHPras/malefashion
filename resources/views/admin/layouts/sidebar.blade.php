@@ -48,31 +48,31 @@
     <ul class="menu-inner py-1 lead">
         <!-- Dashboard -->
         <li class="menu-item {{ $title == 'Dashboard' ? 'active' : '' }}">
-            <a href="index.html" class="menu-link">
+            <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div class="lead" data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
 
         <!-- Layouts -->
-        <li class="menu-item">
+        <li class="menu-item {{ $title == 'Analytics-Profit' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                 <div class="lead" data-i18n="Layouts">Analytics</div>
             </a>
             <ul class="menu-sub lead">
-                <li class="menu-item">
-                    <a href="an-profit.html" class="menu-link">
+                <li class="menu-item {{ $title == 'Analytics-Profit' ? 'active' : '' }}">
+                    <a href="{{ route('analytics-profit') }}" class="menu-link">
                         <div data-i18n="Container">Profit</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="an-sales.html" class="menu-link">
+                <li class="menu-item {{ $title == 'Analytics-Sales' ? 'active' : '' }}">
+                    <a href="{{ route('analytics-sales') }}" class="menu-link">
                         <div data-i18n="Fluid">Sales</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="an-statistics.html" class="menu-link">
+                <li class="menu-item {{ $title == 'Analytics-Statistics' ? 'active' : '' }}">
+                    <a href="{{ route('analytics-statistics') }}" class="menu-link">
                         <div data-i18n="Blank">Statistics</div>
                     </a>
                 </li>
@@ -83,19 +83,19 @@
             <span class="menu-header-text">Manage & Controls </span>
         </li>
         <!-- Orders Start -->
-        <li class="menu-item">
+        <li class="menu-item {{ $title == 'Orders-Add'? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-food-menu"></i>
                 <div class="lead" data-i18n="Invoice">Ordes</div>
             </a>
             <ul class="menu-sub lead">
-                <li class="menu-item">
-                    <a href="app-invoice-add.html" class="menu-link">
+                <li class="menu-item {{ $title == 'Orders-Add' ? 'active' : '' }}">
+                    <a href="{{ route('orders-add') }}" class="menu-link">
                         <div data-i18n="Add">Add</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="app-invoice-list.html" class="menu-link">
+                <li class="menu-item  {{ $title == 'Orders-ListAll'? 'active' : '' }}">
+                    <a href="{{ route('orders-listall') }}" class="menu-link">
                         <div data-i18n="List">List All</div>
                     </a>
                 </li>

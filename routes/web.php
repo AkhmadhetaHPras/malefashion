@@ -5,14 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard',['title' => 'Dashboard']);
-})->name('dashboard');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
-
 // guest
 Route::get('/', function () {
     return view('home', ['title' => 'Home']);
@@ -34,16 +26,13 @@ Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact']);
 })->name('contact');
 
-Route::post('/signin', [LoginController::class, 'authenticate'])->name('signin');
-
 Route::get('/signup', [RegisterController::class, 'index'])->name('signup');
-Route::post('/signup', [RegisterController::class, 'register'])->name('signup.register');
 
 
 // AUTHENTICATED
 Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('/profile-fetch', [ProfileController::class, 'fetch'])->name('profile.fetch');
+    Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/myorders', function () {
         return view('myorders', ['title' => 'MyOrders']);
@@ -62,9 +51,22 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
 
 // ADMIN
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {
-    Route::get('/test', function () {
-        return view('welcome');
-    });
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard', ['title' => 'Dashboard']);
+    })->name('dashboard');
+});
+
+// AJAX REQUEST
+Route::group(['middleware' => ['ajax']], function () {
+    // header component
+    Route::post('/signup', [RegisterController::class, 'register']);
+    Route::post('/signin', [LoginController::class, 'authenticate']);
+
+    // profile page
+    Route::get('/profile-fetch', [ProfileController::class, 'fetch']);
+    Route::put('/profile-credentials/{id}', [ProfileController::class, 'updatecredentials']);
+    Route::post('/address', [ProfileController::class, 'newaddress']);
+    Route::delete('/address/{id}', [ProfileController::class, 'deladdress']);
 });
 
 // UNAUTHORIZED
@@ -76,4 +78,3 @@ Route::get('/unauthorized', function () {
 Route::fallback(function () {
     return view('404', ['title' => '404']);
 });
-

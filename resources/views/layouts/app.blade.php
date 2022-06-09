@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Male_Fashion" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="keywords" content="Male_Fashion" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

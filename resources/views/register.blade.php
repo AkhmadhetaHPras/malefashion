@@ -138,7 +138,6 @@
                 data: data,
                 dataType: "json",
                 success: function(response) {
-                    console.log(response);
                     if (response.status == 400) {
                         // gagal
                         $('#signupresponse').html("");

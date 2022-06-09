@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-<<<<<<< HEAD
 // Dashboard Admin Routes
 Route::get('/dashboard', function () {
     return view('admin.dashboard',['title' => 'Dashboard']);
@@ -88,8 +87,6 @@ Route::get('/404-error', function () {
 
 
 // ========================== ************ ===========================
-=======
->>>>>>> 308fd65460985ebcd98ee319762c6bd68976c92c
 
 // guest
 Route::get('/', function () {

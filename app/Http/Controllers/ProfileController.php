@@ -146,7 +146,15 @@ class ProfileController extends Controller
 
     public function deladdress($id)
     {
+        $addressfirst = Address::where('user_id', Auth::user()->id)->first();
+
         $address = Address::find($id);
+        if ($addressfirst->id == $address->id) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'First address can not be deleted.',
+            ]);
+        }
         if ($address) {
             $address->delete();
             return response()->json([

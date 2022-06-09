@@ -10,34 +10,83 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard',['title' => 'Dashboard']);
 })->name('dashboard');
 
-Route::get('/analitycs-profit', function () {
-    return view('admin.an-profit',['title' => 'Analytics-Profit']);
-})->name('analytics-profit');
+Route::prefix('analitycs')->group(function() {
+    Route::get('/profit', function () {
+        return view('admin.an-profit',['title' => 'Analytics-Profit']);
+    })->name('analytics-profit');
+    
+    Route::get('/sales', function () {
+        return view('admin.an-sales',['title' => 'Analytics-Sales']);
+    })->name('analytics-sales');
+    
+    Route::get('/statistics', function () {
+        return view('admin.an-statistics',['title' => 'Analytics-Statistics']);
+    })->name('analytics-statistics');
+});
 
-Route::get('/analitycs-sales', function () {
-    return view('admin.an-sales',['title' => 'Analytics-Sales']);
-})->name('analytics-sales');
+// Order Routes
+Route::prefix('orders')->group(function () {
+    Route::get('/add', function () {
+        return view('admin.app-order-add',['title' => 'Orders-Add']);
+    })->name('orders-add');
 
-Route::get('/analitycs-statistics', function () {
-    return view('admin.an-statistics',['title' => 'Analytics-Statistics']);
-})->name('analytics-statistics');
+    Route::get('/listall', function () {
+        return view('admin.app-order-list',['title' => 'Orders-ListAll']);
+    })->name('orders-listall');
 
-Route::get('/orders-add', function () {
-    return view('admin.app-order-add',['title' => 'Orders-Add']);
-})->name('orders-add');
+    Route::get('/view', function () {
+        return view('admin.app-order-view',['title' => 'Orders-View']);
+    })->name('orders-view');
 
-Route::get('/orders-listall', function () {
-    return view('admin.app-order-list',['title' => 'Orders-ListAll']);
-})->name('orders-listall');
+    Route::get('/edit', function () {
+        return view('admin.app-order-edit',['title' => 'Orders-Edit']);
+    })->name('orders-edit');
+});
 
-Route::get('/orders-view', function () {
-    return view('admin.app-order-view',['title' => 'Orders-View']);
-})->name('orders-view');
+//Product Routes 
+Route::prefix('products')->group(function() {
+    Route::get('/add', function () {
+        return view('admin.app-product-add',['title' => 'Products-Add']);
+    })->name('products-add');
+    
+    Route::get('/listall', function () {
+        return view('admin.app-product-list',['title' => 'Products-ListAll']);
+    })->name('products-listall');
+    
+    Route::get('/view', function () {
+        return view('admin.app-product-view',['title' => 'Products-View']);
+    })->name('products-view');
 
-Route::get('/orders-edit', function () {
-    return view('admin.app-order-edit',['title' => 'Orders-Edit']);
-})->name('orders-edit');
+    Route::get('/edit', function () {
+        return view('admin.app-product-edit',['title' => 'Products-Edit']);
+    })->name('products-edit');
+});
 
+//User Routes 
+Route::prefix('users')->group(function() {
+    Route::get('/add', function () {
+        return view('admin.app-user-add',['title' => 'Users-Add']);
+    })->name('users-add');
+    
+    Route::get('/listall', function () {
+        return view('admin.app-user-list',['title' => 'Users-ListAll']);
+    })->name('users-listall');
+    
+    Route::get('/view', function () {
+        return view('admin.app-user-view',['title' => 'Users-View']);
+    })->name('users-view');
+
+    Route::get('/edit', function () {
+        return view('admin.app-user-edit',['title' => 'Users-Edit']);
+    })->name('users-edit');
+});
+
+Route::get('/404-error', function () {
+    return view('admin.under-maintenance',['title' => '404-error']);
+})->name('404-error');
+
+
+// ========================== ************ ===========================
 
 // guest
 Route::get('/', function () {

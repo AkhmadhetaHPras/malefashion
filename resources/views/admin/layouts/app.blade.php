@@ -29,7 +29,7 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('admin/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
     <link rel="stylesheet" href="{{asset('admin/vendor/libs/sweetalert2/sweetalert2.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/vendor/libs/select2/select2.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('admin/vendor/libs/select2/select2.css')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/vendor/libs/typeahead-js/typeahead.css')}}">
     <link rel="stylesheet" href="{{asset('admin/vendor/libs/formvalidation/formValidation.min.css')}}">
 
@@ -47,7 +47,7 @@
 
 <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar lead">
+    <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
 
             <!-- Menu -->
@@ -143,7 +143,7 @@
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
-                <div class="content-wrapper lead">
+                <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -178,7 +178,7 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{asset('admin/vendor/libs/select2/select2.js')}}"></script>
+    <!-- <script src="{{asset('admin/vendor/libs/select2/select2.js')}}"></script> -->
     <script src="{{asset('admin/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/formvalidation/FormValidation.min.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/formvalidation/Bootstrap5.min.js')}}"></script>

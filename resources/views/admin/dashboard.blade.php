@@ -252,7 +252,7 @@
         <div class="card h-100">
           <div style="padding-bottom: 1px;" class="card-header d-flex align-items-center justify-content-between">
             <h5 class="card-title m-0 me-2">
-              <img src="/img/icons/unicons/winner.png" alt="Oneplus" height="32" width="32">
+              <img src="{{asset('admin/img/icons/unicons/winner.png')}}" alt="Oneplus" height="32" width="32">
               Best Products
             </h5>
             <div class="dropdown">
@@ -267,13 +267,13 @@
             </div>
           </div>
           <div class="card-body">
-            <table class="table text-nowrap">
+            <table class="table">
               <thead>
                 <tr>
                   <th>Product</th>
                   <th>Category</th>
                   <th>Payment</th>
-                  <th>Order Status</th>
+                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>

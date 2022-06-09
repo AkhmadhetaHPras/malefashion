@@ -20,7 +20,7 @@
               </select></label></div>
           <div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start mt-md-0 mt-3">
             <div class="dt-buttons">
-              <button class="dt-button btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" onclick="location.href='app-invoice-add.html'">
+              <button class="dt-button btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" onclick="location.href='/orders/add'">
                 <span>
                   <i class="bx bx-plus me-md-2"></i>
                   <span class="d-md-inline-block d-none">Create Invoice</span>
@@ -57,13 +57,13 @@
             </th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 36px;" aria-label=": activate to sort column ascending"><i class="bx bx-trending-up"></i>
             </th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 250px;" aria-label="Client: activate to sort column ascending">Client
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 250px;" aria-label="Client: activate to sort column ascending">Username
             </th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 64px;" aria-label="Total: activate to sort column ascending">Total
             </th>
             <th class="text-truncate sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 120px;" aria-label="Issued Date: activate to sort column ascending">Issued Date
             </th>
-            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 88px;" aria-label="Balance">Balance</th>
+            <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 88px;" aria-label="Balance">Status</th>
             <th class="cell-fit sorting_disabled" rowspan="1" colspan="1" style="width: 78px;" aria-label="Actions">Actions</th>
           </tr>
         </thead>
@@ -98,9 +98,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -140,7 +140,7 @@
             </td>
             <td><span class="d-none">2230</span>$2230</td>
             <td><span class="d-none">20201119</span>19 Nov 2020</td>
-            <td><span class="badge bg-label-success"> Paid </span></td>
+            <td><span class="badge bg-label-warning"> On Process </span></td>
             <td>
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>

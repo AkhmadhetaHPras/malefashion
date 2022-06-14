@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('slug', 100);
             $table->foreignId('brand_id')->constrained();
             $table->foreignId('category_id')->constrained();
-            $table->string('product_name', 100);
+            $table->string('product_name', 100)->unique();
             $table->unsignedBigInteger('price');
             $table->string('yt_link');
             $table->text('description');

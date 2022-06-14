@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('price');
             $table->string('yt_link');
             $table->text('description');
-            $table->string('short_desc');
+            $table->text('short_desc');
             $table->string('tags', 100);
             $table->unsignedTinyInteger('rating');
             $table->string('thumbnail');

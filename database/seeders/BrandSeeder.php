@@ -15,7 +15,22 @@ class BrandSeeder extends Seeder
     public function run()
     {
         $datas = [
-            []
+            [
+                'id' => '1',
+                'name' => 'Adidas Neo',
+            ],
+            [
+                'id' => '2',
+                'name' => 'Adidas Originals',
+            ],
+            [
+                'id' => '3',
+                'name' => 'Stella Mccartney',
+            ],
+            [
+                'id' => '4',
+                'name' => 'Athletics',
+            ],
         ];
 
         Brand::insert($datas);

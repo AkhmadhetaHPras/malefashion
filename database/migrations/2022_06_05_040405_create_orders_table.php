@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('address_id')->constrained();
             $table->unsignedBigInteger('total');
             $table->date('order_date');
-            $table->date('delivery_date');
+            $table->date('delivery_date')->nullable();
             $table->string('note', 100);
             $table->string('status', 50);
             $table->timestamps();

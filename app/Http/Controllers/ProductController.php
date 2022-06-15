@@ -26,7 +26,7 @@ class ProductController extends Controller
 
         // reviews and size
         $p = Product::where('slug', $slug)->with('review', 'variant')->first();
-        $relatedproduct = Category::find($p->category_id)->with('product')->first();
+        $relatedproduct = Category::find($p->category_id);
 
         return view('shop-detail', compact('title', 'p', 'relatedproduct'));
     }

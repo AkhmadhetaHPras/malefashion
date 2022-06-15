@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
@@ -39,9 +40,7 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
         return view('myorders', ['title' => 'MyOrders']);
     })->name('myorders');
 
-    Route::get('/cart', function () {
-        return view('shop-cart', ['title' => 'Shop']);
-    })->name('cart');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
     Route::get('/checkout', function () {
         return view('checkout', ['title' => 'Shop']);
@@ -142,6 +141,7 @@ Route::group(['middleware' => ['ajax']], function () {
     Route::post('/signin', [LoginController::class, 'authenticate']);
 
     // shop page
+    Route::post('/cart/{id}', [CartController::class, 'addtocart']);
 
     // shop detail page
     Route::get('/stock-fetch/{id}', [VariantController::class, 'getstock']);

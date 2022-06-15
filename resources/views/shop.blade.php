@@ -100,7 +100,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6>{{ $p->product_name }}</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                <a href="#" class="add-cart" onclick='addtocart("{{$p->variant->first()->id}}")'>+ Add To Cart</a>
                                 <div class="rating">
                                     @for($i = 0; $i < $p->rating; $i++)
                                         <i class="fa fa-star"></i>

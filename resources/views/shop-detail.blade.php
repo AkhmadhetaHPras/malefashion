@@ -95,9 +95,10 @@
                                 <span>Size:</span>
                                 @foreach($p->variant()->get() as $v)
                                 <label for="{{ $v->size }}">{{ $v->size }}
-                                    <input type="radio" id="{{ $v->size }}" />
+                                    <input type="radio" id="{{ $v->size }}" value="{{ $v->id }}" name="size" />
                                 </label>
                                 @endforeach
+                                <span class="ml-3">Stock: <span class="stock" id="stock">0</span></span>
                             </div>
                         </div>
                         <div class="product__details__cart__option">
@@ -262,4 +263,29 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('input[type=radio][name=size]').change(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var id = $('input[type=radio][name=size]:checked').val();
+            $.ajax({
+                type: "get",
+                url: "/stock-fetch/" + id,
+                data: id,
+                dataType: "json",
+                success: function(response) {
+                    $(".pro-qty input").val(1);
+                    $('.stock#stock').text(response.stock);
+                }
+            });
+        });
+    });
+</script>
 @endsection

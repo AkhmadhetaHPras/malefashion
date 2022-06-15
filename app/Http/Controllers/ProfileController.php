@@ -42,7 +42,7 @@ class ProfileController extends Controller
         if ($validator1->fails()) {
             return Redirect::back()
                 ->withErrors($validator1)
-                ->with('error_code', 5);
+                ->with('error_code', 6);
         }
 
         // get data pengurus

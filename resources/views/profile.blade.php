@@ -480,7 +480,7 @@
     });
 </script>
 
-@if(!empty(Session::get('error_code')) && Session::get('error_code') == 5)
+@if(!empty(Session::get('error_code')) && Session::get('error_code') == 6)
 @section('script')
 <script>
     $(function() {

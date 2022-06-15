@@ -6282,6 +6282,20 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
   background: #ebeef0;
 }
 
+.btn-label-secondary:hover{
+  border-color: transparent;
+  background: #788393;
+  color: #fff;
+  box-shadow: 0 .125rem .25rem 0 rgba(133,146,163,.4);
+  transform: translateY(-1px);
+}
+
+.btn-label-secondary:active{
+  color: #fff;
+  background-color: #717c8b;
+  border-color: transparent;
+}
+
 .btn-label-danger{
   color: #ff3e1d;
   border-color: transparent;

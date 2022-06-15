@@ -28,6 +28,22 @@
         <div class="loader"></div>
     </div>
 
+    <!-- modal notification -->
+    <div class="modal fade" id="modalnotification" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalnotificationtitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalnotificationbody">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- NAVIGATION -->
     <div class="offcanvas-menu-overlay"></div>
 
@@ -52,8 +68,8 @@
             <a href="#" class="search-switch"><i class="fa fa-search text-dark"></i></a>
             @auth
             <a href="{{ route('cart') }}"><i class="icon_cart_alt text-dark font-weight-bold"></i>
-                <span class="badge rounded-pill bg-warning text-dark">0</span></a>
-            <div class="price">$0.00</div>
+                <span class="badge rounded-pill bg-warning text-dark">{{ auth()->user()->cartitem->count() }}</span></a>
+            <div class="price">Rp. {{ auth()->user()->cartitem->sum('subtotal') }}</div>
             <span class="dropdown ml-3">
                 <span id="dLabel" type="button" data-toggle="dropdown" aria-expanded="false">
                     <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
@@ -141,8 +157,8 @@
 
                         @auth
                         <a href="{{ route('cart') }}"><i class="icon_cart_alt text-dark font-weight-bold"></i>
-                            <span class="badge rounded-pill bg-warning text-dark">0</span></a>
-                        <div class="price mr-2">$0.00</div>
+                            <span class="badge rounded-pill bg-warning text-dark">{{ auth()->user()->cartitem->count() }}</span></a>
+                        <div class="price mr-2">Rp. {{ auth()->user()->cartitem->sum('subtotal') }}</div>
                         <span class="dropdown">
                             <span id="dLabel" type="button" data-toggle="dropdown" aria-expanded="false">
                                 <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
@@ -377,6 +393,35 @@
         });
     </script>
 
+    <script>
+        function addtocart(id) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "post",
+                url: "/cart/" + id,
+                data: id,
+                dataType: "json",
+                success: function(response) {
+                    $('.price').text(response.total);
+                    $('.badge.rounded-pill.bg-warning.text-dark').text(response.nitem);
+                    $('#modalnotification #modalnotificationtitle').text("Cart");
+                    $('#modalnotification #modalnotificationbody').html("<div class='alert alert-success' role='alert'>Item successfully added to cart</div>");
+                    $('#modalnotification').modal('show');
+                    setTimeout(function() {
+                        $('#modalnotification').modal('hide');
+                    }, 4000);
+
+                },
+                error: function(response) {
+                    $('#signinmodal').modal('show');
+                }
+            });
+        }
+    </script>
     @if(!empty(Session::get('error_code')) && Session::get('error_code') == 5)
     <script>
         $(function() {

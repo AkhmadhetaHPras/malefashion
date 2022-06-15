@@ -8,8 +8,8 @@
                 <div class="breadcrumb__text">
                     <h4>Shopping Cart</h4>
                     <div class="breadcrumb__links">
-                        <a href="./index.html">Home</a>
-                        <a href="./shop.html">Shop</a>
+                        <a href="{{ route('home') }}">Home</a>
+                        <a href="{{ route('shop') }}">Shop</a>
                         <span>Shopping Cart</span>
                     </div>
                 </div>
@@ -34,27 +34,29 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($cartitems as $c)
                             <tr>
                                 <td class="product__cart__item">
                                     <div class="product__cart__item__pic">
-                                        <img src="img/product/product-2.jpg" alt="" width="90px" />
+                                        <img src="{{ asset('storage/'.$c->variant->product->thumbnail) }}" alt="" width="90px" />
                                     </div>
                                     <div class="product__cart__item__text">
-                                        <h6>T-shirt Contrast Pocket</h6>
-                                        <h5>$98.49</h5>
+                                        <h6>{{ $c->variant->product->product_name }}</h6>
+                                        <h5>Rp. {{ $c->variant->product->price }}</h5>
                                     </div>
                                 </td>
                                 <td class="quantity__item">
                                     <div class="quantity">
                                         <div class="pro-qty-2">
-                                            <input type="text" value="1" />
+                                            <input type="text" value="{{ $c->quantity }}" />
                                         </div>
                                     </div>
                                 </td>
-                                <td class="cart__price">$ 30.00</td>
+                                <td class="cart__price">Rp. {{ $c->subtotal }}</td>
                                 <td class="cart__close"><i class="fa fa-close"></i></td>
                             </tr>
-                            <tr>
+                            @endforeach
+                            <!-- <tr>
                                 <td class="product__cart__item">
                                     <div class="product__cart__item__pic">
                                         <img src="img/product/product-3.jpg" alt="" width="90px" />
@@ -113,14 +115,14 @@
                                 </td>
                                 <td class="cart__price">$ 30.00</td>
                                 <td class="cart__close"><i class="fa fa-close"></i></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn">
-                            <a href="#">Continue Shopping</a>
+                            <a href="{{ route('shop') }}">Continue Shopping</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -134,8 +136,7 @@
                 <div class="cart__total">
                     <h6>Cart total</h6>
                     <ul>
-                        <li>Subtotal <span>$ 169.50</span></li>
-                        <li>Total <span>$ 169.50</span></li>
+                        <li>Total <span>Rp. {{ $cartitems->sum('subtotal') }}</span></li>
                     </ul>
                     <a href="#" class="primary-btn">Proceed to checkout</a>
                 </div>

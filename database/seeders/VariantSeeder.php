@@ -411,6 +411,12 @@ class VariantSeeder extends Seeder
                 'size' => 'XS',
                 'stock' => '7',
             ],
+            [
+                'id' => '67',
+                'product_id' => '14',
+                'size' => 'NS',
+                'stock' => '18',
+            ],
         ];
 
         Variant::insert($datas);

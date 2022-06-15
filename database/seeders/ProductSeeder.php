@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '1',
                 'product_name' => 'Bucket Hat',
                 'slug' => 'bucket-hat',
-                'yt_link' => 'https://youtu.be/BJJxOiQdSXg',
+                'yt_link' => 'http://www.youtube.com/watch?v=BJJxOiQdSXg',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa molestiae doloremque eius tempore debitis maiores voluptate quasi accusantium commodi laboriosam?</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>A FUZZY  FAUX FUR BUCKET HAT WITH A METALLIC-GOLD SIGNOFF.The bucket hat has been making an impression since the 90s  and the style isnt going anywhere. This adidas version makes that extra clear in faux fur for a statement look. </p></div><div class="product__details__tab__content__item"><h5>Spesification</h5><p>100% polyester fur</p></div></div>',
                 'short_desc' => 'The bucket hat has been making an impression since the 90s, and the style isnt going anywhere. This adidas version makes that extra clear in faux fur for a statement look.',
                 'price' => 279500,
@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '1',
                 'product_name' => 'Manchester United Bottle 750 Ml',
                 'slug' => 'manchester-united-bottle-750-ml',
-                'yt_link' => 'https://youtu.be/js8Qg-wh9Fc',
+                'yt_link' => 'http://www.youtube.com/watch?v=js8Qg-wh9Fc',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, assumenda. Impedit corporis explicabo cumque, accusantium rerum esse id laudantium a vitae eum laborum nam rem ad doloremque ducimus distinctio repudiandae reprehenderit eos ipsa ea hic veniam? Nulla sunt accusantium quae quas odio! Ducimus magnam, fugit aliquam tempora nobis saepe sequi?</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>MANCHESTER UNITED BOTTLE 750 ML. A BOTTLE THAT SHOWS YOU STAND WITH MAN UNITED. Stay hydrated when youre working out like your heroes from Old Trafford. This adidas football Manchester United Bottle combines an easy grip with handy volume measurements on the side. Dishwasher-safe  its also BPA-free so you only get the good stuff when you take a gulp.</p></div><div class="product__details__tab__content__item"><h5>Spesification</h5><p>Volume: 750 mL<br>Screw top with pull spout<br>BPA-free<br>100% polyethylene injection-moulded<br>Printed measurements on side</p></div></div>',
                 'short_desc' => 'Stay hydrated when youre working out like your heroes from Old Trafford. This adidas football Manchester United Bottle combines an easy grip with handy volume measurements on the side. Dishwasher-safe  its also BPA-free  so you only get the good stuff when you take a gulp.',
                 'price' => 130000,
@@ -57,7 +57,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '1',
                 'product_name' => 'Face Mask - Nonmedis',
                 'slug' => 'face-mask-nonmedis',
-                'yt_link' => 'https://youtu.be/9FQjoIoPTVw',
+                'yt_link' => 'http://www.youtube.com/watch?v=9FQjoIoPTVw',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, assumenda. Impedit corporis explicabo cumque, accusantium rerum esse id laudantium a vitae eum laborum nam rem ad doloremque ducimus distinctio repudiandae reprehenderit eos ipsa ea hic veniam? Nulla sunt accusantium quae quas odio! Ducimus magnam, fugit aliquam tempora nobis saepe sequi?</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>FACE COVER - NOT FOR MEDICAL USE HELP PROTECT YOUR COMMUNITY IN THIS FACE COVERING.Through the hard times and the good  we pull together as a community. Be a team player and help stop the spread in this adidas face covering. The soft  flexible fabric allows for easy breathing. Its reusable too so you can cut down on waste by tossing it in the wash</p></div><div class="product__details__tab__content__item"><h5>Spesification</h5><p>Main: 93% recycled polyester  7% elastane spacer<br>Not for medical use<br>Inner lining: 92% recycled polyester 8% elastane mesh<br>Product code: HC4701<br>Sizing Advice (Nosebone to Ear Measurement): 14cm - 15cm  Size M<br>Sizing Advice (Nosebone to Ear Measurement): 15cm - 16cm  Size XL<br>Sizing Advice (Nosebone to Ear Measurement): 16cm - 17cm  Size 3XL</p></div></div>',
                 'short_desc' => 'Stay hydrated when youre working out like your heroes from Old Trafford. This adidas football Manchester United Bottle combines an easy grip with handy volume measurements on the side. Dishwasher-safe  its also BPA-free  so you only get the good stuff when you take a gulp.',
                 'price' => 156000,
@@ -75,7 +75,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '1',
                 'product_name' => 'Performance Bottle 750 ml',
                 'slug' => 'performance-bottle-750-ml',
-                'yt_link' => 'https://youtu.be/iNG0qdTNkOg',
+                'yt_link' => 'http://www.youtube.com/watch?v=iNG0qdTNkOg',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, assumenda.ad doloremque ducimus distinctio repudiandae reprehenderit eos ipsa ea hic veniam? Nulla sunt accusantium quae quas odio! Ducimus magnam, fugit aliquam tempora nobis saepe sequi?</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>PERFORMANCE BOTTLE 750 ML
                 A BPA-FREE WATER BOTTLE THAT MAKES IT EASY TO TRACK HOW MUCH WATER YOU DRINK.
                 Drinking enough water? Youll know with the adidas Performance Bottle  thanks to side volume measurements that make it easy to track your intake. Simple to hold  squeeze and fill. Just toss it in the dishwasher after every use  and its ready to go again.
@@ -100,7 +100,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '1',
                 'product_name' => 'Golf Hat Wide-Brim Sun',
                 'slug' => 'golf-hat-wide-brim-sun',
-                'yt_link' => 'https://youtu.be/MztXakbIG9w',
+                'yt_link' => 'http://www.youtube.com/watch?v=MztXakbIG9w',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, assumenda.ad doloremque ducimus distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora nobis saepe sequi?</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>WIDE-BRIM GOLF SUN HAT A SUN HAT FOR THE LINKS  MADE WITH RECYCLED CONTENT. Throw some shade on your game. This adidas golf hat has a wide brim to keep the suns rays off your face and neck while moisture-absorbing AEROREADY keeps you dry. Adjust the drawcord when a breeze comes up  and swing for the pin. Made with recycled content generated from production waste  e.g. cutting scraps  and post-consumer household waste to avoid the larger environmental impact of producing virgin content.</p></div><div class="product__details__tab__content__item"><h5>Spesification</h5><p>One size fits most<br>
                 Moisture-absorbing AEROREADY<br>
                 Drawcord with toggle<br>
@@ -123,7 +123,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '4',
                 'product_name' => 'Lite Racer Adapt 4.0 Shoes',
                 'slug' => 'lite-racer-adapt-4.0-shoes',
-                'yt_link' => 'https://youtu.be/RY8A5fxwFLE',
+                'yt_link' => 'http://www.youtube.com/watch?v=RY8A5fxwFLE',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora nobis saepe sequi?</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>LITE RACER ADAPT 4.0 SHOES
                 SLIP-ON SHOES WITH RUNNING STYLE.
                 Casual style thats easy to get on and off. Youll want to wear these adidas shoes every day of the week. Inspired by classic running looks  these shoes have a bold adidas graphic on the midfoot band. A mesh upper adds breathability  and the Cloudfoam midsole is ultra comfortable.This product is made with Primegreen  a series of high-performance recycled materials. 50% of upper is recycled content. No virgin polyester.</p></div><div class="product__details__tab__content__item"><h5>Spesification</h5><p>Sock-like fit<br>
@@ -150,7 +150,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '4',
                 'product_name' => 'Questar Flow Nxt Shoes',
                 'slug' => 'questar-flow-nxt-shoes',
-                'yt_link' => 'https://youtu.be/Tp6Blo_8QOU',
+                'yt_link' => 'http://www.youtube.com/watch?v=Tp6Blo_8QOU',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora nobis saepe sequi?</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>QUESTAR FLOW NXT SHOES
                 SNEAKERS FIT TO BE YOUR DAILY DRIVERS.
                 With clean design and a comfort-forward build  these adidas shoes slide right into your daily rotation. Theyre lightweight and breathable  thanks to the knit mesh upper. The Cloudfoam sole feels like walking on fluffy clouds all day. A moulded heel counter provides stability.
@@ -177,7 +177,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '4',
                 'product_name' => 'Humanrace Sichona Shoes',
                 'slug' => 'humanrace-sichona-shoes',
-                'yt_link' => 'https://youtu.be/el4r0LSxM5I',
+                'yt_link' => 'http://www.youtube.com/watch?v=el4r0LSxM5I',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>HUMANRACE SICHONA SHOES
                 A BOLD NEW SILHOUETTE FROM ADIDAS X PHARRELL WILLIAMS.
                 Everything Pharrell touches is an exploration and celebration of humanity. In his latest collaboration with adidas  the Humanrace Sichona Shoes are a canvas for self-expression. They have an ultraflexible and seamless adidas Primeknit upper with Futurenatural  which allows you to move freely in any direction in comfort. Distinctive knit patterns decorate the toe  heel and sides and a "Humanrace" signoff completes the look.</p></div><div class="product__details__tab__content__item"><h5>Spesification</h5><p>Lace closure<br>
@@ -202,7 +202,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '4',
                 'product_name' => 'Predator Edge.3 Laceless Firm Ground',
                 'slug' => 'predator-edge.3-laceless-firm-ground',
-                'yt_link' => 'https://youtu.be/h39gWcsYbas',
+                'yt_link' => 'http://www.youtube.com/watch?v=h39gWcsYbas',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>PREDATOR EDGE.3 LACELESS FIRM GROUND
                 LACELESS  CONTROL-ENHANCING BOOTS MADE IN PART WITH RECYCLED CONTENT.
                 Swerve. Power. Control. When you have the edge  the pitch is full of possibilities. See the beautiful game from a brand-new angle in adidas Predator. These laceless football boots help you dominate the ball with a Control Zone upper containing strategically placed areas of grip-enhancing print. The striking faceted outsole keeps you in charge on firm ground. Made in part with recycled content generated from production waste  e.g. cutting scraps  and post-consumer household waste to avoid the larger environmental impact of producing virgin content.
@@ -228,7 +228,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '4',
                 'product_name' => 'Rebelcross Spikeless Golf Shoes',
                 'slug' => 'rebelcross-spikeless-golf-shoes',
-                'yt_link' => 'https://youtu.be/3vtf26aHZdg',
+                'yt_link' => 'http://www.youtube.com/watch?v=3vtf26aHZdg',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>REBELCROSS SPIKELESS GOLF SHOES
                 SPIKELESS GOLF SHOES FOR PERFORMANCE AND VERSATILITY  MADE IN PART WITH RECYCLED CONTENT.
                 Call these adidas golf shoes the ultimate crossover. Taking performance and versatility to a whole new level  they feature a BOOST and Lightstrike hybrid midsole that delivers lightweight cushioning and energy return through 18 holes and beyond. The Gripmore outsole offers maximum traction on the course while the Adiwear rubber provides spikeless comfort for post-round wear. Welcome to your new favourite shoe.                
@@ -254,7 +254,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '2',
                 'product_name' => 'Essentials Logo Duffel Bag Extra Small',
                 'slug' => 'essentials-logo-duffel-bag-extra-small',
-                'yt_link' => 'https://youtu.be/nGVd0HGTDVo',
+                'yt_link' => 'http://www.youtube.com/watch?v=nGVd0HGTDVo',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>ESSENTIALS LOGO DUFFEL BAG EXTRA SMALL
                 A STYLISH DUFFEL SIZED TO FIT YOUR WORKOUT NECESSITIES.
                 From socks to shoes  shirt to shorts  store your workout basics in this sleek adidas duffel bag. Stash your small stuff in the zip pocket so you never have to dig around in sweaty gym clothes to find your keys. The easy-to-clean  coated material protects it from dirt and grime. This product is made with Primegreen  a series of high-performance recycled materials.                                
@@ -280,7 +280,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '2',
                 'product_name' => 'Adicolor Classic Festival Bag',
                 'slug' => 'adicolor-classic-festival-bag',
-                'yt_link' => 'https://youtu.be/wPnUz9TCzRE',
+                'yt_link' => 'http://www.youtube.com/watch?v=wPnUz9TCzRE',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>ADICOLOR CLASSIC FESTIVAL BAG
                 A VERSATILE  CONVENIENT FESTIVAL BAG MADE IN PART WITH RECYCLED MATERIALS.
                 Get your groove on without worrying about your essentials. Zip and go hands-free with this adidas festival bag. The webbing strap easily clips on and off so you can carry it as a clutch or a crossbody bag. OG Trefoil logos keep it classic. Made with a series of recycled materials  and at least 60% recycled content  this product represents just one of our solutions to help end plastic waste.                                
@@ -306,7 +306,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '2',
                 'product_name' => 'Go-To Waist Pouch',
                 'slug' => 'go-to-waist-pouch',
-                'yt_link' => 'https://youtu.be/Af5V1iSbz14',
+                'yt_link' => 'http://www.youtube.com/watch?v=Af5V1iSbz14',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>GO-TO WAIST POUCH
                 A GOLF WAIST POUCH WITH ORGANISING POCKETS  MADE IN PART WITH RECYCLED CONTENT.
                 Keep your small essentials close by on the course with this adidas golf waist pouch. The two-way zip ensures easy access. A front zip pocket and inner mesh compartments make it simple to organise your things so you can focus on your game. Made in part with recycled content generated from production waste  e.g. cutting scraps  and post-consumer household waste to avoid the larger environmental impact of producing virgin content.                                
@@ -333,7 +333,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '2',
                 'product_name' => 'Mesh Classic Backpack',
                 'slug' => 'mesh-classic-backpack',
-                'yt_link' => 'https://youtu.be/nGVd0HGTDVo',
+                'yt_link' => 'http://www.youtube.com/watch?v=nGVd0HGTDVo',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>MESH CLASSIC BACKPACK
                 A BACKPACK WITH AN INNER LAPTOP POCKET  MADE IN PART WITH RECYCLED CONTENT.
                 A classic go-to staple gets a material upgrade in this adidas backpack. Mesh on the front zip pocket adds a pop of polished  breathable style. A big adidas Badge of Sport out front stamps the look with iconic sporty cred. Made in part with recycled content generated from production waste  e.g. cutting scraps  and post-consumer household waste to avoid the larger environmental impact of producing virgin content.                                
@@ -360,7 +360,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '2',
                 'product_name' => 'Adidas Adventure Backpack Small',
                 'slug' => 'adidas-adventure-backpack-small',
-                'yt_link' => 'https://youtu.be/u2g98Zd3K7Y',
+                'yt_link' => 'http://www.youtube.com/watch?v=u2g98Zd3K7Y',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>ADIDAS ADVENTURE BACKPACK SMALL
                 A COMFY BACKPACK WITH A THROWBACK &#039;90S LOOK.
                 Small backpack. Big adventure vibes. No matter where you plan to explore next  youre ready to do it in style with this adidas backpack. Inspired by archival outdoor gear  its made of durable ripstop fabric with multiple compartments for your essentials. Adventure here you come. This product is made with recycled content as part of our ambition to end plastic waste.                                
@@ -388,7 +388,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '3',
                 'product_name' => 'Statement Heat.Rdy V-Neck Short Sleeve Shirt',
                 'slug' => 'statement-heat.rdy-v-neck-short-sleeve-shirt',
-                'yt_link' => 'https://youtu.be/PqxtwrUDDlA',
+                'yt_link' => 'http://www.youtube.com/watch?v=PqxtwrUDDlA',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>STATEMENT HEAT.RDY V-NECK SHORT SLEEVE SHIRT
                 A V-NECK GOLF POLO SHIRT MADE WITH PARLEY OCEAN PLASTIC.
                 Make a statement on the course. This adidas golf polo shirt is made with HEAT.RDY to keep you going in hot conditions. The doubleknit build gives it durable comfort. The V-neck design and allover graphic level up your links style.This garment is made with a yarn which contains 50% Parley Ocean Plastic — reimagined plastic waste  intercepted on remote islands  beaches  coastal communities and shorelines  preventing it from polluting our ocean.?This garment contains at least 40% recycled content in total.                                
@@ -414,7 +414,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '3',
                 'product_name' => 'Performance Primegreen Polo Shirt',
                 'slug' => 'performance-primegreen-polo-shirt',
-                'yt_link' => 'https://youtu.be/V_hI-red4xU',
+                'yt_link' => 'http://www.youtube.com/watch?v=V_hI-red4xU',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>PERFORMANCE PRIMEGREEN POLO SHIRT
                 A GOLF POLO SHIRT MADE FOR COMFORT AND STYLE.
                 Whether youre headed to the driving range to work on your form or hitting the links for a round of 18  its important to feel comfortable. Keep your look classic in this adidas golf polo shirt. The stretchy  distraction-free fit ensures you can rotate through every swing of the club with confidence. This product is made with Primegreen  a series of high-performance recycled materials.                                
@@ -439,7 +439,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '3',
                 'product_name' => 'Play Green Spray-Dyed Polo Shirt',
                 'slug' => 'play-green-spray-dyed-polo-shirt',
-                'yt_link' => 'https://youtu.be/2LCNqRj6tJU',
+                'yt_link' => 'http://www.youtube.com/watch?v=2LCNqRj6tJU',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>PLAY GREEN SPRAY-DYED POLO SHIRT
                 A GOLF POLO SHIRT WITH STRETCH  MADE IN PART WITH RECYCLED MATERIALS.
                 Bring laid-back style to your game in this adidas golf polo shirt. The seersucker fabric shows off an all allover spray-dye design for eye-catching style on and off the course. Built-in stretch ensures freedom of movement as you play through your round. Embroidered details on the sleeve complete the look.                                
@@ -465,7 +465,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '3',
                 'product_name' => 'Adicross Caddie T-Shirt',
                 'slug' => 'adicross-caddie-t-shirt',
-                'yt_link' => 'https://youtu.be/vVO9QDIomGE',
+                'yt_link' => 'http://www.youtube.com/watch?v=vVO9QDIomGE',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>ADICROSS CADDIE T-SHIRT
                 A COMFY GOLF T-SHIRT THAT SHOWS YOUR LOVE FOR THE GAME.
                 Give a shoutout to your favourite caddie. This adidas golf t-shirt is made of single jersey cotton for a super-soft feel. Head to the range in comfort  and nail your swing. Our cotton products support more sustainable cotton farming.                                
@@ -490,7 +490,7 @@ class ProductSeeder extends Seeder
                 'category_id' => '3',
                 'product_name' => 'Donovan Mitchell X Xbox Tee',
                 'slug' => 'donovan-mitchell-x-xbox-tee',
-                'yt_link' => 'https://youtu.be/BgASX6-RRH0',
+                'yt_link' => 'http://www.youtube.com/watch?v=BgASX6-RRH0',
                 'description' => '<div class="product__details__tab__content"><p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit aliquam tempora repudiandae reprehenderit eos quas odio! nobis saepe sequi? distinctio repudiandae reprehenderit eos quas odio! Ducimus repudiandae reprehenderit eos quas odio!magnam, fugit distinctio repudiandae reprehenderit eos quas odio! Ducimus magnam, fugit</p><div class="product__details__tab__content__item"><h5>Products Infomation</h5><p>DONOVAN MITCHELL X XBOX TEE
                 A B-BALL T-SHIRT FROM DONOVAN MITCHELL AND XBOX.
                 Basketball and video games have been joined at the hip ever since teammates frequented arcades after practice. This adidas t-shirt is no different. It celebrates Donovan Mitchells love for gaming with a screenprinted chest graphic of Spida and the Xbox logo split into the X  Y  B and A buttons on the controller.Our cotton products support more sustainable cotton farming.                                

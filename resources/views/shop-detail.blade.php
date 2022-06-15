@@ -8,8 +8,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="product__details__breadcrumb">
-                        <a href="./index.html">Home</a>
-                        <a href="./shop.html">Shop</a>
+                        <a href="{{ route('home') }}">Home</a>
+                        <a href="{{ route('shop') }}">Shop</a>
                         <span>Product Details</span>
                     </div>
                 </div>
@@ -21,22 +21,22 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png"></div>
+                                <div class="product__thumb__pic set-bg" data-setbg="{{ asset('storage/'.$p->display1) }}"></div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-2.png"></div>
+                                <div class="product__thumb__pic set-bg" data-setbg="{{ asset('storage/'.$p->display2) }}"></div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-3.png"></div>
+                                <div class="product__thumb__pic set-bg" data-setbg="{{ asset('storage/'.$p->display3) }}"></div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-4.png">
+                                <div class="product__thumb__pic set-bg" data-setbg="{{ asset('storage/'.$p->display4) }}">
                                     <i class="fa fa-play"></i>
                                 </div>
                             </a>
@@ -47,23 +47,23 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__pic__item">
-                                <img src="img/shop-details/thumb-1-big.webp" alt="" />
+                                <img src="{{ asset('storage/'.$p->display1) }}" alt="" />
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="product__details__pic__item">
-                                <img src="img/shop-details/thumb-2-big.webp" alt="" />
+                                <img src="{{ asset('storage/'.$p->display2) }}" alt="" />
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__pic__item">
-                                <img src="img/shop-details/thumb-3-big.webp" alt="" />
+                                <img src="{{ asset('storage/'.$p->display3) }}" alt="" />
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-4" role="tabpanel">
                             <div class="product__details__pic__item">
-                                <img src="img/shop-details/thumb-4-big.webp" alt="" />
-                                <a href="https://www.youtube.com/watch?v=2LCNqRj6tJU" class="video-popup"><i class="fa fa-play"></i></a>
+                                <img src="{{ asset('storage/'.$p->display4) }}" alt="" />
+                                <a href="{{ $p->yt_link }}" class="video-popup"><i class="fa fa-play"></i></a>
                             </div>
                         </div>
                     </div>
@@ -76,37 +76,29 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-8">
                     <div class="product__details__text">
-                        <h4>Hooded thermal anorak</h4>
+                        <h4>{{ $p->product_name }}</h4>
                         <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                            <span> - 5 Reviews</span>
+                            @for($i = 0; $i < $p->rating; $i++)
+                                <i class="fa fa-star"></i>
+                                @endfor
+                                @for($i = 0; $i < 5-$p->rating; $i++)
+                                    <i class="fa fa-star-o"></i>
+                                    @endfor
+                                    <span> - {{ $p->review()->count() }} Reviews</span>
                         </div>
-                        <h3>$270.00 <span>70.00</span></h3>
+                        <h3>Rp. {{ $p->price }}</h3>
                         <p>
-                            Coat with quilted lining and an adjustable hood. Featuring
-                            long sleeves with adjustable cuff tabs, adjustable asymmetric
-                            hem with elastic side tabs and a front zip fastening with
-                            placket.
+                            {{ $p->short_desc }}
                         </p>
                         <div class="product__details__option">
                             <div class="product__details__option__size">
                                 <span>Size:</span>
-                                <label for="xxl">xxl
-                                    <input type="radio" id="xxl" />
+                                @foreach($p->variant()->get() as $v)
+                                <label for="{{ $v->size }}">{{ $v->size }}
+                                    <input type="radio" id="{{ $v->size }}" value="{{ $v->id }}" name="size" />
                                 </label>
-                                <label class="active" for="xl">xl
-                                    <input type="radio" id="xl" />
-                                </label>
-                                <label for="l">l
-                                    <input type="radio" id="l" />
-                                </label>
-                                <label for="sm">s
-                                    <input type="radio" id="sm" />
-                                </label>
+                                @endforeach
+                                <span class="ml-3">Stock: <span class="stock" id="stock">0</span></span>
                             </div>
                         </div>
                         <div class="product__details__cart__option">
@@ -121,8 +113,8 @@
                             <h5><span>Guaranteed Safe Checkout</span></h5>
                             <img src="img/payment.webp" alt="" />
                             <ul>
-                                <li><span>Categories:</span> Clothes</li>
-                                <li><span>Tag:</span> Clothes, Skin, Body</li>
+                                <li><span>Categories:</span> {{ $p->category->category }}</li>
+                                <li><span>Tag:</span> {{ $p->tags }}</li>
                             </ul>
                         </div>
                     </div>
@@ -136,12 +128,13 @@
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-5" role="tab">Description</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer Previews(5)</a>
+                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer Previews({{ $p->review()->count() }})</a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-5" role="tabpanel">
-                                <div class="product__details__tab__content">
+                                {!! $p->description !!}
+                                <!-- <div class="product__details__tab__content">
                                     <p class="note">
                                         Nam tempus turpis at metus scelerisque placerat nulla
                                         deumantos solicitud felis. Pellentesque diam dolor,
@@ -187,35 +180,29 @@
                                             jacket and can be worn all year round.
                                         </p>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="tab-pane" id="tabs-6" role="tabpanel">
                                 <div class="product__details__tab__content">
+                                    @foreach($p->review()->get() as $r)
                                     <div class="product__details__tab__content__item">
-                                        <h5>Products Infomation</h5>
+                                        <h5>{{ $r->user->username }} <span class="ml-3 text-secondary" style="font-size: 14px; font-weight:400;">{{ $r->post_date }}</span></h5>
                                         <p>
-                                            A Pocket PC is a handheld computer, which features
-                                            many of the same capabilities as a modern PC. These
-                                            handy little devices allow individuals to retrieve and
-                                            store e-mail messages, create a contact file,
-                                            coordinate appointments, surf the internet, exchange
-                                            text messages and more. Every product that is labeled
-                                            as a Pocket PC must be accompanied with specific
-                                            software to operate the unit and must feature a
-                                            touchscreen and touchpad.
+                                            {{ $r->review }}
                                         </p>
-                                        <p>
-                                            As is the case with any new technology product, the
-                                            cost of a Pocket PC was substantial during it’s early
-                                            release. For approximately $700.00, consumers could
-                                            purchase one of top-of-the-line Pocket PCs in 2003.
-                                            These days, customers are finding that prices have
-                                            become much more reasonable now that the newness is
-                                            wearing off. For approximately $350.00, a new Pocket
-                                            PC can now be purchased.
-                                        </p>
+                                        <div class="product__details__text text-left">
+                                            <div class="rating">
+                                                @for($i = 0; $i < $r->rating; $i++)
+                                                    <i class="fa fa-star"></i>
+                                                    @endfor
+                                                    @for($i = 0; $i < 5-$r->rating; $i++)
+                                                        <i class="fa fa-star-o"></i>
+                                                        @endfor
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="product__details__tab__content__item">
+                                    @endforeach
+                                    <!-- <div class="product__details__tab__content__item">
                                         <h5>Material used</h5>
                                         <p>
                                             Polyester is deemed lower quality due to its none
@@ -228,7 +215,7 @@
                                             breathable. Velvet is a great choice for dinner party
                                             jacket and can be worn all year round.
                                         </p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -247,157 +234,58 @@
             </div>
         </div>
         <div class="row">
+            @foreach($relatedproduct->product->take(4) as $p)
             <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                        <span class="label">New</span>
+                    <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/'.$p->thumbnail) }}">
                         <ul class="product__hover">
                             <li>
-                                <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-heart-o text-dark font-weight-bold"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-search text-dark"></i></a>
+                                <a href="{{ route('shop.details', $p) }}"><i class="d-flex justify-content-center align-items-center fa fa-search text-dark"></i></a>
                             </li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6>Piqué Biker Jacket</h6>
+                        <h6>{{ $p->product_name }}</h6>
                         <a href="#" class="add-cart">+ Add To Cart</a>
                         <div class="rating">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
+                            @for($i = 0; $i < $p->rating; $i++)
+                                <i class="fa fa-star"></i>
+                                @endfor
+                                @for($i = 0; $i < 5-$p->rating; $i++)
+                                    <i class="fa fa-star-o"></i>
+                                    @endfor
                         </div>
-                        <h5>$67.24</h5>
-                        <div class="product__color__select">
-                            <label for="pc-1">
-                                <input type="radio" id="pc-1" />
-                            </label>
-                            <label class="active black" for="pc-2">
-                                <input type="radio" id="pc-2" />
-                            </label>
-                            <label class="grey" for="pc-3">
-                                <input type="radio" id="pc-3" />
-                            </label>
-                        </div>
+                        <h5>Rp. {{ $p->price }}</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                        <ul class="product__hover">
-                            <li>
-                                <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-heart-o text-dark font-weight-bold"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-search text-dark"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Piqué Biker Jacket</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <div class="rating">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5>$67.24</h5>
-                        <div class="product__color__select">
-                            <label for="pc-4">
-                                <input type="radio" id="pc-4" />
-                            </label>
-                            <label class="active black" for="pc-5">
-                                <input type="radio" id="pc-5" />
-                            </label>
-                            <label class="grey" for="pc-6">
-                                <input type="radio" id="pc-6" />
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                <div class="product__item sale">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                        <span class="label">Sale</span>
-                        <ul class="product__hover">
-                            <li>
-                                <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-heart-o text-dark font-weight-bold"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-search text-dark"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Multi-pocket Chest Bag</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5>$43.48</h5>
-                        <div class="product__color__select">
-                            <label for="pc-7">
-                                <input type="radio" id="pc-7" />
-                            </label>
-                            <label class="active black" for="pc-8">
-                                <input type="radio" id="pc-8" />
-                            </label>
-                            <label class="grey" for="pc-9">
-                                <input type="radio" id="pc-9" />
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-                        <ul class="product__hover">
-                            <li>
-                                <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-heart-o text-dark font-weight-bold"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-search text-dark"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Diagonal Textured Cap</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <div class="rating">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5>$60.9</h5>
-                        <div class="product__color__select">
-                            <label for="pc-10">
-                                <input type="radio" id="pc-10" />
-                            </label>
-                            <label class="active black" for="pc-11">
-                                <input type="radio" id="pc-11" />
-                            </label>
-                            <label class="grey" for="pc-12">
-                                <input type="radio" id="pc-12" />
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('input[type=radio][name=size]').change(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var id = $('input[type=radio][name=size]:checked').val();
+            $.ajax({
+                type: "get",
+                url: "/stock-fetch/" + id,
+                data: id,
+                dataType: "json",
+                success: function(response) {
+                    $(".pro-qty input").val(1);
+                    $('.stock#stock').text(response.stock);
+                }
+            });
+        });
+    });
+</script>
 @endsection

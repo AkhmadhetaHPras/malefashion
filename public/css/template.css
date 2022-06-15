@@ -851,7 +851,7 @@ ol {
 }
 .product__item__text .rating i {
   font-size: 14px;
-  color: #b7b7b7;
+  color: #f7941d;
   margin-right: -5px;
 }
 .product__item__text h5 {
@@ -972,11 +972,6 @@ ol {
   font-weight: 700;
   text-transform: uppercase;
   display: block;
-}
-.shop__sidebar__categories ul,
-.shop__sidebar__price ul,
-.shop__sidebar__brand ul {
-  height: 225px;
 }
 .shop__sidebar__categories ul li,
 .shop__sidebar__price ul li,

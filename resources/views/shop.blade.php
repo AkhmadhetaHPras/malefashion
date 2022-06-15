@@ -8,7 +8,7 @@
                 <div class="breadcrumb__text">
                     <h4>Shop</h4>
                     <div class="breadcrumb__links">
-                        <a href="./index.html">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                         <span>Shop</span>
                     </div>
                 </div>
@@ -43,15 +43,9 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                <li><a href="#">Men (20)</a></li>
-                                                <li><a href="#">Women (20)</a></li>
-                                                <li><a href="#">Bags (20)</a></li>
-                                                <li><a href="#">Clothing (20)</a></li>
-                                                <li><a href="#">Shoes (20)</a></li>
-                                                <li><a href="#">Accessories (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
+                                                @foreach($categories as $c)
+                                                <li><a href="{{ route('shop.categoryfilter', $c) }}">{{ $c->category }} ({{ $c->product->count() }})</a></li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
@@ -65,64 +59,10 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand">
                                             <ul>
-                                                <li><a href="#">Louis Vuitton</a></li>
-                                                <li><a href="#">Chanel</a></li>
-                                                <li><a href="#">Hermes</a></li>
-                                                <li><a href="#">Gucci</a></li>
+                                                @foreach($brands as $b)
+                                                <li><a href="{{ route('shop.brandfilter', $b) }}">{{ $b->name }} ({{ $b->product->count() }})</a></li>
+                                                @endforeach
                                             </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseFour">Size</a>
-                                </div>
-                                <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__size">
-                                            <label for="xs">xs
-                                                <input type="radio" id="xs" />
-                                            </label>
-                                            <label for="sm">s
-                                                <input type="radio" id="sm" />
-                                            </label>
-                                            <label for="md">m
-                                                <input type="radio" id="md" />
-                                            </label>
-                                            <label for="xl">xl
-                                                <input type="radio" id="xl" />
-                                            </label>
-                                            <label for="2xl">2xl
-                                                <input type="radio" id="2xl" />
-                                            </label>
-                                            <label for="xxl">xxl
-                                                <input type="radio" id="xxl" />
-                                            </label>
-                                            <label for="3xl">3xl
-                                                <input type="radio" id="3xl" />
-                                            </label>
-                                            <label for="4xl">4xl
-                                                <input type="radio" id="4xl" />
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
-                                </div>
-                                <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__tags">
-                                            <a href="#">Product</a>
-                                            <a href="#">Bags</a>
-                                            <a href="#">Shoes</a>
-                                            <a href="#">Fashio</a>
-                                            <a href="#">Clothing</a>
-                                            <a href="#">Hats</a>
-                                            <a href="#">Accessories</a>
                                         </div>
                                     </div>
                                 </div>
@@ -142,58 +82,39 @@
 
                         <!-- SORT PRICE -->
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="shop__product__option__right">
-                                <p>Sort by Price:</p>
-                                <select>
-                                    <option value="">Low To High</option>
-                                    <option value="">$0 - $55</option>
-                                    <option value="">$55 - $100</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- PRODUCT LIST -->
                 <div class="row">
+                    @foreach($products as $p)
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/'.$p->thumbnail) }}">
                                 <ul class="product__hover">
                                     <li>
-                                        <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-heart-o text-dark font-weight-bold"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="d-flex justify-content-center align-items-center fa fa-search text-dark"></i></a>
+                                        <a href="{{ route('shop.details', $p) }}"><i class="d-flex justify-content-center align-items-center fa fa-search text-dark"></i></a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                <h6>{{ $p->product_name }}</h6>
+                                <a href="#" class="add-cart" onclick='addtocart("{{$p->variant->first()->id}}")'>+ Add To Cart</a>
                                 <div class="rating">
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                                    @for($i = 0; $i < $p->rating; $i++)
+                                        <i class="fa fa-star"></i>
+                                        @endfor
+                                        @for($i = 0; $i < 5-$p->rating; $i++)
+                                            <i class="fa fa-star-o"></i>
+                                            @endfor
                                 </div>
-                                <h5>$67.24</h5>
-                                <div class="product__color__select">
-                                    <label for="pc-4">
-                                        <input type="radio" id="pc-4" />
-                                    </label>
-                                    <label class="active black" for="pc-5">
-                                        <input type="radio" id="pc-5" />
-                                    </label>
-                                    <label class="grey" for="pc-6">
-                                        <input type="radio" id="pc-6" />
-                                    </label>
-                                </div>
+                                <h5>Rp. {{ $p->price }}</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                    @endforeach
+                    <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item sale">
                             <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
                                 <span class="label">Sale</span>
@@ -603,19 +524,20 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- PAGINATION -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="product__pagination">
+                        {{ $products->links('vendor.pagination.custom') }}
+                        <!-- <div class="product__pagination">
                             <a class="active" href="#">1</a>
                             <a href="#">2</a>
                             <a href="#">3</a>
                             <span>...</span>
                             <a href="#">21</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

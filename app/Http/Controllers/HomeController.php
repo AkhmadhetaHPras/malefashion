@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        $title = 'Home';
+
+        $new = Product::orderBy('id', 'desc')
+            ->take(4)
+            ->get();
+        $bestseller = Product::orderBy('rating', 'desc')
+            ->take(4)
+            ->get();
+
+        $shoes = Category::where('category', 'Shoes')->first();
+        $shirts = Category::where('category', 'Shirts')->first();
+        $accessories = Category::where('category', 'Accessories')->first();
+        return view('home', compact('title', 'bestseller', 'new', 'shoes', 'shirts', 'accessories'));
     }
 }

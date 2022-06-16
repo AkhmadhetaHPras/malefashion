@@ -35,4 +35,9 @@ class Product extends Model
     {
         return $this->hasManyThrough(CartItem::class, Variant::class);
     }
+
+    public function detailorder()
+    {
+        return $this->hasManyThrough(DetailOrder::class, Variant::class);
+    }
 }

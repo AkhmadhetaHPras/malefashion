@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         $profile = User::with('address')
             ->find(Auth()->user()->id);
-        return view('profile', ['title' => 'Profile', 'profile' => $profile]);
+        return view('profile', ['title' => 'Home', 'profile' => $profile]);
     }
 
     public function fetch()

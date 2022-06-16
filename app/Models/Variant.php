@@ -20,4 +20,9 @@ class Variant extends Model
     {
         return $this->hasMany(CartItem::class);
     }
+
+    public function detailorder()
+    {
+        return $this->hasMany(DetailOrder::class);
+    }
 }

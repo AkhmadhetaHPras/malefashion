@@ -52,4 +52,36 @@ class User extends Authenticatable
     {
         return $this->hasMany(CartItem::class);
     }
+
+    public function order()
+    {
+        return $this->hasManyThrough(Order::class, Address::class);
+    }
+
+    // myorder
+    public function waitingorder()
+    {
+        return $this->order()->where('status', 'Waiting Confirmation');
+    }
+
+    public function proceedorder()
+    {
+        return $this->order()->where('status', 'Processed');
+    }
+    public function sentorder()
+    {
+        return $this->order()->where('status', 'Sent');
+    }
+    public function paidorder()
+    {
+        return $this->order()->where('status', 'Paid');
+    }
+    public function completeorder()
+    {
+        return $this->order()->where('status', 'Completed');
+    }
+    public function canceledorder()
+    {
+        return $this->order()->where('status', 'Canceled');
+    }
 }

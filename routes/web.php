@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -36,9 +37,7 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('/myorders', function () {
-        return view('myorders', ['title' => 'MyOrders']);
-    })->name('myorders');
+    Route::get('/myorders', [MyOrderController::class, 'index'])->name('myorders');
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
 

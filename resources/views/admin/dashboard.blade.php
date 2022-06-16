@@ -173,12 +173,11 @@
             <ul class="p-0 m-0">
               <li class="d-flex mb-4 pb-1">
                 <div class="avatar flex-shrink-0 me-3">
-                  <span class="avatar-initial rounded bg-label-primary"><i class="bx bx-mobile-alt"></i></span>
+                  <span class="avatar-initial rounded bg-label-primary"><i class='bx bx-check-square'></i></i></span>
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
-                    <h6 class="mb-0">Completed</h6>
-                    <small class="text-muted">Mobile, Earbuds, TV</small>
+                    <h6 class="mb-0">Completed</h6>                   
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">82.5k</small>
@@ -187,12 +186,11 @@
               </li>
               <li class="d-flex mb-4 pb-1">
                 <div class="avatar flex-shrink-0 me-3">
-                  <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
+                  <span class="avatar-initial rounded bg-label-success"><i class='bx bx-credit-card'></i></span>
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
-                    <h6 class="mb-0">Paid</h6>
-                    <small class="text-muted">T-shirt, Jeans, Shoes</small>
+                    <h6 class="mb-0">Paid</h6>                   
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">23.8k</small>
@@ -201,12 +199,11 @@
               </li>
               <li class="d-flex mb-4 pb-1">
                 <div class="avatar flex-shrink-0 me-3">
-                  <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
+                  <span class="avatar-initial rounded bg-label-info"><i class='bx bx-send'></i></span>
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
-                    <h6 class="mb-0">Sent</h6>
-                    <small class="text-muted">Fine Art, Dining</small>
+                    <h6 class="mb-0">Sent</h6>                    
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">849k</small>
@@ -215,12 +212,11 @@
               </li>
               <li class="d-flex mb-4 pb-1">
                 <div class="avatar flex-shrink-0 me-3">
-                  <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
+                  <span class="avatar-initial rounded bg-label-warning"><i class='bx bx-loader-circle'></i></span>
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
-                    <h6 class="mb-0">Processed</h6>
-                    <small class="text-muted">Fine Art, Dining</small>
+                    <h6 class="mb-0">Processed</h6>                    
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">849k</small>
@@ -229,12 +225,11 @@
               </li>
               <li class="d-flex">
                 <div class="avatar flex-shrink-0 me-3">
-                  <span class="avatar-initial rounded bg-label-secondary"><i class="bx bx-football"></i></span>
+                  <span class="avatar-initial rounded bg-label-secondary"><i class='bx bx-time-five'></i></span>
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
-                    <h6 class="mb-0">Waiting Confirmations</h6>
-                    <small class="text-muted">Football, Cricket Kit</small>
+                    <h6 class="mb-0">Waiting Confirmations</h6>                  
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">99</small>
@@ -269,12 +264,11 @@
           <div class="card-body">
             <table class="table">
               <thead>
-                <tr>
-                  <th>Product</th>
-                  <th>Category</th>
-                  <th>Payment</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+              <tr>
+                  <th style=" width: 20%;">Product</th>
+                  <th style="width: 20%;">Category</th>
+                  <th style="width: 15%;">Price</th>
+                  <th style="width: 10%;">Rating</th>                  
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
@@ -283,52 +277,32 @@
                     <div class="d-flex align-items-center">
                       <img src="{{asset('admin/img/icons/products/oneplus.png')}}" alt="Oneplus" height="32" width="32" class="me-2">
                       <div class="d-flex flex-column">
-                        <span class="fw-semibold lh-1">OnePlus 7Pro</span>
-                        <small class="text-muted">OnePlus</small>
+                        <span class="fw-semibold lh-1">Manchester United Bottle 750 Ml</span>
+                        <small class="text-muted">Unisex, Lifestyle</small>
                       </div>
                     </div>
                   </td>
                   <td><span class="badge bg-label-primary rounded-pill badge-center p-3 me-2"><i class='bx bx-shopping-bag bx-xs'></i></span>Bags</td>
                   <td>
-                    <div class="text-muted lh-1"><span class="text-primary fw-semibold">$120</span>/499</div>
-                    <small class="text-muted">Partially Paid</small>
+                    <div class="text-muted lh-1"><span class="text-primary fw-semibold">Rp 120.000</span></div>                  
                   </td>
-                  <td><span class="badge bg-label-primary">Confirmed</span></td>
-                  <td>
-                    <div class="dropdown">
-                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> View Details</a>
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Buy Again</a>
-                      </div>
-                    </div>
-                  </td>
+                  <td><span class="badge bg-label-success">5</span></td>                  
                 </tr>
                 <tr>
                   <td>
                     <div class="d-flex align-items-center">
                       <img src="{{asset('admin/img/icons/products/magic-mouse.png')}}" alt="Apple" height="32" width="32" class="me-2">
                       <div class="d-flex flex-column">
-                        <span class="fw-semibold lh-1">Magic Mouse</span>
-                        <small class="text-muted">Apple</small>
+                        <span class="fw-semibold lh-1">Predator Edge.3 Laceless Firm Ground</span>
+                        <small class="text-muted">Unisex, Football</small>
                       </div>
                     </div>
                   </td>
                   <td><span class="badge bg-label-warning rounded-pill badge-center p-3 me-2"><i class='bx bxs-t-shirt bx-xs'></i></span> Cloths</td>
                   <td>
-                    <div class="lh-1"><span class="text-primary fw-semibold">$149</span></div>
-                    <small class="text-muted">Fully Paid</small>
+                    <div class="lh-1"><span class="text-primary fw-semibold">Rp 2.700.000</span></div>                    
                   </td>
-                  <td><span class="badge bg-label-success">Completed</span></td>
-                  <td>
-                    <div class="dropdown">
-                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> View Details</a>
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Buy Again</a>
-                      </div>
-                    </div>
-                  </td>
+                  <td><span class="badge bg-label-success">5</span></td>                 
                 </tr>
                 <tr>
                   <td>
@@ -342,19 +316,9 @@
                   </td>
                   <td><span class="badge bg-label-info rounded-pill badge-center p-3 me-2"><i class='bx bx-shape-polygon bx-xs'></i></i></span> Accessories</td>
                   <td>
-                    <div class="text-muted lh-1"><span class="text-primary fw-semibold">$0</span>/899</div>
-                    <small class="text-muted">Unpaid</small>
+                    <div class="lh-1"><span class="text-primary fw-semibold">Rp 2.700.000</span></div>                    
                   </td>
-                  <td><span class="badge bg-label-danger">Cancelled</span></td>
-                  <td>
-                    <div class="dropdown">
-                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> View Details</a>
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Buy Again</a>
-                      </div>
-                    </div>
-                  </td>
+                  <td><span class="badge bg-label-warning">4.3</span></td>                
                 </tr>
                 <tr>
                   <td>
@@ -368,19 +332,9 @@
                   </td>
                   <td><span class="badge bg-label-primary rounded-pill badge-center p-3 me-2"><i class='bx bx-heart-circle bx-xs'></i></i></span> Shoes</td>
                   <td>
-                    <div class="lh-1"><span class="text-primary fw-semibold">$149</span></div>
-                    <small class="text-muted">Fully Paid</small>
+                    <div class="lh-1"><span class="text-primary fw-semibold">Rp 2.700.000</span></div>                   
                   </td>
-                  <td><span class="badge bg-label-success">Completed</span></td>
-                  <td>
-                    <div class="dropdown">
-                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> View Details</a>
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Buy Again</a>
-                      </div>
-                    </div>
-                  </td>
+                  <td><span class="badge bg-label-success">4.7</span></td>                  
                 </tr>
                 <tr>
                   <td>
@@ -394,19 +348,9 @@
                   </td>
                   <td><span class="badge bg-label-warning rounded-pill badge-center p-3 me-2"><i class='bx bxs-t-shirt bx-xs'></i></span> Cloths</td>
                   <td>
-                    <div class="lh-1"><span class="text-primary fw-semibold">$149</span></div>
-                    <small class="text-muted">Fully Paid</small>
+                    <div class="lh-1"><span class="text-primary fw-semibold">Rp 2.700.000</span></div>                   
                   </td>
-                  <td><span class="badge bg-label-success">Completed</span></td>
-                  <td>
-                    <div class="dropdown">
-                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> View Details</a>
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Buy Again</a>
-                      </div>
-                    </div>
-                  </td>
+                  <td><span class="badge bg-label-warning">4.4</span></td>                  
                 </tr>
                 <tr>
                   <td>
@@ -420,19 +364,9 @@
                   </td>
                   <td><span class="badge bg-label-primary rounded-pill badge-center p-3 me-2"><i class='bx bx-shopping-bag bx-xs'></i></span>Bags</td>
                   <td>
-                    <div class="text-muted lh-1"><span class="text-primary fw-semibold">$120</span>/499</div>
-                    <small class="text-muted">Partially Paid</small>
+                    <div class="lh-1"><span class="text-primary fw-semibold">Rp 2.700.000</span></div>                 
                   </td>
-                  <td><span class="badge bg-label-primary">Confirmed</span></td>
-                  <td>
-                    <div class="dropdown">
-                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> View Details</a>
-                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Buy Again</a>
-                      </div>
-                    </div>
-                  </td>
+                  <td><span class="badge bg-label-success">5</span></td>                  
                 </tr>
               </tbody>
             </table>

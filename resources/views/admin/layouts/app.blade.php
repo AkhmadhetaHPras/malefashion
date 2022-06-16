@@ -32,17 +32,28 @@
     <!-- <link rel="stylesheet" href="{{asset('admin/vendor/libs/select2/select2.css')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/vendor/libs/typeahead-js/typeahead.css')}}">
     <link rel="stylesheet" href="{{asset('admin/vendor/libs/formvalidation/formValidation.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendor/libs/flatpickr/flatpickr.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendor/libs/typeahead-js/typeahead.css')}}">
 
     <link rel="stylesheet" href="{{asset('admin/vendor/libs/apex-charts/apex-charts.css')}}" />
 
     <!-- Page CSS -->
-
+    <link rel="stylesheet" href="{{asset('admin/vendor/css/pages/page-user-view.css')}}" />
+    <link rel="stylesheet" href="{{asset('admin/vendor/css/pages/page-invoice.css')}}" />
+    <link rel="stylesheet" href="{{asset('admin/vendor/css/pages/page-misc.css')}}" />
+    <link rel="stylesheet" href="{{asset('admin/vendor/css/pages/page-account-settings.css')}}" />
+    
     <!-- Helpers -->
     <script src="{{asset('admin/vendor/js/helpers.js')}}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <script src="{{asset('admin/vendor/js/template-customizer.js')}}"></script>
+
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{asset('admin/js/config.js')}}"></script>
+
+    @yield('spesificScript')
+
 </head>
 
 <body>
@@ -183,6 +194,11 @@
     <script src="{{asset('admin/vendor/libs/formvalidation/FormValidation.min.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/formvalidation/Bootstrap5.min.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/formvalidation/AutoFocus.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/libs/cleavejs/cleave.js')}}"></script>
+    <script src="{{asset('admin/vendor/libs/cleavejs/cleave-phone.js')}}"></script>
+    <script src="{{asset('admin/vendor/libs/flatpickr/flatpickr.js')}}"></script>
+    <script src="{{asset('admin/vendor/libs/jquery-repeater/jquery-repeater.js')}}"></script>
+    <script src="{{asset('admin/vendor/libs/typeahead-js/typeahead.js')}}"></script>
 
     <!-- Main JS -->
     <script src="{{asset('admin/js/main.js')}}"></script>
@@ -192,6 +208,8 @@
     <script src="{{asset('admin/js/modal-enable-otp.js')}}"></script>
     <script src="{{asset('admin/js/app-user-view.js')}}"></script>
     <script src="{{asset('admin/js/app-user-view-security.js')}}"></script>
+    <script src="{{asset('admin/js/app-invoice-add.js')}}"></script>
+    <script src="{{asset('admin/js/offcanvas-send-invoice.js')}}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

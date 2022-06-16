@@ -187,13 +187,14 @@
                                         <div class="col">Product</div>
                                         <div class="col text-center">Size</div>
                                         <div class="col text-center">Qty</div>
-                                        <div class="col text-right">Subtotal</div>
+                                        <div class="col text-right"></div>
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col"><a href="" class="productlink__order">Shoes</a></div>
                                         <div class="col text-center">41</div>
                                         <div class="col text-center">1</div>
-                                        <div class="col text-right">$75</div>
+                                        <div class="col text-right" data-toggle="modal" data-target="#reviewmodal"><a href="#" class="text-dark">REVIEW</a></div>
+
                                     </div>
                                     <ul class="checkout__total__all">
                                         <li>Total <span>$750.99</span></li>
@@ -209,7 +210,67 @@
                                         </div>
                                         <div class="col-4 align-bottom text-right"><b>COMPLETED</b></div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal review-->
+                        <div class="modal fade" id="reviewmodal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Review</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="review-form">
+                                            <div class="contact__form">
+                                                <form action="#">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 mb-2">
+                                                            <div class="product__details__option__size">
+                                                                <div class="product__cart__item row">
+                                                                    <div class="product__cart__item__pic col-6">
+                                                                        <img src="img/sale.png" alt="" width="90px" />
+                                                                    </div>
+                                                                    <div class="product__cart__item__text col-6">
+                                                                        <h6>asd</h6>
+                                                                        <h5>Rp. 12</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <span>Rating:</span>
+                                                                <label for="1">1
+                                                                    <input type="radio" id="1" value="1" name="rating" />
+                                                                </label>
+                                                                <label for="2">2
+                                                                    <input type="radio" id="2" value="2" name="rating" />
+                                                                </label>
+                                                                <label for="3">3
+                                                                    <input type="radio" id="3" value="3" name="rating" />
+                                                                </label>
+                                                                </label>
+                                                                <label for="4">4
+                                                                    <input type="radio" id="4" value="4" name="rating" />
+                                                                </label>
+                                                                </label>
+                                                                <label for="5">5
+                                                                    <input type="radio" id="5" value="5" name="rating" />
+                                                                </label>
+                                                            </div>
+                                                        </div>
 
+                                                        <div class="col-lg-12">
+                                                            <textarea placeholder="Message"></textarea>
+                                                            <button type="submit" class="site-btn">Post Review</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
                                 </div>
                             </div>
                         </div>

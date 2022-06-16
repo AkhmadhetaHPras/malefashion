@@ -21,6 +21,7 @@
 <!-- cart -->
 <section class="shopping-cart spad">
     <div class="container">
+        @if($cartitems->count() > 0)
         <div class="row">
             <div class="col-lg-8">
                 <div id="delitemresponse"></div>
@@ -74,10 +75,22 @@
                     <ul>
                         <li>Total <span id="totalpricecart">Rp. {{ $cartitems->sum('subtotal') }}</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">Proceed to checkout</a>
+                    <a href="{{ route('checkout') }}" class="primary-btn">Proceed to checkout</a>
                 </div>
             </div>
         </div>
+        @else
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-9 text-center">
+                <div class="blog__hero__text">
+                    <h2>Your cart is empty, please select your items</h2>
+                    <div class="continue__btn">
+                        <a href="{{ route('shop') }}">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 </section>
 @endsection

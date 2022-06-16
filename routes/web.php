@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MyOrderController;
@@ -41,9 +42,7 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
-    Route::get('/checkout', function () {
-        return view('checkout', ['title' => 'Shop']);
-    });
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

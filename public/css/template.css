@@ -1334,7 +1334,7 @@ ol {
   color: #111;
   font-size: 15px;
   font-weight: 700;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   display: inline-block;
   border: 1px solid #e5e5e5;
   padding: 6px 15px;

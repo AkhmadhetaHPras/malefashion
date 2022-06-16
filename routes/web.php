@@ -142,6 +142,9 @@ Route::group(['middleware' => ['ajax']], function () {
 
     // shop page
     Route::post('/cart/{id}', [CartController::class, 'addtocart']);
+    Route::put('/cart/{id}', [CartController::class, 'update']);
+    Route::delete('/cart/{id}', [CartController::class, 'delete']);
+    Route::get('/cart-fetch', [CartController::class, 'fetch']);
 
     // shop detail page
     Route::get('/stock-fetch/{id}', [VariantController::class, 'getstock']);

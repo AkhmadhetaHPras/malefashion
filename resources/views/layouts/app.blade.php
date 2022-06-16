@@ -400,10 +400,15 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            var data = {
+                'id': id,
+                'qty': 1,
+            }
             $.ajax({
                 type: "post",
                 url: "/cart/" + id,
-                data: id,
+                data: data,
                 dataType: "json",
                 success: function(response) {
                     $('.price').text(response.total);

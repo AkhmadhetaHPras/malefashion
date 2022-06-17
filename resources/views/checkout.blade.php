@@ -22,9 +22,21 @@
     <div class="container">
         @if($cartitems->count() > 0)
         <div class="checkout__form">
-            <form action="#">
+            <form action="{{ route('myorders.store') }}" method="post">
+                @csrf
+                @method('POST')
                 <div class="row">
                     <div class="col-lg-6">
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <h6 class="checkout__title">Billing Details</h6>
 
                         <div class="checkout__input">
@@ -32,14 +44,14 @@
                             @foreach($address as $a)
                             <div class="product__details__option container mb-2">
                                 <div class="product__details__option__size row me-0">
-                                    <label for="radioaddress" class="col-12 @if ($loop->first) active @endif">
+                                    <label for="radioaddress{{$a->id}}" class="col-12 @if ($loop->first) active @endif">
                                         <div class="contact">
                                             {{ $a->name }} | {{ $a->telp }}
                                         </div>
                                         <div class="address">
                                             {{ $a->street_address }}, {{ $a->city }}, {{ $a->province }} | {{ $a->postal_code }}
                                         </div>
-                                        <input type="radio" class="radioaddress" value="{{ $a->id }}" name="radioaddress" @if ($loop->first) required checked @endif/>
+                                        <input type="radio" class="radioaddress" id="radioaddress{{$a->id}}" value="{{ $a->id }}" name="radioaddress" @if ($loop->first) required checked @endif/>
                                     </label>
                                 </div>
                             </div>
@@ -52,7 +64,7 @@
                         </div>
                         <div class="checkout__input">
                             <p>Order notes<span>*</span></p>
-                            <input type="text" placeholder="Notes about your order, e.g. special notes for delivery." name="" />
+                            <input type="text" placeholder="Notes about your order, e.g. special notes for delivery." name="note" />
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -75,14 +87,14 @@
                             <div class="checkout__input__checkbox">
                                 <label for="acc-or">
                                     Cash On Delivery (COD)
-                                    <input type="checkbox" id="acc-or" required />
+                                    <input type="checkbox" id="acc-or" name="cod-checkbox" />
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                             <p>
                                 After you receive the order, immediately check your order and make payment to the courier by COD
                             </p>
-                            <button type="submit" class="site-btn">PLACE ORDER</button>
+                            <input type="submit" class="site-btn" value="PLACE ORDER">
                         </div>
                     </div>
                 </div>

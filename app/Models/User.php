@@ -61,27 +61,27 @@ class User extends Authenticatable
     // myorder
     public function waitingorder()
     {
-        return $this->order()->where('status', 'Waiting Confirmation');
+        return $this->order()->where('status', 'Waiting Confirmation')->orderBy('id', 'desc');
     }
 
     public function proceedorder()
     {
-        return $this->order()->where('status', 'Processed');
+        return $this->order()->where('status', 'Processed')->orderBy('id', 'desc');
     }
     public function sentorder()
     {
-        return $this->order()->where('status', 'Sent');
+        return $this->order()->where('status', 'Sent')->orderBy('id', 'desc');
     }
     public function paidorder()
     {
-        return $this->order()->where('status', 'Paid');
+        return $this->order()->where('status', 'Paid')->orderBy('id', 'desc');
     }
     public function completeorder()
     {
-        return $this->order()->where('status', 'Completed');
+        return $this->order()->where('status', 'Completed')->orderBy('id', 'desc');
     }
     public function canceledorder()
     {
-        return $this->order()->where('status', 'Canceled');
+        return $this->order()->where('status', 'Canceled')->orderBy('id', 'desc');
     }
 }

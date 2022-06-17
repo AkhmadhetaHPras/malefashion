@@ -8,6 +8,7 @@ use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\VariantController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +46,10 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
 
     Route::get('/myorders', [MyOrderController::class, 'index'])->name('myorders');
     Route::post('/placeorder', [MyOrderController::class, 'store'])->name('myorders.store');
+    Route::put('/myorders/cancel/{id}', [MyOrderController::class, 'cancel'])->name('myorders.cancel');
     Route::get('/invoice/{id}', [MyOrderController::class, 'invoice'])->name('invoice');
+
+    Route::get('/reviewsuccess', [ReviewController::class, 'reviewsuccess']);
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
@@ -149,6 +153,9 @@ Route::group(['middleware' => ['ajax']], function () {
 
     // shop detail page
     Route::get('/stock-fetch/{id}', [VariantController::class, 'getstock']);
+
+    // review
+    Route::post('/review/{o}/{p}', [ReviewController::class, 'store']);
 
     // profile page
     Route::get('/profile-fetch', [ProfileController::class, 'fetch']);

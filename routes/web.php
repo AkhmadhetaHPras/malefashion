@@ -38,11 +38,14 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('/myorders', [MyOrderController::class, 'index'])->name('myorders');
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+    Route::get('/myorders', [MyOrderController::class, 'index'])->name('myorders');
+    Route::post('/placeorder', [MyOrderController::class, 'store'])->name('myorders.store');
+    Route::get('/invoice/{id}', [MyOrderController::class, 'invoice'])->name('invoice');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

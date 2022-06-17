@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class MyOrderController extends Controller
 {
@@ -24,5 +25,14 @@ class MyOrderController extends Controller
 
         // return dd($myorder);
         return view('myorders', compact('title', 'waiting', 'processed', 'sent', 'completed', 'canceled'));
+    }
+
+    public function invoice($id)
+    {
+        $order = Order::find($id);
+
+        // return view('invoice', ['order' => $order]);
+        $pdf = PDF::loadview('invoice', ['order' => $order]);
+        return $pdf->stream();
     }
 }

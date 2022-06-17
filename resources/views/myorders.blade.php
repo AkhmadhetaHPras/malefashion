@@ -136,7 +136,9 @@
                             @foreach($processed as $o)
                             <div class="product__details__tab__content">
                                 <div class="checkout__order mb-4">
+                                    <a href="" class="text-primary">Download Invoice</a>
                                     <h4 class="order__title d-flex justify-content-between align-items-center">{{ Carbon\Carbon::parse($o->order_date)->format('F d, Y') }}
+
                                         <div class="address" style="font-weight:300">
                                             <div style=" font-size: 16px;">{{ $o->address->street_address }}</div>
                                             <div class="text-right" style="font-size: 14px;">{{ $o->address->city }} , {{$o->address->province}}</div>
@@ -198,6 +200,7 @@
                             @foreach($sent as $o)
                             <div class="product__details__tab__content">
                                 <div class="checkout__order mb-4">
+                                    <a href="" class="text-primary">Download Invoice</a>
                                     <h4 class="order__title d-flex justify-content-between align-items-center">{{ Carbon\Carbon::parse($o->order_date)->format('F d, Y') }}
                                         <div class="address" style="font-weight:300">
                                             <div style=" font-size: 16px;">{{ $o->address->street_address }}</div>

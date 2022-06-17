@@ -80,7 +80,7 @@
                                 </label>
                             </div>
                             <p>
-                                After you receive the order, immediately check your order and make payment. Payment instructions will be displayed together with the invoice that you will get after placing your order
+                                After you receive the order, immediately check your order and make payment to the courier by COD
                             </p>
                             <button type="submit" class="site-btn">PLACE ORDER</button>
                         </div>

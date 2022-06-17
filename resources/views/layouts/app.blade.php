@@ -235,8 +235,8 @@
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here....." />
+            <form action="{{ route('shop') }}" method="get" class="search-model-form">
+                <input type="text" id="search-input" value="{{ request('search') }}" name="search" placeholder="Search here....." />
             </form>
         </div>
     </div>
@@ -267,10 +267,10 @@
                     <div class="footer__widget">
                         <h6>Shopping</h6>
                         <ul>
-                            <li><a href="#">Clothing Store</a></li>
-                            <li><a href="#">Trending Shoes</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Sale</a></li>
+                            <li><a href="{{ route('shop.categoryfilter', \App\Models\Category::find(3)) }}">Clothing Store</a></li>
+                            <li><a href="{{ route('shop.categoryfilter', \App\Models\Category::find(4)) }}">Trending Shoes</a></li>
+                            <li><a href="{{ route('shop.categoryfilter', \App\Models\Category::find(1)) }}">Accessories</a></li>
+                            <li><a href="{{ route('shop.categoryfilter', \App\Models\Category::find(2)) }}">Bags</a></li>
                         </ul>
                     </div>
                 </div>
@@ -278,10 +278,9 @@
                     <div class="footer__widget">
                         <h6>Shopping</h6>
                         <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Delivary</a></li>
-                            <li><a href="#">Return & Exchanges</a></li>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                            <li><a href="{{ route('about') }}">About Us</a></li>
                         </ul>
                     </div>
                 </div>

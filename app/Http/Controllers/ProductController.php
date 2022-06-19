@@ -11,8 +11,22 @@ class ProductController extends Controller
 {
     public function index()
     {
+        if (request('search')) {
+            $products = Product::where('product_name', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('price', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('tags', 'LIKE', '%' . request('search') . '%')
+                ->orWhereHas('brand', function ($query) {
+                    $query->where('name', 'like', '%' . request('search') . '%');
+                })
+                ->orWhereHas('category', function ($query) {
+                    $query->where('category', 'like', '%' . request('search') . '%');
+                })
+                ->paginate(9);
+        } else {
+            $products = Product::paginate(9);
+        }
+
         $title = 'Shop';
-        $products = Product::paginate(9);
 
         $categories = Category::all();
         $brands = Brand::all();
@@ -26,7 +40,7 @@ class ProductController extends Controller
 
         // reviews and size
         $p = Product::where('slug', $slug)->with('review', 'variant')->first();
-        $relatedproduct = Category::find($p->category_id)->with('product')->first();
+        $relatedproduct = Category::find($p->category_id);
 
         return view('shop-detail', compact('title', 'p', 'relatedproduct'));
     }

@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MyOrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\VariantController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,15 +40,17 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('/myorders', function () {
-        return view('myorders', ['title' => 'MyOrders']);
-    })->name('myorders');
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
-    Route::get('/checkout', function () {
-        return view('checkout', ['title' => 'Shop']);
-    });
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+    Route::get('/myorders', [MyOrderController::class, 'index'])->name('myorders');
+    Route::post('/placeorder', [MyOrderController::class, 'store'])->name('myorders.store');
+    Route::put('/myorders/cancel/{id}', [MyOrderController::class, 'cancel'])->name('myorders.cancel');
+    Route::get('/invoice/{id}', [MyOrderController::class, 'invoice'])->name('invoice');
+
+    Route::get('/reviewsuccess', [ReviewController::class, 'reviewsuccess']);
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
@@ -141,9 +146,15 @@ Route::group(['middleware' => ['ajax']], function () {
 
     // shop page
     Route::post('/cart/{id}', [CartController::class, 'addtocart']);
+    Route::put('/cart/{id}', [CartController::class, 'update']);
+    Route::delete('/cart/{id}', [CartController::class, 'delete']);
+    Route::get('/cart-fetch', [CartController::class, 'fetch']);
 
     // shop detail page
     Route::get('/stock-fetch/{id}', [VariantController::class, 'getstock']);
+
+    // review
+    Route::post('/review/{o}/{p}', [ReviewController::class, 'store']);
 
     // profile page
     Route::get('/profile-fetch', [ProfileController::class, 'fetch']);

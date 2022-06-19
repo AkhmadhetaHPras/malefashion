@@ -157,7 +157,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="team__item">
-                    <img src="img/about/team-3.webp" alt="" />
+                    <img src="img/about/team-3.jpg" alt="" />
                     <h4>Rosi Latansa</h4>
                     <span>Manager</span>
                 </div>

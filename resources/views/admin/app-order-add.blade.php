@@ -127,6 +127,10 @@
                       </select>
                       <textarea class="form-control" rows="2" placeholder="Item Information"></textarea>
                     </div>
+                    <div class="col-md-3 col-12 mb-md-0 mb-3">
+                      <p class="mb-2 repeater-title">Cost</p>
+                      <input type="number" class="form-control invoice-item-price mb-2" value="24" placeholder="24" min="12">
+                    </div>
                     <div class="col-md-2 col-12 mb-md-0 mb-3">
                       <p class="mb-2 repeater-title">Qty</p>
                       <input type="number" class="form-control invoice-item-qty" placeholder="1" min="1" max="50">

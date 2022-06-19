@@ -13,7 +13,7 @@
             <div class="d-flex svg-illustration mb-4 gap-2">
               <span class="app-brand-logo demo">
                 <img src="{{ asset('img/logo-light.webp') }}" alt="logo">
-              </span>            
+              </span>
             </div>
             <p class="mb-1">Office 149, 450 South Brand Brooklyn</p>
             <p class="mb-1">San Diego County, CA 91905, USA</p>
@@ -37,9 +37,9 @@
         <div class="row p-sm-3 p-0">
           <div class="col-xl-6 col-md-12 col-sm-5 col-12 mb-xl-0 mb-md-4 mb-sm-0 mb-4">
             <h6 class="pb-2">Invoice To:</h6>
-            <p class="mb-1">Thomas shelby</p>
-            <p class="mb-1">Shelby Company Limited</p>
-            <p class="mb-1">Small Heath, B10 0HF, UK</p>
+            <p class="mb-1">Rosi Latansa Salsabela</p>
+            <p class="mb-1">20 Mawar Street</p>
+            <p class="mb-1">Kediri, East Java</p>
             <p class="mb-1">718-986-6062</p>
             <p class="mb-0">peakyFBlinders@gmail.com</p>
           </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -96,9 +97,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
             return view('admin.app-product-add', ['title' => 'Products-Add']);
         })->name('products-add');
 
-        Route::get('/listall', function () {
-            return view('admin.app-product-list', ['title' => 'Products-ListAll']);
-        })->name('products-listall');
+        Route::get('/listall', [AdminProductController::class, 'index'])->name('products-listall');
 
         Route::get('/view', function () {
             return view('admin.app-product-view', ['title' => 'Products-View']);

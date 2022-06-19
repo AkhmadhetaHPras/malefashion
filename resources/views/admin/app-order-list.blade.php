@@ -61,7 +61,7 @@
             </th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 64px;" aria-label="Total: activate to sort column ascending">Total
             </th>
-            <th class="text-truncate sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 120px;" aria-label="Issued Date: activate to sort column ascending">Issued Date
+            <th class="text-truncate sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 120px;" aria-label="Issued Date: activate to sort column ascending">Order Date
             </th>
             <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 88px;" aria-label="Balance">Status</th>
             <th class="cell-fit sorting_disabled" rowspan="1" colspan="1" style="width: 78px;" aria-label="Actions">Actions</th>
@@ -70,7 +70,7 @@
         <tbody>
           <tr class="odd">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#5089</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#5089</a></td>
             <td>
               <span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Sent<br> Balance: 0<br> Due Date: 05/09/2020</span>" aria-label="<span>Sent<br> Balance: 0<br> Due Date: 05/09/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30">
@@ -87,7 +87,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Jamal Kerrod</a>
-                  <small class="text-truncate text-muted">Software Development</small>
+                  <!-- <small class="text-truncate text-muted">Software Development</small> -->
                 </div>
               </div>
             </td>
@@ -118,7 +118,7 @@
           </tr>
           <tr class="even">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#5041</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#5041</a></td>
             <td>
               <span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Sent<br> Balance: 0<br> Due Date: 11/19/2020</span>" aria-label="<span>Sent<br> Balance: 0<br> Due Date: 11/19/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30">
@@ -134,7 +134,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Shamus Tuttle</a>
-                  <small class="text-truncate text-muted">Software Development</small>
+                  <!-- <small class="text-truncate text-muted">Software Development</small> -->
                 </div>
               </div>
             </td>
@@ -145,9 +145,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -165,7 +165,7 @@
           </tr>
           <tr class="odd">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#5027</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#5027</a></td>
             <td><span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Partial Payment<br> Balance: 0<br> Due Date: 09/25/2020</span>" aria-label="<span>Partial Payment<br> Balance: 0<br> Due Date: 09/25/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30">
                   <i class="bx bx-adjust bx-xs"></i>
@@ -180,7 +180,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Devonne Wallbridge</a>
-                  <small class="text-truncate text-muted">Software Development</small>
+                  <!-- <small class="text-truncate text-muted">Software Development</small> -->
                 </div>
               </div>
             </td>
@@ -191,9 +191,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -211,7 +211,7 @@
           </tr>
           <tr class="even">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#5024</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#5024</a></td>
             <td><span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Partial Payment<br> Balance: -$202<br> Due Date: 08/02/2020</span>" aria-label="<span>Partial Payment<br> Balance: -$202<br> Due Date: 08/02/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30">
                   <i class="bx bx-adjust bx-xs"></i>
@@ -226,7 +226,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Ariella Filippyev</a>
-                  <small class="text-truncate text-muted">Unlimited Extended License</small>
+                  <!-- <small class="text-truncate text-muted">Unlimited Extended License</small> -->
                 </div>
               </div>
             </td>
@@ -237,9 +237,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -257,7 +257,7 @@
           </tr>
           <tr class="odd">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#5020</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#5020</a></td>
             <td><span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Downloaded<br> Balance: 0<br> Due Date: 12/15/2020</span>" aria-label="<span>Downloaded<br> Balance: 0<br> Due Date: 12/15/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30">
                   <i class="bx bx-down-arrow-circle bx-xs"></i>
@@ -272,7 +272,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Roy Southerell</a>
-                  <small class="text-truncate text-muted">UI/UX Design &amp; Development</small>
+                  <!-- <small class="text-truncate text-muted">UI/UX Design &amp; Development</small> -->
                 </div>
               </div>
             </td>
@@ -283,9 +283,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -303,7 +303,7 @@
           </tr>
           <tr class="even">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#4995</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#4995</a></td>
             <td><span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Partial Payment<br> Balance: 0<br> Due Date: 06/09/2020</span>" aria-label="<span>Partial Payment<br> Balance: 0<br> Due Date: 06/09/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30">
                   <i class="bx bx-adjust bx-xs"></i>
@@ -317,7 +317,7 @@
                   </div>
                 </div>
                 <div class="d-flex flex-column"><a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Raynell Clendennen</a>
-                  <small class="text-truncate text-muted">Template Customization</small>
+                  <!-- <small class="text-truncate text-muted">Template Customization</small> -->
                 </div>
               </div>
             </td>
@@ -328,9 +328,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -348,7 +348,7 @@
           </tr>
           <tr class="odd">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#4993</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#4993</a></td>
             <td><span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Partial Payment<br> Balance: 0<br> Due Date: 10/22/2020</span>" aria-label="<span>Partial Payment<br> Balance: 0<br> Due Date: 10/22/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30">
                   <i class="bx bx-adjust bx-xs"></i>
@@ -362,7 +362,7 @@
                   </div>
                 </div>
                 <div class="d-flex flex-column"><a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Lutero Aloshechkin</a>
-                  <small class="text-truncate text-muted">Unlimited Extended License</small>
+                  <!-- <small class="text-truncate text-muted">Unlimited Extended License</small> -->
                 </div>
               </div>
             </td>
@@ -373,9 +373,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -393,7 +393,7 @@
           </tr>
           <tr class="even">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#4989</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#4989</a></td>
             <td><span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Past Due<br> Balance: 0<br> Due Date: 08/01/2020</span>" aria-label="<span>Past Due<br> Balance: 0<br> Due Date: 08/01/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-danger w-px-30 h-px-30">
                   <i class="bx bx-info-circle bx-xs"></i>
@@ -408,7 +408,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Orson Grafton</a>
-                  <small class="text-truncate text-muted">Unlimited Extended License</small>
+                  <!-- <small class="text-truncate text-muted">Unlimited Extended License</small> -->
                 </div>
               </div>
             </td>
@@ -419,9 +419,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -439,7 +439,7 @@
           </tr>
           <tr class="odd">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#4989</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#4989</a></td>
             <td><span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Downloaded<br> Balance: 0<br> Due Date: 09/23/2020</span>" aria-label="<span>Downloaded<br> Balance: 0<br> Due Date: 09/23/2020</span>">
                 <span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30">
                   <i class="bx bx-down-arrow-circle bx-xs"></i>
@@ -454,7 +454,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Lorine Hischke</a>
-                  <small class="text-truncate text-muted">Unlimited Extended License</small>
+                  <!-- <small class="text-truncate text-muted">Unlimited Extended License</small> -->
                 </div>
               </div>
             </td>
@@ -465,9 +465,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
@@ -485,7 +485,7 @@
           </tr>
           <tr class="even">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="app-invoice-preview.html">#4965</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view') }}">#4965</a></td>
             <td><span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>Partial Payment<br> Balance: $666<br> Due Date: 03/18/2021</span>" aria-label="<span>Partial Payment<br> Balance: $666<br> Due Date: 03/18/2021</span>">
                 <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30">
                   <i class="bx bx-adjust bx-xs"></i>
@@ -500,7 +500,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <a href="pages-profile-user.html" class="text-body text-truncate fw-semibold">Yelena O'Hear</a>
-                  <small class="text-truncate text-muted">Unlimited Extended License</small>
+                  <!-- <small class="text-truncate text-muted">Unlimited Extended License</small> -->
                 </div>
               </div>
             </td>
@@ -511,9 +511,9 @@
               <div class="d-flex align-items-center">
                 <a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Send Mail" aria-label="Send Mail"><i class="bx bx-send mx-1"></i>
                 </a>
-                <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
+                <a href="{{ route('orders-view') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Preview Invoice" aria-label="Preview Invoice"><i class="bx bx-show mx-1"></i>
                 </a>
-                <a href="app-invoice-edit.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
+                <a href="{{ route('orders-edit') }}" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="" data-bs-original-title="Edit Invoice" aria-label="Edit Invoice"><i class="bx bx-edit-alt"></i>
                 </a>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">

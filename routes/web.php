@@ -79,10 +79,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     });
 
     // Order Routes
-    Route::prefix('orders')->group(function () {
-        // Route::get('/incoming-order', function () {
-        //     return view('admin.app-order-in', ['title' => 'Orders-Incoming']);
-        // })->name('orders-in');       
+    Route::prefix('orders')->group(function () {            
 
         Route::get('/incoming-order', [AdminOrderController::class, 'incoming'])->name('orders-in');
 
@@ -95,6 +92,10 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
         Route::get('/edit', function () {
             return view('admin.app-order-edit', ['title' => 'Orders-Edit']);
         })->name('orders-edit');
+
+        Route::get('/invoice-print', function () {
+            return view('admin.app-order-print', ['title' => 'Print-Invoice']);
+        })->name('invoice-print');
     });
 
     //Product Routes 

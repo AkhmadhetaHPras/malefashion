@@ -101,4 +101,13 @@ class OrderController extends Controller
 
         return view('admin.app-order-in', compact('title', 'orders', 'address'));
     }
+
+    public function invoice($id)
+    {
+        $order = Order::find($id);
+
+        // return view('invoice', ['order' => $order]);
+        $pdf = PDF::loadview('admin.app-invoice-print', ['order' => $order]);
+        return $pdf->stream();
+    }
 }

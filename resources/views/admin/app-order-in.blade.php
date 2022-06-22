@@ -75,6 +75,7 @@
             </td>
             <td>
               <div class="d-flex align-items-center">
+                <form action=""></form>
                 <button type="button" class="btn btn-outline-success me-2">Accept</button>
                 <button type="button" class="btn btn-outline-danger">Reject</button>                
                 <div class="dropdown">

@@ -86,8 +86,8 @@ class MyOrderController extends Controller
             $detailoder->subtotal = $i->subtotal;
             $detailoder->save();
 
-            $i->variant->stock -= $i->quantity;
-            $i->variant->save();
+            // $i->variant->stock -= $i->quantity;
+            // $i->variant->save();
 
             $i->delete();
         }

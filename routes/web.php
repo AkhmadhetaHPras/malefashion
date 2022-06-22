@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
@@ -59,9 +61,7 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
 // ADMIN
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     // Dashboard Admin Routes
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard', ['title' => 'Dashboard']);
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Analytics Route
     Route::prefix('analitycs')->group(function () {
@@ -80,13 +80,11 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
 
     // Order Routes
     Route::prefix('orders')->group(function () {
-        Route::get('/add', function () {
-            return view('admin.app-order-add', ['title' => 'Orders-Add']);
-        })->name('orders-add');
+        // Route::get('/incoming-order', function () {
+        //     return view('admin.app-order-in', ['title' => 'Orders-Incoming']);
+        // })->name('orders-in');       
 
-        // Route::get('/listall', function () {
-        //     return view('admin.app-order-list', ['title' => 'Orders-ListAll']);
-        // })->name('orders-listall');
+        Route::get('/incoming-order', [AdminOrderController::class, 'incoming'])->name('orders-in');
 
         Route::get('/listall', [AdminOrderController::class, 'index'])->name('orders-listall');
 
@@ -120,11 +118,9 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::prefix('users')->group(function () {
         Route::get('/add', function () {
             return view('admin.app-user-add', ['title' => 'Users-Add']);
-        })->name('users-add');
+        })->name('users-add');        
 
-        Route::get('/listall', function () {
-            return view('admin.app-user-list', ['title' => 'Users-ListAll']);
-        })->name('users-listall');
+        Route::get('/listall', [AdminUserController::class, 'index'])->name('users-listall');
 
         Route::get('/view', function () {
             return view('admin.app-user-view', ['title' => 'Users-View']);

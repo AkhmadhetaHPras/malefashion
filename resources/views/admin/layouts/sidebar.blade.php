@@ -57,9 +57,9 @@
                 <div class="lead" data-i18n="Invoice">Ordes</div>
             </a>
             <ul class="menu-sub lead">
-                <li class="menu-item {{ $title == 'Orders-Add' ? 'active' : '' }}">
-                    <a href="{{ route('orders-add') }}" class="menu-link">
-                        <div data-i18n="Add">Add</div>
+                <li class="menu-item {{ $title == 'Orders-Incoming' ? 'active' : '' }}">
+                    <a href="{{ route('orders-in') }}" class="menu-link">
+                        <div data-i18n="In">Incoming order</div>
                     </a>
                 </li>
                 <li class="menu-item  {{ $title == 'Orders-ListAll' || $title == 'Orders-View' || $title == 'Orders-Edit' ? 'active' : '' }}">
@@ -100,17 +100,17 @@
             </a>
             <ul class="menu-sub lead">
                 <li class="menu-item {{ $title == 'Users-Add' ? 'active' :'' }}">
-                    <a href="{{ route('users-add') }}" class="menu-link" target="_blank">
+                    <a href="{{ route('users-add') }}" class="menu-link">
                         <div data-i18n="Basic">Add</div>
                     </a>
                 </li>
                 <li class="menu-item {{ $title == 'Users-ListAll' || $title == 'Users-Edit' || $title == 'Users-View'? 'active' :'' }}">
-                    <a href="{{ route('users-listall') }}" class="menu-link" target="_blank">
+                    <a href="{{ route('users-listall') }}" class="menu-link">
                         <div data-i18n="Basic">List All</div>
                     </a>
                 </li>
                 <!-- <li class="menu-item">
-                    <a href="app-user-verification.html" class="menu-link" target="_blank">
+                    <a href="app-user-verification.html" class="menu-link">
                         <div data-i18n="Basic">Verifications</div>
                     </a>
                 </li> -->

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
@@ -83,9 +84,11 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
             return view('admin.app-order-add', ['title' => 'Orders-Add']);
         })->name('orders-add');
 
-        Route::get('/listall', function () {
-            return view('admin.app-order-list', ['title' => 'Orders-ListAll']);
-        })->name('orders-listall');
+        // Route::get('/listall', function () {
+        //     return view('admin.app-order-list', ['title' => 'Orders-ListAll']);
+        // })->name('orders-listall');
+
+        Route::get('/listall', [AdminOrderController::class, 'index'])->name('orders-listall');
 
         Route::get('/view', function () {
             return view('admin.app-order-view', ['title' => 'Orders-View']);

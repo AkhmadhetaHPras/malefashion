@@ -95,31 +95,9 @@
         <select id="UserRole" class="form-select text-capitalize">
           <option value=""> Select Role </option>
           <option value="Admin">Admin</option>
-          <option value="Author">Author</option>
-          <option value="Editor">Editor</option>
-          <option value="Maintainer">Maintainer</option>
-          <option value="Subscriber">Subscriber</option>
+          <option value="Customer">Customer</option>          
         </select>
-      </div>
-      <!-- Select Plan -->
-      <div class="col-md-4 user_plan">
-        <select id="UserPlan" class="form-select text-capitalize">
-          <option value=""> Select Plan </option>
-          <option value="Basic">Basic</option>
-          <option value="Company">Company</option>
-          <option value="Enterprise">Enterprise</option>
-          <option value="Team">Team</option>
-        </select>
-      </div>
-      <!-- Select Status -->
-      <div class="col-md-4 user_status">
-        <select id="FilterTransaction" class="form-select text-capitalize">
-          <option value=""> Select Status </option>
-          <option value="Pending" class="text-capitalize">Pending</option>
-          <option value="Active" class="text-capitalize">Active</option>
-          <option value="Inactive" class="text-capitalize">Inactive</option>
-        </select>
-      </div>
+      </div>      
     </div>
   </div>
   <!-- Tabel Start -->
@@ -187,47 +165,49 @@
             <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 257px;" aria-label="User: activate to sort column ascending" aria-sort="descending">User</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 121px;" aria-label="Role: activate to sort column ascending">Role</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 77px;" aria-label="Plan: activate to sort column ascending">Username</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 110px;" aria-label="Billing: activate to sort column ascending">Gender</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 110px;" aria-label="Status: activate to sort column ascending">Status</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 110px;" aria-label="Billing: activate to sort column ascending">Gender</th>            
             <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 138px;" aria-label="Actions">Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          <!-- user1 -->
+          <!-- user -->
+          @foreach($users as $u)
           <tr class="odd">
-            <td class=" control" tabindex="0" style=""></td>
+            <td class=" control" tabindex="0"></td>
             <td class="sorting_1">
               <div class="d-flex justify-content-start align-items-center">
                 <!-- Photo Profile -->
                 <div class="avatar-wrapper">
                   <div class="avatar avatar-sm me-3">
-                    <img src="{{asset('admin/img/avatars/2.png')}}" alt="Avatar" class="rounded-circle">
+                    <img src="{{asset('storage/'.$u->photo)}}" alt="Avatar" class="rounded-circle">                    
                   </div>
                 </div>
                 <!-- Name & email-->
                 <div class="d-flex flex-column">
                   <a href="{{ route('users-view') }}" class="text-body text-truncate">
-                    <span class="fw-semibold">Zsazsa McCleverty</span>
+                    <span class="fw-semibold">{{$u->name}}</span>
                   </a>
-                  <small class="text-muted">zmcclevertye@soundcloud.com</small>
+                  <small class="text-muted">{{$u->email}}</small>
                 </div>
               </div>
             </td>
             <!-- roles -->
             <td>
-              <span class="text-truncate d-flex align-items-center">
-                <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
-                  <i class="bx bx-pie-chart-alt bx-xs"></i></span>
-                Customer
+              <span class="text-truncate d-flex align-items-center">                
+                @if($u->role == 'Admin')
+                <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
+                  <i class="bx bx-cog bx-xs"></i></span>Admin
+                @elseif($u->role == 'Customer')
+                <span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2">
+                  <i class="bx bx-user bx-xs"></i></span>Customer                
+                @endif
               </span>
             </td>
             <!-- username -->
-            <td><span class="fw-semibold">Zsazsa123</span></td>
+            <td><span class="fw-semibold">{{$u->username}}</span></td>
             <!-- Gender -->
-            <td>Female</td>
-
-            <td><span class="badge bg-label-success">Active</span></td>
+            <td>{{$u->gender}}</td>            
             <td>
               <div class="d-inline-block">
                 <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -242,177 +222,14 @@
               </div>
             </td>
           </tr>
-          <!-- /user1 -->
-
-          <!-- user2 -->
-          <tr class="even">
-            <td class=" control" tabindex="0" style=""></td>
-            <td class="sorting_1">
-              <div class="d-flex justify-content-start align-items-center">
-                <!-- Photo Profile -->
-                <div class="avatar-wrapper">
-                  <div class="avatar avatar-sm me-3">
-                    <img src="{{asset('admin/img/avatars/7.png')}}" alt="Avatar" class="rounded-circle">
-                  </div>
-                </div>
-                <div class="d-flex flex-column">
-                  <a href="{{ route('users-view') }}" class="text-body text-truncate"><span class="fw-semibold">Yoko Pottie</span></a>
-                  <small class="text-muted">ypottiec@privacy.gov.au</small>
-                </div>
-              </div>
-            </td>
-            <td><span class="text-truncate d-flex align-items-center"><span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i class="bx bx-user bx-xs"></i></span>Subscriber</span></td>
-            <td><span class="fw-semibold">Basic</span></td>
-            <td>Auto Debit</td>
-            <td><span class="badge bg-label-secondary">Inactive</span></td>
-            <td>
-              <div class="d-inline-block"><button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu dropdown-menu-end"><a href="{{ route('users-view') }}" class="dropdown-item">View</a><a href="javascript:;" class="dropdown-item">Suspend</a>
-                  <div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <!-- /user2 -->
-
-          <!-- user3 -->
-          <tr class="odd">
-            <td class=" control" tabindex="0" style=""></td>
-            <td class="sorting_1">
-              <div class="d-flex justify-content-start align-items-center">
-                <!-- Photo Profile -->
-                <div class="avatar-wrapper">
-                  <div class="avatar avatar-sm me-3">
-                    <img src="{{asset('admin/img/avatars/6.png')}}" alt="Avatar" class="rounded-circle">
-                  </div>
-                </div>
-                <div class="d-flex flex-column"><a href="{{ route('users-view') }}" class="text-body text-truncate"><span class="fw-semibold">Wesley
-                      Burland</span></a><small class="text-muted">wburlandj@uiuc.edu</small></div>
-              </div>
-            </td>
-            <td><span class="text-truncate d-flex align-items-center"><span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30 me-2"><i class="bx bx-edit bx-xs"></i></span>Editor</span></td>
-            <td><span class="fw-semibold">Team</span></td>
-            <td>Auto Debit</td>
-            <td><span class="badge bg-label-secondary">Inactive</span></td>
-            <td>
-              <div class="d-inline-block"><button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu dropdown-menu-end"><a href="{{ route('users-view') }}" class="dropdown-item">View</a><a href="javascript:;" class="dropdown-item">Suspend</a>
-                  <div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <!-- /user3 -->
-
-          <!-- user4 -->
-          <tr class="even">
-            <td class=" control" tabindex="0" style=""></td>
-            <td class="sorting_1">
-              <div class="d-flex justify-content-start align-items-center">
-                <!-- Photo Profile -->
-                <div class="avatar-wrapper">
-                  <div class="avatar avatar-sm me-3">
-                    <span class="avatar-initial rounded-circle bg-label-dark">VK</span>
-                  </div>
-                </div>
-                <div class="d-flex flex-column"><a href="{{ route('users-view') }}" class="text-body text-truncate"><span class="fw-semibold">Vladamir
-                      Koschek</span></a><small class="text-muted">vkoschek17@abc.net.au</small></div>
-              </div>
-            </td>
-            <td><span class="text-truncate d-flex align-items-center"><span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2"><i class="bx bx-cog bx-xs"></i></span>Author</span></td>
-            <td><span class="fw-semibold">Team</span></td>
-            <td>Manual - Paypal</td>
-            <td><span class="badge bg-label-success">Active</span></td>
-            <td>
-              <div class="d-inline-block"><button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu dropdown-menu-end"><a href="{{ route('users-view') }}" class="dropdown-item">View</a><a href="javascript:;" class="dropdown-item">Suspend</a>
-                  <div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <!-- /user4 -->
-
-          <!-- user5 -->
-          <tr class="odd">
-            <td class=" control" tabindex="0" style=""></td>
-            <td class="sorting_1">
-              <div class="d-flex justify-content-start align-items-center">
-                <!-- Photo Profile -->
-                <div class="avatar-wrapper">
-                  <div class="avatar avatar-sm me-3">
-                    <span class="avatar-initial rounded-circle bg-label-danger">TW</span>
-                  </div>
-                </div>
-                <div class="d-flex flex-column"><a href="{{ route('users-view') }}" class="text-body text-truncate"><span class="fw-semibold">Tyne Widmore</span></a><small class="text-muted">twidmore12@bravesites.com</small></div>
-              </div>
-            </td>
-            <td><span class="text-truncate d-flex align-items-center"><span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i class="bx bx-user bx-xs"></i></span>Subscriber</span></td>
-            <td><span class="fw-semibold">Team</span></td>
-            <td>Manual - Cash</td>
-            <td><span class="badge bg-label-warning">Pending</span></td>
-            <td>
-              <div class="d-inline-block"><button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu dropdown-menu-end"><a href="{{ route('users-view') }}" class="dropdown-item">View</a><a href="javascript:;" class="dropdown-item">Suspend</a>
-                  <div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <!-- /user5 -->
-
-          <!-- user6 -->
-          <tr class="even">
-            <td class=" control" tabindex="0" style=""></td>
-            <td class="sorting_1">
-              <div class="d-flex justify-content-start align-items-center">
-                <div class="avatar-wrapper">
-                  <div class="avatar avatar-sm me-3">
-                    <span class="avatar-initial rounded-circle bg-label-success">TB</span>
-                  </div>
-                </div>
-                <div class="d-flex flex-column"><a href="{{ route('users-view') }}" class="text-body text-truncate"><span class="fw-semibold">Travus
-                      Bruntjen</span></a><small class="text-muted">tbruntjeni@sitemeter.com</small></div>
-              </div>
-            </td>
-            <td><span class="text-truncate d-flex align-items-center"><span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30 me-2"><i class="bx bx-mobile-alt bx-xs"></i></span>Admin</span></td>
-            <td><span class="fw-semibold">Enterprise</span></td>
-            <td>Auto Debit</td>
-
-            <td><span class="badge bg-label-success">Active</span></td>
-            <td>
-              <div class="d-inline-block"><button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu dropdown-menu-end"><a href="{{ route('users-view') }}" class="dropdown-item">View</a><a href="javascript:;" class="dropdown-item">Suspend</a>
-                  <div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <!-- /user6 -->
-
+          @endforeach          
+          <!-- /user -->          
         </tbody>
       </table>
       <!-- Tabel end -->
 
-      <div class="row mx-2">
-        <div class="col-sm-12 col-md-6">
-          <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing
-            1 to 10 of 50 entries</div>
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-            <ul class="pagination">
-              <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-              <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-              <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-              <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-              <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-              <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-              <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0" class="page-link">Next</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div class="row mx-2">        
+        {{$users->links()}}
       </div>
     </div>
   </div>

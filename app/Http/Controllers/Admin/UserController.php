@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Address;
-use App\Models\DetailOrder;
-use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +15,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $title = 'Orders-ListAll';        
-        $orders = Order::with('address','detailorder')->paginate(10);   
-        
-        $address = Address::all();
-        $detailorder = DetailOrder::all();
+        $title = 'Users-ListAll';        
+        $users = User::paginate(10);                   
 
-        return view('admin.app-order-list', compact('title', 'orders', 'address', 'detailorder'));
+        return view('admin.app-user-list', compact('title', 'users'));
     }
 
     /**
@@ -90,15 +85,5 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function incoming()
-    {
-        $title = 'Orders-Incoming';        
-        $orders = Order::where('status','Waiting Confirmation')->paginate(10);   
-        
-        $address = Address::all();       
-
-        return view('admin.app-order-in', compact('title', 'orders', 'address'));
     }
 }

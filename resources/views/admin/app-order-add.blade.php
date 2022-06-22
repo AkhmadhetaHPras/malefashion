@@ -135,7 +135,7 @@
                       <p class="mb-2 repeater-title">Qty</p>
                       <input type="number" class="form-control invoice-item-qty" placeholder="1" min="1" max="50">
                     </div>
-                    <div class="col-md-3 col-12 pe-0">
+                    <div class="col-md-1 col-12 pe-0">
                       <p class="mb-2 repeater-title">Price</p>
                       <p class="mb-0">$24.00</p>
                     </div>

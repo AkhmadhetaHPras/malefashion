@@ -63,22 +63,8 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     // Dashboard Admin Routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // Order resource route
-    // Route::resource('/order', AdminOrderController::class); 
-
-    // Analytics Route
-    Route::prefix('analitycs')->group(function () {
-        Route::get('/profit', function () {
-            return view('admin.an-profit', ['title' => 'Analytics-Profit']);
-        })->name('analytics-profit');
-
-        Route::get('/sales', function () {
-            return view('admin.an-sales', ['title' => 'Analytics-Sales']);
-        })->name('analytics-sales');
-
-        Route::get('/statistics', function () {
-            return view('admin.an-statistics', ['title' => 'Analytics-Statistics']);
-        })->name('analytics-statistics');
-    });
+    Route::resource('order', AdminOrderController::class); 
+    Route::resource('user', AdminUserController::class); 
 
     // Order Routes
     Route::prefix('orders')->group(function () {                        
@@ -125,6 +111,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
         })->name('users-add');
 
         Route::get('/listall', [AdminUserController::class, 'index'])->name('users-listall');
+        Route::get('/change-password/{id}', [AdminUserController::class, 'changepasswd'])->name('ad-changePasswd');
 
         Route::get('/view', function () {
             return view('admin.app-user-view', ['title' => 'Users-View']);

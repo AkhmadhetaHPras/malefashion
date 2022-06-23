@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -15,8 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $title = 'Users-ListAll';        
-        $users = User::paginate(10);                   
+        $title = 'Users-ListAll';
+        $users = User::paginate(10);
 
         return view('admin.app-user-list', compact('title', 'users'));
     }
@@ -39,7 +43,48 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'photo' => 'image|nullable',
+            'username' => 'required|unique:users,username',
+            'fullname' => 'required|max:50',
+            'email' => 'required|email|unique:users,email',
+            'contact' => 'required|max:15',
+            'gender' => 'required|max:10',
+            'birth' => 'required',
+            'role' => 'required',
+            'passwd' => 'required|confirmed|min:8',
+            'passwd_confirmation' => 'required|min:8',
+            'street' => 'required|max:100',
+            'post_code' => 'required|max:10',
+            'city' => 'required|max:50',
+            'province' => 'required|max:50',
+        ]);
+
+        $user = new User();
+        $user->role = $request->input('role');
+        $user->username = $request->input('username');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->name = $request->input('fullname');
+        $user->telp = $request->input('contact');
+        $user->gender = $request->input('gender');
+        $user->birth = $request->input('birth');
+        $user->photo = 'img/profile/default.png';
+        $user->save();
+
+        $address = new Address();
+        $address->name = $request->input('fullname');
+        $address->telp = $request->input('contact');
+        $address->street_address = $request->input('street');
+        $address->postal_code = $request->input('post_code');
+        $address->city = $request->input('city');
+        $address->province = $request->input('province');
+
+        $address->user()->associate($user);
+        $address->save();
+
+        return redirect()->route('users-add')
+            ->with('success', 'Add user successfully!');
     }
 
     /**
@@ -50,7 +95,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $title = 'Users-View';
+        $users = User::where('id', $id)->first();
+        
+        return view('admin.app-user-view', compact('title','users'));        
     }
 
     /**
@@ -85,5 +133,20 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changePasswd(Request $request, $id){
+        $request->validate([            
+            'newPassword' => 'required|confirmed|min:8',
+            'newPassword_confirmation' => 'required|min:8',            
+        ]);
+        
+        $users = User::where('id', $id)->first();
+
+        $users->password = Hash::make($request->input('newPassword'));
+        $users->save();
+
+        return Redirect::back()
+            ->with('success', 'Update password successfully!');
     }
 }

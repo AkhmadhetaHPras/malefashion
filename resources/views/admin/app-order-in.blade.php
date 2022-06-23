@@ -1,10 +1,26 @@
 @extends('admin.layouts.app')
 
-@section('content')
+@section('spesificScript')
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+@endsection
 
+@section('content')
 <h4 class="fw-bold py-3 mb-4">
   <span class="text-muted fw-light">Orders /</span> List
 </h4>
+
+<div id="updateresponse">
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+  @if ($message = Session::get('error'))
+  <div class="alert alert-error">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+</div>
 
 <!-- Invoice List Table -->
 <div class="card">
@@ -28,6 +44,7 @@
           </div>
         </div>
       </div>
+
       <table class="invoice-list-table table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
         <thead>
           <tr role="row">
@@ -75,17 +92,21 @@
             </td>
             <td>
               <div class="d-flex align-items-center">
-                <form action=""></form>
-                <button type="button" class="btn btn-outline-success me-2">Accept</button>
-                <button type="button" class="btn btn-outline-danger">Reject</button>                
+                <form action="{{ route('orders-accept', $o->id) }}" method="POST">
+                  @csrf
+                  @method('PUT')
+                  <input type="submit" class="btn btn-outline-success me-2" value="Accept">
+                </form>
+                <form action="{{ route('orders-reject', $o->id) }}" method="post">
+                  @csrf
+                  @method('PUT')
+                  <button type="submit" class="btn btn-outline-danger">Reject</button>
+                </form>
                 <div class="dropdown">
                   <a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown" style="margin-left: 1rem">
                     <i class="bx bx-dots-vertical-rounded"></i>
                   </a>
                   <div class="dropdown-menu dropdown-menu-end">
-                    <a href="javascript:;" class="dropdown-item">Download</a>
-                    <a href="javascript:;" class="dropdown-item">Duplicate</a>
-                    <div class="dropdown-divider"></div>
                     <a href="javascript:;" class="dropdown-item delete-record text-danger">Delete</a>
                   </div>
                 </div>
@@ -101,5 +122,15 @@
     </div>
   </div>
 </div>
+@endsection
 
+@section('scriptJS')
+<script>
+  window.setTimeout(function() {
+    $("#updateresponse .alert").fadeTo(500, 0).slideUp(500, function() {
+      $(this).remove();
+    });
+  }, 4000);
+</script>
+<!-- <script src="{{asset('admin/vendor/libs/sweetalert2/masssage.js')}}"></script> -->
 @endsection

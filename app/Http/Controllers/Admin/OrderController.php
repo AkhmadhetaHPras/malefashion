@@ -7,6 +7,7 @@ use App\Models\Address;
 use App\Models\DetailOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
@@ -92,6 +93,10 @@ class OrderController extends Controller
         //
     }
 
+    // public function view(){
+    //     return view('admin.app-order-in');
+    // }
+
     public function incoming()
     {
         $title = 'Orders-Incoming';        
@@ -109,5 +114,31 @@ class OrderController extends Controller
         // return view('invoice', ['order' => $order]);
         $pdf = PDF::loadview('admin.app-invoice-print', ['order' => $order]);
         return $pdf->stream();
+    }
+
+    public function accept($id){        
+        $orders = Order::find($id);        
+
+        $orders->status = 'Processed';
+        $orders->save();
+
+        foreach($orders->detailorder as $i) {
+            $i->variant->stock -= $i->quantity;
+            $i->variant->save();
+        }
+        //jika data berhasil diupdate, akan kembali ke halaman incoming order
+        return Redirect::back()
+            ->with('success', 'Update order status successfully!');
+    }
+
+    public function reject($id){
+        $orders = Order::with('address', 'detailorder')->where('id', $id)->first();
+
+        $orders->status = 'Rejected';
+        $orders->save();
+
+        //jika data berhasil diupdate, akan kembali ke halaman incoming order
+        return redirect()->route('orders-in')
+            ->with('success', 'Update order status successfully!');
     }
 }

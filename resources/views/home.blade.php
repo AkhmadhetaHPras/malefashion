@@ -131,7 +131,7 @@
                                     <i class="fa fa-star-o"></i>
                                     @endfor
                         </div>
-                        <h5>Rp. {{ $p->price }}</h5>
+                        <h5>Rp. {{ number_format($p->price) }}</h5>
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@
                                     <i class="fa fa-star-o"></i>
                                     @endfor
                         </div>
-                        <h5>Rp. {{ $p->price }}</h5>
+                        <h5>Rp. {{ number_format($p->price) }}</h5>
                     </div>
                 </div>
             </div>

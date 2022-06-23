@@ -17,17 +17,7 @@
                 <option value="25">25</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
-              </select></label></div>
-          <div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start mt-md-0 mt-3">
-            <div class="dt-buttons">
-              <button class="dt-button btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" onclick="location.href='/orders/add'">
-                <span>
-                  <i class="bx bx-plus me-md-2"></i>
-                  <span class="d-md-inline-block d-none">Create Invoice</span>
-                </span>
-              </button>
-            </div>
-          </div>
+              </select></label></div>         
         </div>
         <div class="col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-3 gap-md-2">
           <div id="DataTables_Table_0_filter" class="dataTables_filter">
@@ -72,7 +62,7 @@
             <td class=" control" tabindex="0" style="display: none;"></td>
             <td class="sorting_1"><a href="{{ route('orders-view') }}">#{{$o->id}}</a></td>
             <td>
-              <span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>{{$o->status}}<br> Balance: Rp.{{$o->total}}<br> Due Date: {{$o->order_date}}</span>" aria-label="<span>{{$o->status}}<br> Balance: Rp.{{$o->total}}<br> Due Date: {{$o->order_date}}</span>">
+              <span data-bs-toggle="tooltip" data-bs-html="true" title="" data-bs-original-title="<span>{{$o->status}}<br> Balance: Rp.{{number_format($o->total)}}<br> Due Date: {{$o->order_date}}</span>" aria-label="<span>{{$o->status}}<br> Balance: Rp.{{number_format($o->total)}}<br> Due Date: {{$o->order_date}}</span>">
                 @if($o->status == 'Completed')
                 <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30">
                   <i class="bx bx-adjust bx-xs"></i>

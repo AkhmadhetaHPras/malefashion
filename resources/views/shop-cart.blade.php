@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="product__cart__item__text">
                                         <h6>{{ $c->variant->product->product_name }}</h6>
-                                        <h5>Rp. {{ $c->variant->product->price }}</h5>
+                                        <h5>Rp. {{ number_format($c->variant->product->price) }}</h5>
                                     </div>
                                 </td>
                                 <td class="quantity__item">
@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="cart__price" id="cart-price{{$c->id}}">Rp. {{ $c->subtotal }}</td>
+                                <td class="cart__price" id="cart-price{{$c->id}}">Rp. {{ number_format($c->subtotal) }}</td>
                                 <td class="cart__close"><i class="fa fa-close btn-delete" onclick='deleteitem("{{$c->id}}")'></i></td>
                             </tr>
                             @endforeach
@@ -73,7 +73,7 @@
                 <div class="cart__total">
                     <h6>Cart total</h6>
                     <ul>
-                        <li>Total <span id="totalpricecart">Rp. {{ $cartitems->sum('subtotal') }}</span></li>
+                        <li>Total <span id="totalpricecart">Rp. {{ number_format($cartitems->sum('subtotal')) }}</span></li>
                     </ul>
                     <a href="{{ route('checkout') }}" class="primary-btn">Proceed to checkout</a>
                 </div>
@@ -118,8 +118,8 @@
                 dataType: "json",
                 success: function(response) {
                     $('.price').text(response.total);
-                    $('#cart-price' + id).text('Rp. ' + response.subtotal);
-                    $('#totalpricecart').text('Rp. ' + response.total);
+                    $('#cart-price' + id).text('Rp. ' + response.subtotal.toLocaleString('en-US'));
+                    $('#totalpricecart').text('Rp. ' + response.total.toLocaleString('en-US'));
                 },
             });
         });
@@ -147,7 +147,7 @@
                         "</div>" +
                         "<div class ='product__cart__item__text'>" +
                         "<h6>" + item.variant.product.product_name + "</h6>" +
-                        "<h5>Rp. " + item.variant.product.price + "</h5>" +
+                        "<h5>Rp. " + item.variant.product.price.toLocaleString('en-US') + "</h5>" +
                         "</div>" +
                         "</td>" +
                         "<td class = 'quantity__item'>" +
@@ -157,7 +157,7 @@
                         "</div>" +
                         "</div>" +
                         "</td>" +
-                        "<td class = 'cart__price' id = 'cart-price" + item.id + "'>Rp. " + item.subtotal + "</td>" +
+                        "<td class = 'cart__price' id = 'cart-price" + item.id + "'>Rp. " + item.subtotal.toLocaleString('en-US') + "</td>" +
                         "<td class = 'cart__close' ><i class = 'fa fa-close btn-delete' onclick = 'deleteitem(" + item.id + ")'></i></td>" +
                         "</tr>"
                     );
@@ -181,7 +181,7 @@
                 // berhasil
                 $('.price').text(response.total);
                 $('.badge.rounded-pill.bg-warning.text-dark').text(response.nitem);
-                $('#totalpricecart').text('Rp. ' + response.total);
+                $('#totalpricecart').text('Rp. ' + response.total.toLocaleString('en-US'));
 
                 $('#delitemresponse').html("");
                 $('#delitemresponse').html("<div class='alert alert-success' role='alert'></div>");

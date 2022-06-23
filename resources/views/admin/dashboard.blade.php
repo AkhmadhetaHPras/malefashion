@@ -109,7 +109,7 @@
           <div class="card-header d-flex align-items-center justify-content-between pb-0">
             <div class="card-title mb-0">
               <h5 class="m-0 me-2">Order Statistics</h5>
-              <small class="text-muted">Rp. {{$sales}} Total Sales</small>
+              <small class="text-muted">Rp. {{number_format($sales)}} Total Sales</small>
             </div>
             <div class="dropdown">
               <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

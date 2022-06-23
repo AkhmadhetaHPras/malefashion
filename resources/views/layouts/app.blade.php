@@ -69,7 +69,7 @@
             @auth
             <a href="{{ route('cart') }}"><i class="icon_cart_alt text-dark font-weight-bold"></i>
                 <span class="badge rounded-pill bg-warning text-dark">{{ auth()->user()->cartitem->count() }}</span></a>
-            <div class="price">Rp. {{ auth()->user()->cartitem->sum('subtotal') }}</div>
+            <div class="price">Rp. {{ number_format(auth()->user()->cartitem->sum('subtotal')) }}</div>
             <span class="dropdown ml-3">
                 <span id="dLabel" type="button" data-toggle="dropdown" aria-expanded="false">
                     <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">
@@ -158,7 +158,7 @@
                         @auth
                         <a href="{{ route('cart') }}"><i class="icon_cart_alt text-dark font-weight-bold"></i>
                             <span class="badge rounded-pill bg-warning text-dark">{{ auth()->user()->cartitem->count() }}</span></a>
-                        <div class="price mr-2">Rp. {{ auth()->user()->cartitem->sum('subtotal') }}</div>
+                        <div class="price mr-2">Rp. {{ number_format(auth()->user()->cartitem->sum('subtotal')) }}</div>
                         <span class="dropdown">
                             <span id="dLabel" type="button" data-toggle="dropdown" aria-expanded="false">
                                 <img src="{{asset('storage/'.auth()->user()->photo)}}" alt="" width="36" height="36" id="profile" class="rounded-circle bg-dark">

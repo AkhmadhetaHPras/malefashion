@@ -86,7 +86,7 @@
                                     @endfor
                                     <span> - {{ $p->review()->count() }} Reviews</span>
                         </div>
-                        <h3>Rp. {{ $p->price }}</h3>
+                        <h3>Rp. {{ number_format($p->price) }}</h3>
                         <p>
                             {{ $p->short_desc }}
                         </p>
@@ -195,7 +195,7 @@
                                     <i class="fa fa-star-o"></i>
                                     @endfor
                         </div>
-                        <h5>Rp. {{ $p->price }}</h5>
+                        <h5>Rp. {{ number_format($p->price) }}</h5>
                     </div>
                 </div>
             </div>

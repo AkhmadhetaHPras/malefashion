@@ -75,13 +75,13 @@
                             </div>
                             <ul class="checkout__total__products">
                                 @foreach($cartitems as $i)
-                                <li>{{ $i->variant->product->product_name }} &times;{{ $i->quantity }}<span>Rp. {{ $i->subtotal }}</span>
+                                <li>{{ $i->variant->product->product_name }} &times;{{ $i->quantity }}<span>Rp. {{ number_format($i->subtotal) }}</span>
                                     <div>Size: {{ $i->variant->size }}</div>
                                 </li>
                                 @endforeach
                             </ul>
                             <ul class="checkout__total__all">
-                                <li>Total <span>Rp. {{ $cartitems->sum('subtotal') }}</span>
+                                <li>Total <span>Rp. {{ number_format($cartitems->sum('subtotal'))}}</span>
                                 </li>
                             </ul>
                             <div class="checkout__input__checkbox">

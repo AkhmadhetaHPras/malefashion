@@ -162,14 +162,14 @@
             @foreach($order->detailorder as $i)
             <tr class="item  @if ($loop->last) last @endif">
                 <td>{{ $i->variant->product->product_name }} | {{ $i->variant->size }} | &times;{{ $i->quantity }}</td>
-                <td>Rp. {{ $i->subtotal }}</td>
+                <td>Rp. {{ number_format($i->subtotal) }}</td>
             </tr>
             @endforeach
 
             <tr class="total">
                 <td></td>
 
-                <td>Total: Rp. {{ $order->total }}</td>
+                <td>Total: Rp. {{ number_format($order->total) }}</td>
             </tr>
 
             <tr class="heading">

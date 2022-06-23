@@ -46,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#canceled" role="tab">Canceled</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#rejected" role="tab">Rejected</a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <!-- Waiting Confirmation -->
@@ -83,11 +86,11 @@
                                         <div class="col"><a href="{{ route('shop.details', $p->variant->product) }}" class="productlink__order">{{ $p->variant->product->product_name }}</a></div>
                                         <div class="col text-center">{{ $p->variant->size }}</div>
                                         <div class="col text-center">{{ $p->quantity }}</div>
-                                        <div class="col text-right">Rp. {{ $p->subtotal }}</div>
+                                        <div class="col text-right">Rp. {{ number_format($p->subtotal) }}</div>
                                     </div>
                                     @endforeach
                                     <ul class="checkout__total__all">
-                                        <li>Total <span>Rp. {{ $o->total }}</span></li>
+                                        <li>Total <span>Rp. {{ number_format($o->total) }}</span></li>
                                     </ul>
                                     <div class="row">
                                         <div class="col-8">
@@ -165,11 +168,11 @@
                                         <div class="col"><a href="{{ route('shop.details', $p->variant->product) }}" class="productlink__order">{{ $p->variant->product->product_name }}</a></div>
                                         <div class="col text-center">{{ $p->variant->size }}</div>
                                         <div class="col text-center">{{ $p->quantity }}</div>
-                                        <div class="col text-right">Rp. {{ $p->subtotal }}</div>
+                                        <div class="col text-right">Rp. {{ number_format($p->subtotal) }}</div>
                                     </div>
                                     @endforeach
                                     <ul class="checkout__total__all">
-                                        <li>Total <span>Rp. {{ $o->total }}</span></li>
+                                        <li>Total <span>Rp. {{ number_format($o->total) }}</span></li>
                                     </ul>
                                     <div class="row">
                                         <div class="col-8">
@@ -229,11 +232,11 @@
                                         <div class="col"><a href="{{ route('shop.details', $p->variant->product) }}" class="productlink__order">{{ $p->variant->product->product_name }}</a></div>
                                         <div class="col text-center">{{ $p->variant->size }}</div>
                                         <div class="col text-center">{{ $p->quantity }}</div>
-                                        <div class="col text-right">Rp. {{ $p->subtotal }}</div>
+                                        <div class="col text-right">Rp. {{ number_format($p->subtotal) }}</div>
                                     </div>
                                     @endforeach
                                     <ul class="checkout__total__all">
-                                        <li>Total <span>Rp. {{ $o->total }}</span></li>
+                                        <li>Total <span>Rp. {{ number_format($o->total) }}</span></li>
                                     </ul>
                                     <div class="row">
                                         <div class="col-8">
@@ -290,7 +293,7 @@
                                             @if(\App\Models\Review::where('order_id', $o->id)->where('product_id', $p->variant->product->id)->get()->isEmpty())
                                             <a href="#" class="text-dark" data-toggle="modal" data-target="#reviewmodal{{$p->id}}">REVIEW</a>
                                             @else
-                                            Rp. {{ $p->subtotal }}
+                                            Rp. {{ number_format($p->subtotal) }}
                                             @endif
                                         </div>
 
@@ -319,7 +322,7 @@
                                                                                 <div class="product__cart__item__text col-8">
                                                                                     <h6 class="mb-0">{{ $p->variant->product->product_name }}</h6>
                                                                                     <p class="mb-1" style="font-size: 14px;">Size : {{ $p->variant->size }}</p>
-                                                                                    <h5>Rp. {{ $p->variant->product->price }}</h5>
+                                                                                    <h5>Rp. {{ number_format($p->variant->product->price) }}</h5>
                                                                                 </div>
                                                                             </div>
                                                                             <span>Rating:</span>
@@ -358,7 +361,7 @@
                                     </div>
                                     @endforeach
                                     <ul class="checkout__total__all">
-                                        <li>Total <span>Rp. {{ $o->total }}</span></li>
+                                        <li>Total <span>Rp. {{ number_format($o->total) }}</span></li>
                                     </ul>
                                     <div class="row">
                                         <div class="col-8">
@@ -411,11 +414,11 @@
                                         <div class="col"><a href="{{ route('shop.details', $p->variant->product) }}" class="productlink__order">{{ $p->variant->product->product_name }}</a></div>
                                         <div class="col text-center">{{ $p->variant->size }}</div>
                                         <div class="col text-center">{{ $p->quantity }}</div>
-                                        <div class="col text-right">Rp. {{ $p->subtotal }}</div>
+                                        <div class="col text-right">Rp. {{ number_format($p->subtotal) }}</div>
                                     </div>
                                     @endforeach
                                     <ul class="checkout__total__all">
-                                        <li>Total <span>Rp. {{ $o->total }}</span></li>
+                                        <li>Total <span>Rp. {{ number_format($o->total) }}</span></li>
                                     </ul>
                                     <div class="row">
                                         <div class="col-8">
@@ -426,6 +429,63 @@
                                             </div>
                                         </div>
                                         <div class="col-4 align-bottom text-right"><b>CANCELED</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+                        </div>
+
+                        <!-- Rejected -->
+                        <div class="tab-pane" id="rejected" role="tabpanel">
+                            @if($rejected->isEmpty())
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="{{ asset('img/empty.png') }}" class="mt-5" alt="" width="400px">
+                            </div>
+                            <div class="row ">
+                                <h3 class="col-12 text-center">Oops no item, <div class="mt-1 continue__btn">
+                                        <a href="{{ route('shop') }}">Continue Shopping</a>
+                                    </div>
+                                </h3>
+                            </div>
+                            @else
+                            @foreach($rejected as $o)
+                            <div class="product__details__tab__content">
+                                <div class="checkout__order mb-4">
+                                    <h3 class="mb-0" style="font-weight: 700;">#{{ $o->id }}</h3>
+                                    <h4 class="order__title d-flex justify-content-between align-items-center">{{ Carbon\Carbon::parse($o->order_date)->format('F d, Y') }}
+                                        <div class="address" style="font-weight:300">
+                                            <div class="text-right" style="font-size: 16px;">{{ $o->address->street_address }}</div>
+                                            <div class="text-right" style="font-size: 14px;">{{ $o->address->city }} , {{$o->address->province}}, {{ $o->address->postal_code }}</div>
+                                            <div class="text-right" style="font-size: 14px;">{{ $o->address->name }} | {{ $o->address->telp }}</div>
+                                        </div>
+                                    </h4>
+                                    <div class=" row mb-3">
+                                        <div class="col">Product</div>
+                                        <div class="col text-center">Size</div>
+                                        <div class="col text-center">Qty</div>
+                                        <div class="col text-right">Subtotal</div>
+                                    </div>
+                                    @foreach($o->detailorder as $p)
+                                    <div class="row mb-2">
+                                        <div class="col"><a href="{{ route('shop.details', $p->variant->product) }}" class="productlink__order">{{ $p->variant->product->product_name }}</a></div>
+                                        <div class="col text-center">{{ $p->variant->size }}</div>
+                                        <div class="col text-center">{{ $p->quantity }}</div>
+                                        <div class="col text-right">Rp. {{ number_format($p->subtotal) }}</div>
+                                    </div>
+                                    @endforeach
+                                    <ul class="checkout__total__all">
+                                        <li>Total <span>Rp. {{ number_format($o->total) }}</span></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="note">
+                                                <p>
+                                                    {{ $o-> note }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 align-bottom text-right"><b>REJECTED</b></div>
                                     </div>
                                 </div>
                             </div>

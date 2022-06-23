@@ -132,5 +132,4 @@
     });
   }, 4000);
 </script>
-<!-- <script src="{{asset('admin/vendor/libs/sweetalert2/masssage.js')}}"></script> -->
 @endsection

@@ -1,5 +1,11 @@
 @extends('admin.layouts.app')
 
+@section('spesificScript')
+<link rel="stylesheet" href="{{asset('admin/vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/vendor/libs/datatables-bs5/responsive.bootstrap5.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/vendor/libs/datatables-bs5/buttons.bootstrap5.css')}}" />
+@endsection
+
 @section('content')
 
 <h4 class="fw-bold py-3 mb-4">
@@ -17,7 +23,7 @@
                 <option value="25">25</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
-              </select></label></div>         
+              </select></label></div>
         </div>
         <div class="col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-3 gap-md-2">
           <div id="DataTables_Table_0_filter" class="dataTables_filter">
@@ -40,20 +46,20 @@
       <table class="invoice-list-table table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
         <thead>
           <tr role="row">
-            <th class="control sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label=": activate to sort column ascending">
+            <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 0px; display: none;">
             </th>
-            <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 55px;" aria-label="#ID: activate to sort column ascending" aria-sort="descending">#ID
+            <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 20px;" aria-label="#ID: activate to sort column ascending" aria-sort="descending">#ID
             </th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 36px;" aria-label=": activate to sort column ascending"><i class="bx bx-trending-up"></i>
+            <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 36px;"><i class="bx bx-trending-up"></i>
             </th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 100px;" aria-label="Client: activate to sort column ascending">Username
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 100px;" aria-label="Username: activate to sort column ascending">Username
             </th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 125px;" aria-label="Total: activate to sort column ascending">Total
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 80px;" aria-label="Total: activate to sort column ascending">Total
             </th>
-            <th class="text-truncate sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 145px;" aria-label="Issued Date: activate to sort column ascending">Order Date
+            <th class="text-truncate sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 90px;" aria-label="Order Date: activate to sort column ascending">Order Date
             </th>
             <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 88px;" aria-label="Balance">Status</th>
-            <th class="cell-fit sorting_disabled" rowspan="1" colspan="1" style="width: 78px;" aria-label="Actions">Actions</th>
+            <th class="cell-fit sorting_disabled" rowspan="1" colspan="1" style="width: 125px;" aria-label="Actions">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -143,5 +149,17 @@
     </div>
   </div>
 </div>
+@endsection
 
+@section('scriptJS')
+<!-- Vendors JS -->
+<script src="{{asset('admin/vendor/libs/datatables-bs5/jquery.dataTables.js')}}"></script>
+<script src="{{asset('admin/vendor/libs/datatables-bs5/datatables-bootstrap5.js')}}"></script>
+<script src="{{asset('admin/vendor/libs/datatables-bs5/datatables.responsive.js')}}"></script>
+<script src="{{asset('admin/vendor/libs/datatables-bs5/responsive.bootstrap5.js')}}"></script>
+<script src="{{asset('admin/vendor/libs/datatables-bs5/datatables-buttons.js')}}"></script>
+<script src="{{asset('admin/vendor/libs/datatables-bs5/buttons.bootstrap5.js')}}"></script>
+
+<!-- Page JS -->
+<script src="{{asset('admin/js/app-invoice-list.js')}}"></script>
 @endsection

@@ -84,4 +84,8 @@ class User extends Authenticatable
     {
         return $this->order()->where('status', 'Canceled')->orderBy('id', 'desc');
     }
+    public function rejectedorder()
+    {
+        return $this->order()->where('status', 'Rejected')->orderBy('id', 'desc');
+    }
 }

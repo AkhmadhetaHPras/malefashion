@@ -62,6 +62,8 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     // Dashboard Admin Routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // Order resource route
+    // Route::resource('/order', AdminOrderController::class); 
 
     // Analytics Route
     Route::prefix('analitycs')->group(function () {
@@ -79,11 +81,12 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     });
 
     // Order Routes
-    Route::prefix('orders')->group(function () {            
-
+    Route::prefix('orders')->group(function () {                        
         Route::get('/incoming-order', [AdminOrderController::class, 'incoming'])->name('orders-in');
 
         Route::get('/listall', [AdminOrderController::class, 'index'])->name('orders-listall');
+        Route::put('/accept/{id}', [AdminOrderController::class, 'accept'])->name('orders-accept');
+        Route::put('/reject/{id}', [AdminOrderController::class, 'reject'])->name('orders-reject');
 
         Route::get('/view', function () {
             return view('admin.app-order-view', ['title' => 'Orders-View']);
@@ -119,7 +122,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::prefix('users')->group(function () {
         Route::get('/add', function () {
             return view('admin.app-user-add', ['title' => 'Users-Add']);
-        })->name('users-add');        
+        })->name('users-add');
 
         Route::get('/listall', [AdminUserController::class, 'index'])->name('users-listall');
 

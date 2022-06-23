@@ -25,12 +25,12 @@ class MyOrderController extends Controller
         $waiting = User::find(Auth::user()->id)->waitingorder;
         $processed = User::find(Auth::user()->id)->proceedorder;
         $sent = User::find(Auth::user()->id)->sentorder;
-        // $paid = User::find(Auth::user()->id)->paidorder;
+        $rejected = User::find(Auth::user()->id)->rejectedorder;
         $completed = User::find(Auth::user()->id)->completeorder;
         $canceled = User::find(Auth::user()->id)->canceledorder;
 
         // return dd($myorder);
-        return view('myorders', compact('title', 'waiting', 'processed', 'sent', 'completed', 'canceled'));
+        return view('myorders', compact('title', 'waiting', 'processed', 'sent', 'completed', 'canceled', 'rejected'));
     }
 
     public function cancel($id)

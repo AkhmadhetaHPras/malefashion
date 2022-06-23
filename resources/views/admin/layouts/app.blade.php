@@ -27,15 +27,12 @@
     <link rel="stylesheet" href="{{asset('admin/css/demo.css')}}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{asset('admin/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin/vendor/libs/sweetalert2/sweetalert2.css')}}">
-    <!-- <link rel="stylesheet" href="{{asset('admin/vendor/libs/select2/select2.css')}}"> -->
-    <link rel="stylesheet" href="{{asset('admin/vendor/libs/typeahead-js/typeahead.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/vendor/libs/formvalidation/formValidation.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />   
+    <link rel="stylesheet" href="{{asset('admin/vendor/libs/typeahead-js/typeahead.css')}}">    
     <link rel="stylesheet" href="{{asset('admin/vendor/libs/flatpickr/flatpickr.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/vendor/libs/typeahead-js/typeahead.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendor/libs/typeahead-js/typeahead.css')}}">   
 
-    <link rel="stylesheet" href="{{asset('admin/vendor/libs/apex-charts/apex-charts.css')}}" />
+    @yield('spesificScript')
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{asset('admin/vendor/css/pages/page-user-view.css')}}" />
@@ -51,8 +48,6 @@
 
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{asset('admin/js/config.js')}}"></script>
-
-    @yield('spesificScript')
 
 </head>
 
@@ -87,67 +82,54 @@
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item">
-                                <a href="#" data-size="large"><strong>{{Auth::user()->name}}</strong></a>
+                                <a href="{{ route('user.show', Auth::user()->id) }}" data-size="large"><strong>{{Auth::user()->name}}</strong></a>
                             </li>
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="#" data-bs-toggle="dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
                                         <img src="{{asset('storage/'.Auth::user()->photo)}}" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </a>
+                                
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar avatar-online">
+                                                        <img src="{{asset('storage/'.Auth::user()->photo)}}" alt class="w-px-40 h-auto rounded-circle" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
+                                                    <small class="text-muted">Admin</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('home')}}">
+                                            <i class="bx bx-user me-2"></i>
+                                            <span class="align-middle">E-shop</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            <i class="bx bx-power-off me-2"></i>
+                                            <span class="align-middle">Sign Out</span>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
                             </li>
                             <!--/ User -->
-                        </ul>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0 me-3">
-                                            <div class="avatar avatar-online">
-                                                <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <span class="fw-semibold d-block">John Doe</span>
-                                            <small class="text-muted">Admin</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bx bx-user me-2"></i>
-                                    <span class="align-middle">My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bx bx-cog me-2"></i>
-                                    <span class="align-middle">Settings</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <span class="d-flex align-items-center align-middle">
-                                        <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                        <span class="flex-grow-1 align-middle">Billing</span>
-                                        <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="auth-login-basic.html">
-                                    <i class="bx bx-power-off me-2"></i>
-                                    <span class="align-middle">Log Out</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -177,8 +159,6 @@
     </div>
     <!-- / Layout wrapper -->
 
-    @yield('scriptJS')
-
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="{{asset('admin/vendor/libs/jquery/jquery.js')}}"></script>
@@ -190,16 +170,13 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <!-- <script src="{{asset('admin/vendor/libs/select2/select2.js')}}"></script> -->
-    <script src="{{asset('admin/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
-    <script src="{{asset('admin/vendor/libs/formvalidation/FormValidation.min.js')}}"></script>
-    <script src="{{asset('admin/vendor/libs/formvalidation/Bootstrap5.min.js')}}"></script>
-    <script src="{{asset('admin/vendor/libs/formvalidation/AutoFocus.min.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/cleavejs/cleave.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/cleavejs/cleave-phone.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/flatpickr/flatpickr.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/jquery-repeater/jquery-repeater.js')}}"></script>
     <script src="{{asset('admin/vendor/libs/typeahead-js/typeahead.js')}}"></script>
+
+    @yield('scriptJS')
 
     <!-- Main JS -->
     <script src="{{asset('admin/js/main.js')}}"></script>

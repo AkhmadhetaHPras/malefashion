@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{route('home')}}" class="app-brand-link">
             <span class="app-brand-logo demo">
             <img src="{{ asset('img/logo-light.webp') }}" alt="logo">
             </span>            
@@ -22,36 +22,12 @@
             </a>
         </li>
 
-        <!-- Layouts -->
-        <li class="menu-item {{ $title == 'Analytics-Profit' || $title == 'Analytics-Sales' || $title == 'Analytics-Statistics'  ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
-                <div class="lead" data-i18n="Layouts">Analytics</div>
-            </a>
-            <ul class="menu-sub lead">
-                <li class="menu-item {{ $title == 'Analytics-Profit' ? 'active' : '' }}">
-                    <a href="{{ route('analytics-profit') }}" class="menu-link">
-                        <div data-i18n="Container">Profit</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ $title == 'Analytics-Sales' ? 'active' : '' }}">
-                    <a href="{{ route('analytics-sales') }}" class="menu-link">
-                        <div data-i18n="Fluid">Sales</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ $title == 'Analytics-Statistics' ? 'active' : '' }}">
-                    <a href="{{ route('analytics-statistics') }}" class="menu-link">
-                        <div data-i18n="Blank">Statistics</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
         <!-- Control page start  -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Manage & Controls </span>
         </li>
         <!-- Orders Start -->
-        <li class="menu-item {{ $title == 'Orders-Add' || $title == 'Orders-ListAll' || $title == 'Orders-View' || $title == 'Orders-Edit' ? 'active open' : '' }}">
+        <li class="menu-item {{ $title == 'Orders-Incoming' || $title == 'Orders-ListAll' || $title == 'Orders-View' || $title == 'Orders-Edit' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-food-menu"></i>
                 <div class="lead" data-i18n="Invoice">Ordes</div>

@@ -51,6 +51,9 @@ Route::group(['middleware' => ['auth', 'role:Admin,Customer']], function () {
     Route::get('/myorders', [MyOrderController::class, 'index'])->name('myorders');
     Route::post('/placeorder', [MyOrderController::class, 'store'])->name('myorders.store');
     Route::put('/myorders/cancel/{id}', [MyOrderController::class, 'cancel'])->name('myorders.cancel');
+
+    Route::put('/myorders/complated/{id}', [MyOrderController::class, 'complated'])->name('myorders.complated');
+
     Route::get('/invoice/{id}', [MyOrderController::class, 'invoice'])->name('invoice');
 
     Route::get('/reviewsuccess', [ReviewController::class, 'reviewsuccess']);
@@ -73,35 +76,26 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
         Route::get('/listall', [AdminOrderController::class, 'index'])->name('orders-listall');
         Route::put('/accept/{id}', [AdminOrderController::class, 'accept'])->name('orders-accept');
         Route::put('/reject/{id}', [AdminOrderController::class, 'reject'])->name('orders-reject');
+        Route::get('/edit-show/{id}', [AdminOrderController::class, 'edit'])->name('orders-editshow');
+        Route::put('/edit/{id}', [AdminOrderController::class, 'update'])->name('orders-edit');
 
-        Route::get('/view', function () {
-            return view('admin.app-order-view', ['title' => 'Orders-View']);
-        })->name('orders-view');
+        Route::get('/view/{id}', [AdminOrderController::class, 'show'])->name('orders-view');       
 
-        Route::get('/edit', function () {
-            return view('admin.app-order-edit', ['title' => 'Orders-Edit']);
-        })->name('orders-edit');
-
-        Route::get('/invoice-print', function () {
-            return view('admin.app-order-print', ['title' => 'Print-Invoice']);
-        })->name('invoice-print');
+        Route::get('/invoice-print/{id}', [AdminOrderController::class, 'invoice'])->name('invoice-print');
     });
 
     //Product Routes 
     Route::prefix('products')->group(function () {
-        Route::get('/add', function () {
-            return view('admin.app-product-add', ['title' => 'Products-Add']);
-        })->name('products-add');
+        Route::get('/add', [AdminProductController::class, 'create'])->name('products-add');
+        Route::post('/add', [AdminProductController::class, 'store'])->name('products-post');
+        Route::get('/view/{id}', [AdminProductController::class, 'show'])->name('products-view');
 
-        Route::get('/listall', [AdminProductController::class, 'index'])->name('products-listall');
+        Route::post('/add/variant/{id}', [AdminProductController::class, 'storevariant'])->name('variant-post');
+        Route::put('/edit/variant/{id}', [AdminProductController::class, 'editvariant'])->name('variant-edit');
 
-        Route::get('/view', function () {
-            return view('admin.app-product-view', ['title' => 'Products-View']);
-        })->name('products-view');
+        Route::get('/listall', [AdminProductController::class, 'index'])->name('products-listall');       
 
-        Route::get('/edit', function () {
-            return view('admin.app-product-edit', ['title' => 'Products-Edit']);
-        })->name('products-edit');
+        Route::put('/edit/{id}', [AdminProductController::class, 'update'])->name('products-edit');
     });
 
     //User Routes 

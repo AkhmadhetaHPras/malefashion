@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $waiting = Order::where('status', 'Waiting Confirmation')->count();
         $processed = Order::where('status', 'Processed')->count();
         $sent = Order::where('status', 'Sent')->count();
-        $paid = Order::where('status', 'Paid')->count();
+        $rejected = Order::where('status', 'Rejected')->count();
         $completed = Order::where('status', 'Completed')->count();
         $canceled = Order::where('status', 'Canceled')->count();
 
@@ -33,6 +33,6 @@ class DashboardController extends Controller
             ->take(6)
             ->get();
         return view('admin.dashboard', compact('title', 'product', 'customercart', 'customer', 'rating',
-                'order' ,'waiting', 'processed', 'sent', 'paid', 'completed', 'canceled', 'sales', 'bestproduct'));
+                'order' ,'waiting', 'processed', 'sent', 'rejected', 'completed', 'canceled', 'sales', 'bestproduct'));
     }
 }

@@ -45,6 +45,7 @@
                                     <div class="product__cart__item__text">
                                         <h6>{{ $c->variant->product->product_name }}</h6>
                                         <h5>Rp. {{ number_format($c->variant->product->price) }}</h5>
+                                        <p class="my-0">Size: {{ $c->variant->size }}</p>
                                     </div>
                                 </td>
                                 <td class="quantity__item">
@@ -148,6 +149,7 @@
                         "<div class ='product__cart__item__text'>" +
                         "<h6>" + item.variant.product.product_name + "</h6>" +
                         "<h5>Rp. " + item.variant.product.price.toLocaleString('en-US') + "</h5>" +
+                        "<p class='my-0'>Size: " +  item.variant.size + "</p>" +
                         "</div>" +
                         "</td>" +
                         "<td class = 'quantity__item'>" +
@@ -179,9 +181,9 @@
             dataType: "json",
             success: function(response) {
                 // berhasil
-                $('.price').text(response.total);
+                $('.price').text("Rp. " + response.total.toLocaleString('en-US'));
                 $('.badge.rounded-pill.bg-warning.text-dark').text(response.nitem);
-                $('#totalpricecart').text('Rp. ' + response.total.toLocaleString('en-US'));
+                $('#totalpricecart').text("Rp. " + response.total.toLocaleString('en-US'));
 
                 $('#delitemresponse').html("");
                 $('#delitemresponse').html("<div class='alert alert-success' role='alert'></div>");

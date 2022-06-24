@@ -149,6 +149,68 @@
                             <div class="product__details__tab__content">
                                 <div class="checkout__order mb-4">
                                     <h3 class="mb-0" style="font-weight: 700;">#{{ $o->id }}</h3>
+                                    <a target="_blank" href="{{ route('invoice', $o->id) }}" class="text-primary">Download Invoice</a>
+                                    <h4 class="order__title d-flex justify-content-between align-items-center">{{ Carbon\Carbon::parse($o->order_date)->format('F d, Y') }}
+                                        <div class="address" style="font-weight:300">
+                                            <div class="text-right" style="font-size: 16px;">{{ $o->address->street_address }}</div>
+                                            <div class="text-right" style="font-size: 14px;">{{ $o->address->city }} , {{$o->address->province}}, {{ $o->address->postal_code }}</div>
+                                            <div class="text-right" style="font-size: 14px;">{{ $o->address->name }} | {{ $o->address->telp }}</div>
+                                        </div>
+                                    </h4>
+                                    <div class=" row mb-3">
+                                        <div class="col">Product</div>
+                                        <div class="col text-center">Size</div>
+                                        <div class="col text-center">Qty</div>
+                                        <div class="col text-right">Subtotal</div>
+                                    </div>
+                                    @foreach($o->detailorder as $p)
+                                    <div class="row mb-2">
+                                        <div class="col"><a href="{{ route('shop.details', $p->variant->product) }}" class="productlink__order">{{ $p->variant->product->product_name }}</a></div>
+                                        <div class="col text-center">{{ $p->variant->size }}</div>
+                                        <div class="col text-center">{{ $p->quantity }}</div>
+                                        <div class="col text-right">Rp. {{ number_format($p->subtotal) }}</div>
+                                    </div>
+                                    @endforeach
+                                    <ul class="checkout__total__all">
+                                        <li>Total <span>Rp. {{ number_format($o->total) }}</span></li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="note">
+                                                <p>
+                                                    {{ $o->note }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+                        </div>
+
+                        <!-- Sent -->
+                        <div class="tab-pane" id="sent" role="tabpanel">
+                            @if($sent->isEmpty())
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="{{ asset('img/empty.png') }}" class="mt-5" alt="" width="400px">
+                            </div>
+                            <div class="row ">
+                                <h3 class="col-12 text-center">Oops no item, <div class="mt-1 continue__btn">
+                                        <a href="{{ route('shop') }}">Continue Shopping</a>
+                                    </div>
+                                </h3>
+                            </div>
+                            @else
+                            @foreach($sent as $o)
+                            <div class="product__details__tab__content">
+                                <div class="checkout__order mb-4">
+                                    <h3 class="d-flex justify-content-between align-items-center mb-0" style="font-weight: 700;">#{{ $o->id }}
+                                        <div class="text-right" style="font-size: 18px;">Due: {{ Carbon\Carbon::parse($o->delivery_date)->format('F d, Y') }}</div>
+                                    </h3>
                                     <a href="{{ route('invoice', $o->id) }}" class="text-primary">Download Invoice</a>
                                     <h4 class="order__title d-flex justify-content-between align-items-center">{{ Carbon\Carbon::parse($o->order_date)->format('F d, Y') }}
                                         <div class="address" style="font-weight:300">
@@ -183,70 +245,12 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    Will be sent on <div class="text-right" style="font-size: 22px;"><b>12 June 2022</b></div>
-                                                </div>
-                                            </div>
+                                            <form action="{{ route('myorders.complated', $o->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="submit" class="site-btn" value="COMPLETE">
+                                            </form>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
-                        </div>
-
-                        <!-- Sent -->
-                        <div class="tab-pane" id="sent" role="tabpanel">
-                            @if($sent->isEmpty())
-                            <div class="d-flex justify-content-center align-items-center">
-                                <img src="{{ asset('img/empty.png') }}" class="mt-5" alt="" width="400px">
-                            </div>
-                            <div class="row ">
-                                <h3 class="col-12 text-center">Oops no item, <div class="mt-1 continue__btn">
-                                        <a href="{{ route('shop') }}">Continue Shopping</a>
-                                    </div>
-                                </h3>
-                            </div>
-                            @else
-                            @foreach($sent as $o)
-                            <div class="product__details__tab__content">
-                                <div class="checkout__order mb-4">
-                                    <h3 class="mb-0" style="font-weight: 700;">#{{ $o->id }}</h3>
-                                    <a href="{{ route('invoice', $o->id) }}" class="text-primary">Download Invoice</a>
-                                    <h4 class="order__title d-flex justify-content-between align-items-center">{{ Carbon\Carbon::parse($o->order_date)->format('F d, Y') }}
-                                        <div class="address" style="font-weight:300">
-                                            <div class="text-right" style="font-size: 16px;">{{ $o->address->street_address }}</div>
-                                            <div class="text-right" style="font-size: 14px;">{{ $o->address->city }} , {{$o->address->province}}, {{ $o->address->postal_code }}</div>
-                                            <div class="text-right" style="font-size: 14px;">{{ $o->address->name }} | {{ $o->address->telp }}</div>
-                                        </div>
-                                    </h4>
-                                    <div class=" row mb-3">
-                                        <div class="col">Product</div>
-                                        <div class="col text-center">Size</div>
-                                        <div class="col text-center">Qty</div>
-                                        <div class="col text-right">Subtotal</div>
-                                    </div>
-                                    @foreach($o->detailorder as $p)
-                                    <div class="row mb-2">
-                                        <div class="col"><a href="{{ route('shop.details', $p->variant->product) }}" class="productlink__order">{{ $p->variant->product->product_name }}</a></div>
-                                        <div class="col text-center">{{ $p->variant->size }}</div>
-                                        <div class="col text-center">{{ $p->quantity }}</div>
-                                        <div class="col text-right">Rp. {{ number_format($p->subtotal) }}</div>
-                                    </div>
-                                    @endforeach
-                                    <ul class="checkout__total__all">
-                                        <li>Total <span>Rp. {{ number_format($o->total) }}</span></li>
-                                    </ul>
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <div class="note">
-                                                <p>
-                                                    {{ $o->note }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-4"></div>
                                     </div>
                                 </div>
                             </div>

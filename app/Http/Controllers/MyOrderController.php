@@ -39,12 +39,20 @@ class MyOrderController extends Controller
         $order->status = 'Canceled';
         $order->save();
 
-        foreach ($order->detailorder as $i) {
-            $i->variant->stock += $i->quantity;
-            $i->variant->save();
-        }
+        // foreach ($order->detailorder as $i) {
+        //     $i->variant->stock += $i->quantity;
+        //     $i->variant->save();
+        // }
 
         return redirect()->route('myorders')->with('success', 'Order canceled.');
+    }
+
+    public function complated($id) {
+        $order = Order::find($id);
+        $order->status = 'Completed';
+        $order->save();
+
+        return redirect()->route('myorders')->with('success', 'Order complated.');
     }
 
     public function store(Request $request)

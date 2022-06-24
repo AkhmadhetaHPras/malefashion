@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\DetailOrder;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -56,7 +58,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $title = 'Orders-View';
+        $order = Order::find($id);
+        return view('admin.app-order-view', compact('order', 'title'));
     }
 
     /**
@@ -67,7 +71,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'Order-Due';
+        $order = Order::find($id);
+
+        return view('admin.app-order-edit', compact('order', 'title'));
     }
 
     /**
@@ -79,7 +86,19 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'duedate' => 'required'
+        ]);                        
+
+        $order = Order::find($id);        
+
+        $order->delivery_date = Carbon::parse($request->get('duedate'));      
+        $order->status = 'Sent';
+        $order->save();
+
+        //jika data berhasil diupdate, akan kembali ke halaman incoming order
+        return Redirect::back()
+            ->with('success', 'Update delivery status successfully!');
     }
 
     /**
@@ -112,7 +131,7 @@ class OrderController extends Controller
         $order = Order::find($id);
 
         // return view('invoice', ['order' => $order]);
-        $pdf = PDF::loadview('admin.app-invoice-print', ['order' => $order]);
+        $pdf = PDF::loadview('invoice', ['order' => $order]);
         return $pdf->stream();
     }
 
@@ -141,4 +160,5 @@ class OrderController extends Controller
         return redirect()->route('orders-in')
             ->with('success', 'Update order status successfully!');
     }
+    
 }

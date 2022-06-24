@@ -20,14 +20,14 @@
             <p class="mb-0">+1 (123) 456 7891, +44 (876) 543 2198</p>
           </div>
           <div>
-            <h4>Invoice #3492</h4>
+            <h4>Invoice #{{$order->id}}</h4>
             <div class="mb-2">
-              <span class="me-1">Date Issues:</span>
-              <span class="fw-semibold">25/08/2020</span>
+              <span class="me-1">Created:</span>
+              <span class="fw-semibold">{{ Carbon\Carbon::parse($order->order_date)->format('F d, Y') }}</span>
             </div>
             <div>
-              <span class="me-1">Date Due:</span>
-              <span class="fw-semibold">29/08/2020</span>
+              <span class="me-1">Due:</span>
+              <span class="fw-semibold">{{ Carbon\Carbon::parse($order->delivery_date)->format('F d, Y') }}</span>
             </div>
           </div>
         </div>
@@ -36,36 +36,17 @@
       <div class="card-body">
         <div class="row p-sm-3 p-0">
           <div class="col-xl-6 col-md-12 col-sm-5 col-12 mb-xl-0 mb-md-4 mb-sm-0 mb-4">
-            <h6 class="pb-2">Invoice To:</h6>
-            <p class="mb-1">Rosi Latansa Salsabela</p>
-            <p class="mb-1">20 Mawar Street</p>
-            <p class="mb-1">Kediri, East Java</p>
-            <p class="mb-1">718-986-6062</p>
-            <p class="mb-0">peakyFBlinders@gmail.com</p>
           </div>
-          <div class="col-xl-6 col-md-12 col-sm-7 col-12">
-            <h6 class="pb-2">Bill To:</h6>
-            <table>
+          <div class="col-xl-6 col-md-12 col-sm-7 col-12 text-end">
+            <h6 class="pb-2">Invoice To:</h6>
+            <table class="d-flex justify-content-end">
               <tbody>
                 <tr>
-                  <td class="pe-3">Total Due:</td>
-                  <td>$12,110.55</td>
-                </tr>
-                <tr>
-                  <td class="pe-3">Bank name:</td>
-                  <td>American Bank</td>
-                </tr>
-                <tr>
-                  <td class="pe-3">Country:</td>
-                  <td>United States</td>
-                </tr>
-                <tr>
-                  <td class="pe-3">IBAN:</td>
-                  <td>ETD95476213874685</td>
-                </tr>
-                <tr>
-                  <td class="pe-3">SWIFT code:</td>
-                  <td>BR91905</td>
+                  <td class="text-end">
+                      {{ $order->address->street_address }}<br />
+                      {{ $order->address->city }} ,{{ $order->address->province }} , {{ $order->address->postal_code }}<br />
+                      {{ $order->address->name }} | {{ $order->address->telp }}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -76,61 +57,31 @@
         <table class="table border-top m-0">
           <thead>
             <tr>
-              <th>Item</th>
-              <th>Description</th>
-              <th>Cost</th>
-              <th>Qty</th>
+              <th>Product</th>
+              <th>Size</th>
               <th>Price</th>
+              <th>Qty</th>
+              <th>Subtotal</th>
             </tr>
           </thead>
           <tbody>
+            @foreach($order->detailorder as $d)
             <tr>
-              <td class="text-nowrap">Vuexy Admin Template</td>
-              <td class="text-nowrap">HTML Admin Template</td>
-              <td>$32</td>
-              <td>1</td>
-              <td>$32.00</td>
+              <td class="text-nowrap">{{ $d->variant->product->product_name }}</td>
+              <td class="text-nowrap">{{ $d->variant->size }}</td>
+              <td>Rp. {{ number_format($d->variant->product->price) }}</td>
+              <td>{{ $d->quantity }}</td>
+              <td>Rp. {{ number_format($d->subtotal) }}</td>
             </tr>
-            <tr>
-              <td class="text-nowrap">Frest Admin Template</td>
-              <td class="text-nowrap">Angular Admin Template</td>
-              <td>$22</td>
-              <td>1</td>
-              <td>$22.00</td>
-            </tr>
-            <tr>
-              <td class="text-nowrap">Apex Admin Template</td>
-              <td class="text-nowrap">HTML Admin Template</td>
-              <td>$17</td>
-              <td>2</td>
-              <td>$34.00</td>
-            </tr>
-            <tr>
-              <td class="text-nowrap">Robust Admin Template</td>
-              <td class="text-nowrap">React Admin Template</td>
-              <td>$66</td>
-              <td>1</td>
-              <td>$66.00</td>
-            </tr>
+            @endforeach
             <tr>
               <td colspan="3" class="align-top px-4 py-5">
-                <p class="mb-2">
-                  <span class="me-1 fw-semibold">Salesperson:</span>
-                  <span>Alfie Solomons</span>
-                </p>
-                <span>Thanks for your business</span>
               </td>
               <td class="text-end px-4 py-5">
-                <p class="mb-2">Subtotal:</p>
-                <p class="mb-2">Discount:</p>
-                <p class="mb-2">Tax:</p>
                 <p class="mb-0">Total:</p>
               </td>
               <td class="px-4 py-5">
-                <p class="fw-semibold mb-2">$154.25</p>
-                <p class="fw-semibold mb-2">$00.00</p>
-                <p class="fw-semibold mb-2">$50.00</p>
-                <p class="fw-semibold mb-0">$204.25</p>
+                <p class="fw-semibold mb-0">Rp. {{ number_format($order->total) }}</p>
               </td>
             </tr>
           </tbody>
@@ -141,9 +92,7 @@
         <div class="row">
           <div class="col-12">
             <span class="fw-semibold">Note:</span>
-            <span>It was a pleasure working with you and your team. We hope you will keep us in mind for
-              future freelance
-              projects. Thank You!</span>
+            <span>{{ $order->note }}</span>
           </div>
         </div>
       </div>
@@ -159,13 +108,7 @@
           <span class="d-flex align-items-center justify-content-center text-nowrap">
             <i class="bx bx-paper-plane bx-xs me-3"></i>Send Invoice</span>
         </button>
-        <button class="btn btn-label-secondary d-grid w-100 mb-3">Download</button>
-        <a class="btn btn-label-secondary d-grid w-100 mb-3" target="_blank" href="./app-invoice-print.html">Print</a>
-        <a href="./app-invoice-edit.html" class="btn btn-label-secondary d-grid w-100 mb-3"> Edit Invoice </a>
-        <button class="btn btn-primary d-grid w-100" data-bs-toggle="offcanvas" data-bs-target="#addPaymentOffcanvas">
-          <span class="d-flex align-items-center justify-content-center text-nowrap">
-            <i class="bx bx-dollar bx-xs me-3"></i>Add Payment</span>
-        </button>
+        <a class="btn btn-label-secondary d-grid w-100 mb-3" target="_blank" href="{{route('invoice-print', $order->id)}}">Print</a>
       </div>
     </div>
   </div>
@@ -215,52 +158,6 @@
 </div>
 <!-- /Send Invoice Sidebar -->
 
-<!-- Add Payment Sidebar -->
-<div class="offcanvas offcanvas-end" id="addPaymentOffcanvas" aria-hidden="true">
-  <div class="offcanvas-header mb-3">
-    <h5 class="offcanvas-title">Add Payment</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body flex-grow-1">
-    <div class="d-flex justify-content-between bg-lighter p-2 mb-3">
-      <p class="mb-0">Invoice Balance:</p>
-      <p class="fw-bold mb-0">$5000.00</p>
-    </div>
-    <form>
-      <div class="mb-3">
-        <label class="form-label" for="invoiceAmount">Payment Amount</label>
-        <div class="input-group">
-          <span class="input-group-text">$</span>
-          <input type="text" id="invoiceAmount" name="invoiceAmount" class="form-control invoice-amount" placeholder="100">
-        </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="payment-date">Payment Date</label>
-        <input id="payment-date" class="form-control invoice-date flatpickr-input" type="text" readonly="readonly">
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="payment-method">Payment Method</label>
-        <select class="form-select" id="payment-method">
-          <option value="" selected="" disabled="">Select payment method</option>
-          <option value="Cash">Cash</option>
-          <option value="Bank Transfer">Bank Transfer</option>
-          <option value="Debit Card">Debit Card</option>
-          <option value="Credit Card">Credit Card</option>
-          <option value="Paypal">Paypal</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label class="form-label" for="payment-note">Internal Payment Note</label>
-        <textarea class="form-control" id="payment-note" rows="2"></textarea>
-      </div>
-      <div class="mb-3 d-flex flex-wrap">
-        <button type="button" class="btn btn-primary me-3" data-bs-dismiss="offcanvas">Send</button>
-        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">Cancel</button>
-      </div>
-    </form>
-  </div>
-</div>
-<!-- /Add Payment Sidebar -->
 <!-- /Offcanvas -->
 @endsection
 

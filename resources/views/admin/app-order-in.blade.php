@@ -25,25 +25,7 @@
 <!-- Invoice List Table -->
 <div class="card">
   <div class="card-datatable table-responsive">
-    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-      <div class="row ms-2 me-3">
-        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-2">
-          <div class="dataTables_length" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select">
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select></label>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-3 gap-md-2">
-          <div id="DataTables_Table_0_filter" class="dataTables_filter">
-            <label>
-              <input type="search" class="form-control" placeholder="Search Invoice" aria-controls="DataTables_Table_0">
-            </label>
-          </div>
-        </div>
-      </div>
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">      
 
       <table class="invoice-list-table table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
         <thead>
@@ -64,7 +46,7 @@
           @foreach($orders as $o)
           <tr class="odd">
             <td class=" control" tabindex="0" style="display: none;"></td>
-            <td class="sorting_1"><a href="{{ route('orders-view') }}">#{{$o->id}}</a></td>
+            <td class="sorting_1"><a href="{{ route('orders-view', $o->id) }}">#{{$o->id}}</a></td>
             <td>
               <div class="d-flex justify-content-start align-items-center">
                 <div class="avatar-wrapper">

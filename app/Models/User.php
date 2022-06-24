@@ -72,10 +72,6 @@ class User extends Authenticatable
     {
         return $this->order()->where('status', 'Sent')->orderBy('id', 'desc');
     }
-    public function paidorder()
-    {
-        return $this->order()->where('status', 'Paid')->orderBy('id', 'desc');
-    }
     public function completeorder()
     {
         return $this->order()->where('status', 'Completed')->orderBy('id', 'desc');

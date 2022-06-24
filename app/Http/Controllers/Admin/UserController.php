@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -97,8 +99,8 @@ class UserController extends Controller
     {
         $title = 'Users-View';
         $users = User::where('id', $id)->first();
-        
-        return view('admin.app-user-view', compact('title','users'));        
+
+        return view('admin.app-user-view', compact('title', 'users'));
     }
 
     /**
@@ -121,7 +123,50 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator1 = Validator::make($request->all(), [
+            'photo' => 'image|nullable',
+            'name' => 'required|max:50',
+            'telp' => 'required|max:15',
+            'gender' => 'required',
+            'birth' => 'required',
+            'username' => 'required',
+        ]);
+
+        if ($validator1->fails()) {
+            return Redirect::back()
+                ->withErrors($validator1)
+                ->with('error_code', 7);
+        }
+
+        $user = User::find($id);
+        $user->name = $request->get('name');
+        $user->telp = $request->get('telp');
+        $user->gender = $request->get('gender');
+        $user->username = $request->get('username');
+        $user->birth = Carbon::parse($request->get('birth'));
+
+        if ($request->hasFile('photo')) {
+            // ada file yang diupload
+            if ($user->photo && $user->photo != 'img/profile/default.png' && file_exists(storage_path('app/public/' . $user->photo))) {
+                Storage::delete('public/' . $user->photo);
+            }
+            $filenameWithExt = $request->file('photo')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $filenameSimpan = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('photo')->storeAs('public/img/profile/', $filenameSimpan);
+            $savepath = 'img/profile/' . $filenameSimpan;
+        } else {
+            // tidak ada file yang diupload
+            $savepath = $user->photo;
+        }
+        $user->photo = $savepath;
+
+        // save
+        $user->save();
+
+        return Redirect::back()
+            ->with('success', "Update user successfully");
     }
 
     /**
@@ -135,12 +180,13 @@ class UserController extends Controller
         //
     }
 
-    public function changePasswd(Request $request, $id){
-        $request->validate([            
+    public function changePasswd(Request $request, $id)
+    {
+        $request->validate([
             'newPassword' => 'required|confirmed|min:8',
-            'newPassword_confirmation' => 'required|min:8',            
+            'newPassword_confirmation' => 'required|min:8',
         ]);
-        
+
         $users = User::where('id', $id)->first();
 
         $users->password = Hash::make($request->input('newPassword'));

@@ -43,12 +43,12 @@
               <span>{{$users->username}}</span>
             </li>
             <li class="mb-3">
-              <span class="fw-bold me-2">Full Name:</span>
-              <span>{{$users->name}}</span>
-            </li>
-            <li class="mb-3">
               <span class="fw-bold me-2">Email:</span>
               <span>{{$users->email}}</span>
+            </li>
+            <li class="mb-3">
+              <span class="fw-bold me-2">Full Name:</span>
+              <span>{{$users->name}}</span>
             </li>
             <li class="mb-3">
               <span class="fw-bold me-2">Birth:</span>
@@ -193,8 +193,19 @@
           <h3>Edit User Information</h3>
           <p>Updating user details will receive a privacy audit.</p>
         </div>
-        <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
+        <form action="{{route('user.update', $users->id)}}" method="POST" enctype="multipart/form-data">
           @csrf
+          @method('PUT')
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-name">
               <h6>Photo</h6>
@@ -204,7 +215,52 @@
                 <input type="file" class="form-control" id="inputGroupFile02" name="photo">
                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
               </div>
-              <div class="fv-plugins-message-container invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">
+              <h6>Full Name</h6>
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="add-user-fullname" name="name" value="{{ $users->name }}" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">
+              <h6>Contact</h6>
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="basic-default-phone" class="form-control phone-mask" value="{{ $users->telp }}" aria-describedby="basic-default-phone" name="telp" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">
+              <h6>Gender</h6>
+            </label>
+            <div class="col-sm-10">
+              <select id="gender" class="form-select" name="gender" required>
+                <option value="Female" {{ $users->gender == 'Female' ? 'selected' : ''}}>Female</option>
+                <option value="Male" {{ $users->gender == 'Male' ? 'selected' : ''}}>Male</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">
+              <h6>Birth</h6>
+            </label>
+            <div class="col-sm-10">
+              <input type="date" id="birth" class="form-control" value="{{ $users->birth }}" name="birth" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">
+              <h6>Role</h6>
+            </label>
+            <div class="col-sm-10">
+              <select id="user-role" class="form-select" name="role" required>
+                <option value="Customer" {{ $users->role == 'Customer' ? 'selected' : ''}}>Customer</option>
+                <option value="Admin" {{ $users->role == 'Admin' ? 'selected' : ''}}>Admin</option>
+              </select>
             </div>
           </div>
           <div class="row mb-3">
@@ -214,18 +270,8 @@
             <div class="col-sm-10">
               <div class="input-group">
                 <span class="input-group-text" id="basic-addon11">@</span>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon11" name="username" required>
-                <div class="fv-plugins-message-container invalid-feedback"></div>
+                <input type="text" class="form-control" aria-label="Username" value="{{ $users->username }}" name="username" required>
               </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name">
-              <h6>Full Name</h6>
-            </label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="add-user-fullname" placeholder="John Doe" name="fullname" aria-label="John Doe" required>
-              <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
           </div>
           <div class="row mb-3">
@@ -234,116 +280,14 @@
             </label>
             <div class="col-sm-10">
               <div class="input-group input-group-merge">
-                <input type="email" id="basic-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2" name="email" required>
-                <span class="input-group-text" id="basic-default-email2">@example.com</span>
+                <input type="email" id="basic-default-email" class="form-control" value="{{ $users->email }}" name="email" required>
               </div>
               <div class="form-text">You can use letters, numbers &amp; periods</div>
-              <div class="fv-plugins-message-container invalid-feedback"></div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name">
-              <h6>Contact</h6>
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone" name="contact" required>
-              <div class="fv-plugins-message-container invalid-feedback"></div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name">
-              <h6>Gender</h6>
-            </label>
-            <div class="col-sm-10">
-              <select id="gender" class="form-select" name="gender" required>
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-              </select>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name">
-              <h6>Birth</h6>
-            </label>
-            <div class="col-sm-10">
-              <input type="date" id="birth" class="form-control" placeholder="dd/mm/yyy" aria-label="jdoe1" name="birth" required>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name">
-              <h6>Role</h6>
-            </label>
-            <div class="col-sm-10">
-              <select id="user-role" class="form-select" name="role" required>
-                <option value="Customer">Customer</option>
-                <option value="Admin">Admin</option>
-              </select>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name">
-              <h6>Password</h6>
-            </label>
-            <div class="col-sm-10">
-              <div class="form-password-toggle">
-                <label class="form-label" for="basic-default-password12">Password</label>
-                <div class="input-group">
-                  <input type="password" class="form-control" id="basic-default-password12" placeholder="············" aria-describedby="basic-default-password2" name="passwd" required>
-                  <span id="basic-default-password2" class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                </div>
-              </div>
-              <div class="fv-plugins-message-container invalid-feedback"></div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name"></label>
-            <div class="col-sm-10">
-              <div class="form-password-toggle">
-                <label class="form-label" for="basic-default-password12">Password Confirmation</label>
-                <div class="input-group">
-                  <input type="password" class="form-control" id="basic-default-password12" placeholder="············" aria-describedby="basic-default-password2" name="passwd_confirmation" required>
-                  <span id="basic-default-password2" class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                </div>
-              </div>
-              <div class="fv-plugins-message-container invalid-feedback"></div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name">
-              <h6>Street</h6>
-            </label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="add-user-street" placeholder="street" name="street" required>
-              <div class="fv-plugins-message-container invalid-feedback"></div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-default-name">
-              <h6>Address</h6>
-            </label>
-            <div class="col-sm-10">
-              <div class="row">
-                <div class="col-sm-4">
-                  <label class="form-label">Post Code</label>
-                  <input type="text" class="form-control" id="add-user-city" placeholder="Post Code" name="post_code" required>
-                  <div class="fv-plugins-message-container invalid-feedback"></div>
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label">City</label>
-                  <input type="text" class="form-control" id="add-user-city" placeholder="City" name="city" required>
-                  <div class="fv-plugins-message-container invalid-feedback"></div>
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label">Province</label>
-                  <input type="text" class="form-control" id="add-user-city" placeholder="Provice" name="province" required>
-                  <div class="fv-plugins-message-container invalid-feedback"></div>
-                </div>
-              </div>
             </div>
           </div>
           <div class="row justify-content-end">
             <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary">Send</button>
+              <input type="submit" class="btn btn-primary" value="Send">
             </div>
           </div>
         </form>
@@ -360,9 +304,18 @@
 @section('scriptJS')
 <script>
   window.setTimeout(function() {
-    $("#passwdresponse .alert").fadeTo(500, 0).slideUp(500, function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function() {
       $(this).remove();
     });
   }, 4000);
 </script>
+@if(!empty(Session::get('error_code')) && Session::get('error_code') == 7)
+@section('scriptJS')
+<script>
+  $(function() {
+    $('#editUser').modal('show');
+  });
+</script>
+@endsection
+@endif
 @endsection

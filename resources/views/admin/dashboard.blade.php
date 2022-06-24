@@ -140,19 +140,6 @@
               </li>
               <li class="d-flex mb-4 pb-1">
                 <div class="avatar flex-shrink-0 me-3">
-                  <span class="avatar-initial rounded bg-label-success"><i class='bx bx-credit-card'></i></span>
-                </div>
-                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                  <div class="me-2">
-                    <h6 class="mb-0">Paid</h6>                   
-                  </div>
-                  <div class="user-progress">
-                    <small class="fw-semibold">{{$paid}}</small>
-                  </div>
-                </div>
-              </li>
-              <li class="d-flex mb-4 pb-1">
-                <div class="avatar flex-shrink-0 me-3">
                   <span class="avatar-initial rounded bg-label-info"><i class='bx bx-send'></i></span>
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -190,7 +177,7 @@
                   </div>
                 </div>
               </li>
-              <li class="d-flex">
+              <li class="d-flex mb-4 pb-1">
                 <div class="avatar flex-shrink-0 me-3">
                   <span class="avatar-initial rounded bg-label-danger"><i class='bx bx-error-alt'></i></span>
                 </div>
@@ -200,6 +187,19 @@
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">{{$canceled}}</small>
+                  </div>
+                </div>
+              </li>
+              <li class="d-flex">
+                <div class="avatar flex-shrink-0 me-3">
+                  <span class="avatar-initial rounded bg-label-dark"><i class='bx bx-block'></i></span>
+                </div>
+                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                  <div class="me-2">
+                    <h6 class="mb-0">Rejected</h6>                  
+                  </div>
+                  <div class="user-progress">
+                    <small class="fw-semibold">{{$rejected}}</small>
                   </div>
                 </div>
               </li>
@@ -257,7 +257,7 @@
                     @endif
                   </td>
                   <td>
-                    <div class="text-muted lh-1"><span class="text-primary fw-semibold">Rp {{$p->price}}</span></div>                  
+                    <div class="text-muted lh-1"><span class="text-primary fw-semibold">Rp {{number_format($p->price)}}</span></div>                  
                   </td>
                   <td><span class="badge {{$p->rating >= 4 ? 'bg-label-success' : 'bg-label-warning'}}">{{$p->rating}}</span></td>                  
                 </tr>

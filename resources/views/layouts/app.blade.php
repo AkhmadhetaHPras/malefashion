@@ -410,7 +410,7 @@
                 data: data,
                 dataType: "json",
                 success: function(response) {
-                    $('.price').text(response.total);
+                    $('.price').text("Rp. " + response.total.toLocaleString('en-US'));
                     $('.badge.rounded-pill.bg-warning.text-dark').text(response.nitem);
                     $('#modalnotification #modalnotificationtitle').text("Cart");
                     $('#modalnotification #modalnotificationbody').html("<div class='alert alert-success' role='alert'>Item successfully added to cart</div>");

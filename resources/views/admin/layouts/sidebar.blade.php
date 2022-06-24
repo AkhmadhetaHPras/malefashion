@@ -27,7 +27,7 @@
             <span class="menu-header-text">Manage & Controls </span>
         </li>
         <!-- Orders Start -->
-        <li class="menu-item {{ $title == 'Orders-Incoming' || $title == 'Orders-ListAll' || $title == 'Orders-View' || $title == 'Orders-Edit' ? 'active open' : '' }}">
+        <li class="menu-item {{ $title == 'Orders-Incoming' || $title == 'Orders-ListAll' || $title == 'Orders-View' || $title == 'Orders-Edit' || $title == 'Order-Due' ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-food-menu"></i>
                 <div class="lead" data-i18n="Invoice">Ordes</div>
@@ -38,7 +38,7 @@
                         <div data-i18n="In">Incoming order</div>
                     </a>
                 </li>
-                <li class="menu-item  {{ $title == 'Orders-ListAll' || $title == 'Orders-View' || $title == 'Orders-Edit' ? 'active' : '' }}">
+                <li class="menu-item  {{ $title == 'Orders-ListAll' || $title == 'Orders-View' || $title == 'Orders-Edit' || $title == 'Order-Due' ? 'active' : '' }}">
                     <a href="{{ route('orders-listall') }}" class="menu-link">
                         <div data-i18n="List">List All</div>
                     </a>

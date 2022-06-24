@@ -32,7 +32,7 @@ class ReviewSeeder extends Seeder
                 'product_id' => '2',
                 'post_date' => Carbon::parse('20-06-2022'),
                 'review' => 'So far this product is GREAT, and not to mention GORGEOUS! I bought this water bottle and I am already very happy with it. It came with 3 different lids, 2 straws, and very nice packaging. Just looking at the box, I knew I was getting a high quality product so when I got everything out, I was already impressed.',
-                'rating' => 3,
+                'rating' => 4,
             ],
             [
                 'id' => '3',

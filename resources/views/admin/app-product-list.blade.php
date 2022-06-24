@@ -6,70 +6,15 @@
 
 <!-- Users List Table -->
 <div class="card">
-  <div class="card-header border-bottom">
-    <h5 class="card-title">Search Filter</h5>
-    <div class="d-flex align-items-center row py-3 gap-3 gap-md-0">
-      <!-- Select Role -->
-      <div class="col-md-4 user_role">
-        <select id="UserRole" class="form-select text-capitalize">
-          <option value=""> Select Brand </option>
-          @foreach($brands as $b)
-          <option value="{{$b->name}}">{{$b->name}}</option>
-          @endforeach         
-        </select>
-      </div>
-      <!-- Select Plan -->
-      <div class="col-md-4 user_plan">
-        <select id="UserPlan" class="form-select text-capitalize">
-          <option value=""> Select Category </option>  
-          @foreach($categories as $c)
-          <option value="{{$c->category}}">{{$c->category}}</option>
-          @endforeach                             
-        </select>
-      </div>
-      <!-- Select Status -->     
-    </div>
-  </div>
   <!-- Tabel Start -->
   <div class="card-datatable table-responsive">
     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
       <!-- Option Table Start -->
       <div class="row mx-2">
-
-        <!-- data show start -->
-        <div class="col-md-2">
-          <div class="me-3">
-            <div class="dataTables_length" id="DataTables_Table_0_length">
-              <label>
-                <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select">
-                  <option value="10">10</option>
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                </select>
-              </label>
-            </div>
-          </div>
-        </div>
-        <!-- data show end -->
-
         <!-- Button table start -->
         <div class="col-md-10">
-          <div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0">
-            <!-- Search field -->
-            <div id="DataTables_Table_0_filter" class="dataTables_filter">
-              <label>
-                <input type="search" class="form-control" placeholder="Search.." aria-controls="DataTables_Table_0">
-              </label>
-            </div>
-            <!-- /Search field -->
-
+          <div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-start flex-md-row flex-column mb-3 mb-md-0">
             <div class="dt-buttons">
-              <!-- btn export -->
-              <button class="dt-button buttons-collection btn btn-label-secondary dropdown-toggle mx-3" abindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="true" aria-expanded="false">
-                <span><i class="bx bx-upload me-2"></i>Export</span>
-              </button>
-              <!-- /btn export -->
               <!-- btn add user -->
               <button class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" onclick="location.href='/products/add'">
                 <span>
@@ -86,13 +31,22 @@
       </div>
       <!-- Option Table End -->
 
+      <div class="row">
+        <div class="col-12">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
+        </div>
+      </div>
       <!-- Tabel start -->
-      <table class="datatables-users table border-top dataTable no-footer dtr-column collapsed" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 1040px;">
+      <table class="datatables-users table border-top dataTable no-footer dtr-column collapsed" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 1140px;">
 
         <thead>
           <tr role="row">
             <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 80px;" aria-label="User: activate to sort column ascending" aria-sort="descending">#ID</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 212px;" aria-label="Role: activate to sort column ascending">Products</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 445px;" aria-label="Role: activate to sort column ascending">Products</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 152px;" aria-label="Plan: activate to sort column ascending">Category</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 204px;" aria-label="Billing: activate to sort column ascending">Brand</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 186px;" aria-label="Status: activate to sort column ascending">Price</th>
@@ -104,7 +58,7 @@
           @foreach($products as $p)
           <!-- product1 -->
           <tr class="odd">
-            <td class="sorting_1"><a href="{{route('products-view')}}">#{{$p->id}}</a></td>
+            <td class="sorting_1"><a href="{{route('products-view', $p->id)}}">#{{$p->id}}</a></td>
             <td class="sorting_1">
               <div class="d-flex justify-content-start align-items-center">
                 <!-- Photo Profile -->
@@ -115,7 +69,7 @@
                 </div>
                 <!-- Name & email-->
                 <div class="d-flex flex-column">
-                  <a href="{{ route('products-view') }}" class="text-body text-truncate">
+                  <a href="{{ route('products-view', $p->id) }}" class="text-body text-truncate">
                     <span class="fw-semibold">{{$p->product_name}}</span>
                   </a>
                   <small class="text-muted">{{$p->tags}}</small>
@@ -143,7 +97,7 @@
             <!-- Tags -->
             <td><span class="fw-semibold">{{$p->brand->name}}</span></td>
             <!-- Price -->
-            <td>Rp{{$p->price}}</td>
+            <td>Rp {{number_format($p->price)}}</td>
 
             <td>
               <div class="d-inline-block">
@@ -151,11 +105,7 @@
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                  <a href="{{ route('products-view') }}" class="dropdown-item">View</a>
-                  <a href="{{ route('products-edit') }}" class="dropdown-item">Edit</a>
-                  <a href="javascript:;" class="dropdown-item">Suspend</a>
-                  <div class="dropdown-divider"></div>
-                  <a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>
+                  <a href="{{ route('products-view', $p->id) }}" class="dropdown-item">View</a>
                 </div>
               </div>
             </td>

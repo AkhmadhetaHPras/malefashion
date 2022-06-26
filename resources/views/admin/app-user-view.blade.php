@@ -4,6 +4,29 @@
 
 @section('content')
 
+@if ($errors->any())
+<div class="alert alert-danger">
+  <strong>Whoops!</strong> There were some problems with your input.<br><br>
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+<div id="editresponse">
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+  @if ($message = Session::get('error'))
+  <div class="alert alert-error">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+</div>
+
 <div class="row">
   <!-- User Sidebar -->
   <div class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
@@ -116,30 +139,6 @@
       </div>
     </div>
     <!-- /Address List -->
-
-    @if ($errors->any())
-    <div class="alert alert-danger">
-      <strong>Whoops!</strong> There were some problems with your input.<br><br>
-      <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-    </div>
-    @endif
-
-    <div id="passwdresponse">
-      @if ($message = Session::get('success'))
-      <div class="alert alert-success">
-        <p>{{ $message }}</p>
-      </div>
-      @endif
-      @if ($message = Session::get('error'))
-      <div class="alert alert-error">
-        <p>{{ $message }}</p>
-      </div>
-      @endif
-    </div>
 
     <!-- Change Password  -->
     <div class="card mb-4">
@@ -304,7 +303,7 @@
 @section('scriptJS')
 <script>
   window.setTimeout(function() {
-    $("#passwdresponse .alert").fadeTo(500, 0).slideUp(500, function() {
+    $("#editresponse .alert").fadeTo(500, 0).slideUp(500, function() {
       $(this).remove();
     });
   }, 4000);

@@ -5,10 +5,6 @@
 @endsection
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">Orders /</span> List
-</h4>
-
 <div id="updateresponse">
   @if ($message = Session::get('success'))
   <div class="alert alert-success">
@@ -22,10 +18,14 @@
   @endif
 </div>
 
+<h4 class="fw-bold py-3 mb-4">
+  <span class="text-muted fw-light">Orders /</span> List
+</h4>
+
 <!-- Invoice List Table -->
 <div class="card">
   <div class="card-datatable table-responsive">
-    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">      
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
 
       <table class="invoice-list-table table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
         <thead>

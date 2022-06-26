@@ -1,6 +1,31 @@
 @extends('admin.layouts.app')
 
 @section('content')
+
+@if ($errors->any())
+<div class="alert alert-danger">
+  <strong>Whoops!</strong> There were some problems with your input.<br><br>
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+
+<div id="addresponse">
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+  @if ($message = Session::get('error'))
+  <div class="alert alert-error">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+</div>
+
 <h3 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Products/</span> Add</h3>
 <div class="col-xxl">
   <div class="card mb-4">
@@ -9,16 +34,6 @@
       <small class="text-muted float-end">Mensweaer</small>
     </div>
     <div class="card-body">
-      @if ($errors->any())
-      <div class="alert alert-danger">
-          <strong>Whoops!</strong> There were some problems with your input.<br><br>
-          <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-      </div>
-      @endif
       <form action="{{ route('products-post') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
@@ -73,7 +88,7 @@
           </label>
           <div class="col-sm-10">
             <select id="category" class="form-select" name="category" required>
-              @foreach($categories as $c) 
+              @foreach($categories as $c)
               <option value="{{ $c->id }}">{{ $c->category }}</option>
               @endforeach
             </select>
@@ -85,7 +100,7 @@
           </label>
           <div class="col-sm-10">
             <select id="brand" class="form-select" name="brand" required>
-              @foreach($brands as $b) 
+              @foreach($brands as $b)
               <option value="{{ $b->id }}">{{ $b->name }}</option>
               @endforeach
             </select>
@@ -221,3 +236,13 @@
 @endsection
 
 <!-- /Content Section -->
+
+@section('scriptJS')
+<script>
+  window.setTimeout(function() {
+    $("#addresponse .alert").fadeTo(500, 0).slideUp(500, function() {
+      $(this).remove();
+    });
+  }, 4000);
+</script>
+@endsection

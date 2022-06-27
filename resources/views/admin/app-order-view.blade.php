@@ -4,8 +4,6 @@
 
 @section('content')
 
-<<<<<<< HEAD
-=======
 @if ($errors->any())
 <div class="alert alert-danger">
   <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -30,7 +28,6 @@
   @endif
 </div>
 
->>>>>>> e46e17f4732a2d8f05c1b7e82aa76928255992e5
 <div class="row invoice-preview">
   <!-- Invoice -->
   <div class="col-xl-9 col-md-8 col-12 mb-md-0 mb-4">
@@ -190,3 +187,13 @@
 @endsection
 
 <!-- /Content Section -->
+
+@section('scriptJS')
+<script>
+  window.setTimeout(function() {
+    $("#updateresponse .alert").fadeTo(500, 0).slideUp(500, function() {
+      $(this).remove();
+    });
+  }, 4000);
+</script>
+@endsection

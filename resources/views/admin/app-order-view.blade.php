@@ -4,6 +4,33 @@
 
 @section('content')
 
+<<<<<<< HEAD
+=======
+@if ($errors->any())
+<div class="alert alert-danger">
+  <strong>Whoops!</strong> There were some problems with your input.<br><br>
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+
+<div id="updateresponse">
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+  @if ($message = Session::get('error'))
+  <div class="alert alert-error">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+</div>
+
+>>>>>>> e46e17f4732a2d8f05c1b7e82aa76928255992e5
 <div class="row invoice-preview">
   <!-- Invoice -->
   <div class="col-xl-9 col-md-8 col-12 mb-md-0 mb-4">
@@ -44,9 +71,9 @@
               <tbody>
                 <tr>
                   <td class="text-end">
-                      {{ $order->address->street_address }}<br />
-                      {{ $order->address->city }} ,{{ $order->address->province }} , {{ $order->address->postal_code }}<br />
-                      {{ $order->address->name }} | {{ $order->address->telp }}
+                    {{ $order->address->street_address }}<br />
+                    {{ $order->address->city }} ,{{ $order->address->province }} , {{ $order->address->postal_code }}<br />
+                    {{ $order->address->name }} | {{ $order->address->telp }}
                   </td>
                 </tr>
               </tbody>

@@ -4,6 +4,31 @@
 
 @section('content')
 
+@if ($errors->any())
+<div class="alert alert-danger">
+  <strong>Whoops!</strong> There were some problems with your input.<br><br>
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+
+<div id="updateresponse">
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+  @if ($message = Session::get('error'))
+  <div class="alert alert-error">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
+</div>
+
+
 <form action="{{route('orders-edit', $order->id)}}" method="POST">
   @csrf
   @method('PUT')
@@ -189,3 +214,13 @@
 @endsection
 
 <!-- /Content Section -->
+
+@section('scriptJS')
+<script>
+  window.setTimeout(function() {
+    $("#updateresponse .alert").fadeTo(500, 0).slideUp(500, function() {
+      $(this).remove();
+    });
+  }, 4000);
+</script>
+@endsection

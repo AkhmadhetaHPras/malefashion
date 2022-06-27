@@ -4,7 +4,7 @@
 
 @section('content')
 
-if ($errors->any())
+@if ($errors->any())
 <div class="alert alert-danger">
   <strong>Whoops!</strong> There were some problems with your input.<br><br>
   <ul>
@@ -68,9 +68,9 @@ if ($errors->any())
               <tbody>
                 <tr>
                   <td class="text-end">
-                      {{ $order->address->street_address }}<br />
-                      {{ $order->address->city }} ,{{ $order->address->province }} , {{ $order->address->postal_code }}<br />
-                      {{ $order->address->name }} | {{ $order->address->telp }}
+                    {{ $order->address->street_address }}<br />
+                    {{ $order->address->city }} ,{{ $order->address->province }} , {{ $order->address->postal_code }}<br />
+                    {{ $order->address->name }} | {{ $order->address->telp }}
                   </td>
                 </tr>
               </tbody>

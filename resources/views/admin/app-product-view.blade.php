@@ -7,7 +7,7 @@
 <div class="row">
   <!-- User Sidebar -->
   <div class="col-12">
-  <div id="passwdresponse">
+    <div id="passwdresponse">
       @if ($message = Session::get('success'))
       <div class="alert alert-success">
         <p>{{ $message }}</p>
@@ -170,7 +170,7 @@
                       <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                         <i class="bx bx-dots-vertical-rounded"></i>
                       </button>
-                      <div class="dropdown-menu dropdown-menu-end">                      
+                      <div class="dropdown-menu dropdown-menu-end">
                         <a href="javascript:;" class="dropdown-item" data-bs-target="#editVariant{{$v->id}}" data-bs-toggle="modal">Edit</a>
                         <div class="dropdown-divider"></div>
                         <a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>
@@ -192,10 +192,10 @@
                         </div>
                         <form action="{{ route('variant-edit', $v->id) }}" method="POST">
                           @csrf
-                          @method('PUT')                  
+                          @method('PUT')
                           <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-name">
-                              <h6>Variants</h6>              
+                              <h6>Variants</h6>
                             </label>
                             <div class="col-sm-10">
                               <div class="row">
@@ -209,7 +209,7 @@
                                 </div>
                               </div>
                             </div>
-                          </div>       
+                          </div>
                           <div class="row justify-content-end">
                             <div class="col-sm-10">
                               <input type="submit" class="btn btn-primary" value="Send">
@@ -253,12 +253,12 @@
         </div>
         @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
         </div>
         @endif
         <form action="{{ route('products-edit', $products->id) }}" method="POST" enctype="multipart/form-data">
@@ -526,9 +526,9 @@
 @if(!empty(Session::get('error_code')) && Session::get('error_code') == 8)
 @section('scriptJS')
 <script>
-    $(function() {
-        $('#editProduct').modal('show');
-    });
+  $(function() {
+    $('#editProduct').modal('show');
+  });
 </script>
 @endsection
 @endif

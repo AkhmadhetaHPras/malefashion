@@ -66,11 +66,11 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     // Dashboard Admin Routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // Order resource route
-    Route::resource('order', AdminOrderController::class); 
-    Route::resource('user', AdminUserController::class); 
+    Route::resource('order', AdminOrderController::class);
+    Route::resource('user', AdminUserController::class);
 
     // Order Routes
-    Route::prefix('orders')->group(function () {                        
+    Route::prefix('orders')->group(function () {
         Route::get('/incoming-order', [AdminOrderController::class, 'incoming'])->name('orders-in');
 
         Route::get('/listall', [AdminOrderController::class, 'index'])->name('orders-listall');
@@ -79,7 +79,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
         Route::get('/edit-show/{id}', [AdminOrderController::class, 'edit'])->name('orders-editshow');
         Route::put('/edit/{id}', [AdminOrderController::class, 'update'])->name('orders-edit');
 
-        Route::get('/view/{id}', [AdminOrderController::class, 'show'])->name('orders-view');       
+        Route::get('/view/{id}', [AdminOrderController::class, 'show'])->name('orders-view');
 
         Route::get('/invoice-print/{id}', [AdminOrderController::class, 'invoice'])->name('invoice-print');
     });
@@ -93,7 +93,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
         Route::post('/add/variant/{id}', [AdminProductController::class, 'storevariant'])->name('variant-post');
         Route::put('/edit/variant/{id}', [AdminProductController::class, 'editvariant'])->name('variant-edit');
 
-        Route::get('/listall', [AdminProductController::class, 'index'])->name('products-listall');       
+        Route::get('/listall', [AdminProductController::class, 'index'])->name('products-listall');
 
         Route::put('/edit/{id}', [AdminProductController::class, 'update'])->name('products-edit');
     });

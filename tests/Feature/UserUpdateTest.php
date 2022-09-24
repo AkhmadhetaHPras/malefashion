@@ -49,7 +49,7 @@ class UserUpdateTest extends TestCase
             'photo' => 'img/profile/default.png',
         ]);
 
-        $response->assertValid(['Update successfully!']);
+        $response->assertValid(['Update user successfully!']);
         $response->assertStatus(302);
     }
 }

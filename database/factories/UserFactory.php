@@ -15,6 +15,12 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'role' => 'Admin',
+            'username' => $this->faker->username(),
+            'telp' => '0923840234',
+            'gender' => 'laki',
+            'photo' => 'asset/test.jpg',
+            'birth' => now(),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
